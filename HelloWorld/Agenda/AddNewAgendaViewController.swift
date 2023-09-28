@@ -1,5 +1,5 @@
 //
-//  AddNewAgendaCollectionViewController.swift
+//  AddNewAgendaViewController.swift
 //  HelloWorld
 //
 //  Created by Yeonu Park on 2023/09/28.
@@ -8,14 +8,7 @@
 import UIKit
 import SnapKit
 
-class AddNewAgendaCollectionViewController: BaseViewController {
-    
-    enum Section: String, CaseIterable {
-        case CheckList = "체크리스트"
-        case MemoList = "메모"
-        case CostList = "예상 비용"
-        case LinkList = "링크"
-    }
+class AddNewAgendaViewController: BaseViewController {
     
     var viewModel = AddNewAgendaViewModel()
 
@@ -27,8 +20,6 @@ class AddNewAgendaCollectionViewController: BaseViewController {
         super.viewDidLoad()
         
         configureDataSource()
-        
-        //updateSnapshot()
         
         viewModel.checkList.bind { _ in
             self.updateSnapshot() // 데이터 달라질 때 마다 컬렉션뷰 갱신 해줘
@@ -42,17 +33,7 @@ class AddNewAgendaCollectionViewController: BaseViewController {
         viewModel.linkList.bind { _ in
             self.updateSnapshot()
         }
-        
-        viewModel.list1.bind { user in
-            self.updateSnapshot() // 데이터 달라질 때 마다 컬렉션뷰 갱신 해줘
-        }
-        
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-//            self.viewModel.append()
-//            //self.list1.insert(User(name: "연준", age: 23), at: 2)
-//            self.updateSnapshot()
-//        }
-        
+
         collectionView.delegate = self
         
     }
@@ -85,18 +66,12 @@ class AddNewAgendaCollectionViewController: BaseViewController {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(44.0)) // 아이템 높이에 따라 그룹 높이 설정
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(44.0))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
-
         
         let sectionHeader = createSectionHeader()
         let section = NSCollectionLayoutSection(group: group)
         section.boundarySupplementaryItems = [sectionHeader]
-        
-        //var configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
-        //configuration.showsSeparators = true
-        //configuration.backgroundColor = .black
-        //let layout = UICollectionViewCompositionalLayout.list(using: configuration)
         
         let layout = UICollectionViewCompositionalLayout(section: section)
         
@@ -105,35 +80,33 @@ class AddNewAgendaCollectionViewController: BaseViewController {
     
     static private func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
         
-        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(100))
+        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(80))
         let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: sectionHeaderSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
         return sectionHeader
     }
     
     private func configureDataSource() {
         
-        // UICollectionView.CellRegistration -> iOS 14 이상, 메서드 대신 제네릭을 사용, 셀이 생성될 때마다 클로저가 호출됨 !
-        
         collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SectionHeader")
         
         let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, String>(handler: { cell, indexPath, itemIdentifier in
             
-            // 셀 디자인 및 데이터 처리
-            //var content = cell.defaultContentConfiguration()
             var content = UIListContentConfiguration.valueCell()
             content.text = itemIdentifier
             content.textProperties.font = .boldSystemFont(ofSize: 15)
-            //content.secondaryText = "\(itemIdentifier.age)"
-            content.image = UIImage(systemName: "star")
-            content.imageProperties.tintColor = .systemPink
-            // content.prefersSideBySideTextAndSecondaryText = false
-            //content.textToSecondaryTextVerticalPadding = 10
+            
+            if indexPath.section == 0 {
+                print(itemIdentifier)
+                content.image = UIImage(systemName: "checkmark.square")
+                content.imageProperties.tintColor = .systemPink
+            }
+            
             cell.contentConfiguration = content
             
             var backgroundConfig = UIBackgroundConfiguration.listPlainCell()
-            backgroundConfig.backgroundColor = .lightGray
-            backgroundConfig.cornerRadius = 10
-            backgroundConfig.strokeWidth = 2
+            backgroundConfig.backgroundColor = .white
+            //backgroundConfig.cornerRadius = 10
+            backgroundConfig.strokeWidth = 1
             backgroundConfig.strokeColor = .systemPink
             cell.backgroundConfiguration = backgroundConfig
             
@@ -141,7 +114,6 @@ class AddNewAgendaCollectionViewController: BaseViewController {
         
         dataSource = UICollectionViewDiffableDataSource<Section, String>(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             
-            // cellForItamAt
             let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
             return cell
         })
@@ -150,19 +122,31 @@ class AddNewAgendaCollectionViewController: BaseViewController {
             if kind == UICollectionView.elementKindSectionHeader {
                 
                 let headerView = self.collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeader", for: indexPath)
-
+                headerView.backgroundColor = .systemPink
+                
                 let section = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
                 let label = UILabel()
                 label.text = "\(section.rawValue)" // 섹션의 로우 값으로 헤더 텍스트 설정
-                print(section.rawValue)
                 label.font = UIFont.boldSystemFont(ofSize: 17) // 원하는 폰트 및 스타일로 설정
-                label.textColor = UIColor.black // 원하는 텍스트 색상으로 설정
+                label.textColor = UIColor.white // 원하는 텍스트 색상으로 설정
                 //label.translatesAutoresizingMaskIntoConstraints = false // 오토레이아웃 설정
                 
+                let addButton = UIButton()
+                addButton.setImage(UIImage(systemName: "plus"), for: .normal)
+                addButton.tag = indexPath.section
+                addButton.tintColor = .white
+                addButton.addTarget(self, action: #selector(self.addButtonClicked(sender: )), for: .touchUpInside)
+                
                 headerView.addSubview(label)
+                headerView.addSubview(addButton)
                 
                 label.snp.makeConstraints { make in
                     make.edges.equalToSuperview().inset(10)
+                }
+                addButton.snp.makeConstraints { make in
+                    make.top.bottom.equalToSuperview()
+                    make.trailing.equalToSuperview()
+                    make.size.equalTo(headerView.snp.height)
                 }
                 
                 return headerView
@@ -173,9 +157,37 @@ class AddNewAgendaCollectionViewController: BaseViewController {
         
     }
     
+    @objc func addButtonClicked(sender: UIButton) {
+        
+        let alert = UIAlertController(title: "새로운 항목을 추가하세요", message: nil, preferredStyle: .alert)
+        alert.addTextField { textField in
+            textField.placeholder = "새로운 항목 입력"
+        }
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        let ok = UIAlertAction(title: "확인", style: .default) { _ in
+            if let text = alert.textFields?.first?.text {
+                if text.isEmpty { return }
+                
+                switch sender.tag {
+                case 0 : self.viewModel.checkList.value.append(text)
+                case 1 : self.viewModel.memoList.value.append(text)
+                case 2: self.viewModel.costList.value.append(text)
+                case 3: self.viewModel.linkList.value.append(text)
+                default: print("error")
+                }
+                self.updateSnapshot()
+            }
+        }
+        alert.addAction(cancel)
+        alert.addAction(ok)
+        present(alert, animated: true)
+        
+        
+    }
+    
 }
 
-extension AddNewAgendaCollectionViewController: UICollectionViewDelegate, UISearchBarDelegate {
+extension AddNewAgendaViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
@@ -184,10 +196,7 @@ extension AddNewAgendaCollectionViewController: UICollectionViewDelegate, UISear
             return
         }
         dump(user) // print로 하나하나 요소 점 찍어서 가져오지 않아도 됨
-        self.viewModel.removeUser(idx: indexPath.item)
+        
     }
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        viewModel.insertUser(name: searchBar.text ?? "짱구")
-    }
 }

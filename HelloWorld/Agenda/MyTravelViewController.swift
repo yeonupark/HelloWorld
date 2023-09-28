@@ -1,5 +1,5 @@
 //
-//  MyTravelCollectionViewController.swift
+//  MyTravelViewController.swift
 //  HelloWorld
 //
 //  Created by Yeonu Park on 2023/09/27.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MyTravelCollectionViewController: BaseViewController {
+class MyTravelViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,7 +16,6 @@ class MyTravelCollectionViewController: BaseViewController {
         
         navigationItem.title = "my travel list"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: .add, style: .plain, target: self, action: #selector(addButtonClicked))
-        
         
     }
     
@@ -39,7 +38,7 @@ class MyTravelCollectionViewController: BaseViewController {
     }
     
     func addNewAgenda(agendaTitle: String) {
-        let vc = AddNewAgendaCollectionViewController()
+        let vc = AddNewAgendaViewController()
         vc.title = agendaTitle
         navigationController?.pushViewController(vc, animated: true)
     }
