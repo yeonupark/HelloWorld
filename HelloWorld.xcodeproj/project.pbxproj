@@ -16,6 +16,14 @@
 		4808A40D2AC40F85005E1190 /* HelloWorldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4808A40C2AC40F85005E1190 /* HelloWorldTests.swift */; };
 		4808A4172AC40F85005E1190 /* HelloWorldUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4808A4162AC40F85005E1190 /* HelloWorldUITests.swift */; };
 		4808A4192AC40F85005E1190 /* HelloWorldUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4808A4182AC40F85005E1190 /* HelloWorldUITestsLaunchTests.swift */; };
+		4808A4272AC41162005E1190 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4808A4262AC41162005E1190 /* TabBarController.swift */; };
+		4808A42C2AC413CD005E1190 /* MyTravelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4808A42B2AC413CD005E1190 /* MyTravelViewController.swift */; };
+		4808A42E2AC41522005E1190 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4808A42D2AC41522005E1190 /* BaseViewController.swift */; };
+		4808A4302AC4152C005E1190 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4808A42F2AC4152C005E1190 /* BaseView.swift */; };
+		4808A4392AC43144005E1190 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4808A4382AC43144005E1190 /* SnapKit */; };
+		4808A43B2AC52D16005E1190 /* AddNewAgendaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4808A43A2AC52D15005E1190 /* AddNewAgendaViewController.swift */; };
+		4808A43D2AC52F07005E1190 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4808A43C2AC52F07005E1190 /* Observable.swift */; };
+		4808A43F2AC52F56005E1190 /* AddNewAgendaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4808A43E2AC52F56005E1190 /* AddNewAgendaViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +57,13 @@
 		4808A4122AC40F85005E1190 /* HelloWorldUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelloWorldUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4808A4162AC40F85005E1190 /* HelloWorldUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloWorldUITests.swift; sourceTree = "<group>"; };
 		4808A4182AC40F85005E1190 /* HelloWorldUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloWorldUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4808A4262AC41162005E1190 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		4808A42B2AC413CD005E1190 /* MyTravelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTravelViewController.swift; sourceTree = "<group>"; };
+		4808A42D2AC41522005E1190 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		4808A42F2AC4152C005E1190 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		4808A43A2AC52D15005E1190 /* AddNewAgendaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAgendaViewController.swift; sourceTree = "<group>"; };
+		4808A43C2AC52F07005E1190 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		4808A43E2AC52F56005E1190 /* AddNewAgendaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAgendaViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4808A4392AC43144005E1190 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +115,8 @@
 		4808A3F42AC40F84005E1190 /* HelloWorld */ = {
 			isa = PBXGroup;
 			children = (
+				4808A4282AC412CC005E1190 /* Agenda */,
+				4808A4252AC41153005E1190 /* Base */,
 				4808A3F52AC40F84005E1190 /* AppDelegate.swift */,
 				4808A3F72AC40F84005E1190 /* SceneDelegate.swift */,
 				4808A3F92AC40F84005E1190 /* ViewController.swift */,
@@ -127,6 +145,27 @@
 			path = HelloWorldUITests;
 			sourceTree = "<group>";
 		};
+		4808A4252AC41153005E1190 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				4808A4262AC41162005E1190 /* TabBarController.swift */,
+				4808A42D2AC41522005E1190 /* BaseViewController.swift */,
+				4808A42F2AC4152C005E1190 /* BaseView.swift */,
+				4808A43C2AC52F07005E1190 /* Observable.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		4808A4282AC412CC005E1190 /* Agenda */ = {
+			isa = PBXGroup;
+			children = (
+				4808A42B2AC413CD005E1190 /* MyTravelViewController.swift */,
+				4808A43A2AC52D15005E1190 /* AddNewAgendaViewController.swift */,
+				4808A43E2AC52F56005E1190 /* AddNewAgendaViewModel.swift */,
+			);
+			path = Agenda;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +182,9 @@
 			dependencies = (
 			);
 			name = HelloWorld;
+			packageProductDependencies = (
+				4808A4382AC43144005E1190 /* SnapKit */,
+			);
 			productName = HelloWorld;
 			productReference = 4808A3F22AC40F84005E1190 /* HelloWorld.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +257,9 @@
 				Base,
 			);
 			mainGroup = 4808A3E92AC40F84005E1190;
+			packageReferences = (
+				4808A4312AC4156A005E1190 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 4808A3F32AC40F84005E1190 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -259,8 +304,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				4808A3FA2AC40F84005E1190 /* ViewController.swift in Sources */,
+				4808A4272AC41162005E1190 /* TabBarController.swift in Sources */,
 				4808A3F62AC40F84005E1190 /* AppDelegate.swift in Sources */,
+				4808A43F2AC52F56005E1190 /* AddNewAgendaViewModel.swift in Sources */,
 				4808A3F82AC40F84005E1190 /* SceneDelegate.swift in Sources */,
+				4808A4302AC4152C005E1190 /* BaseView.swift in Sources */,
+				4808A43D2AC52F07005E1190 /* Observable.swift in Sources */,
+				4808A43B2AC52D16005E1190 /* AddNewAgendaViewController.swift in Sources */,
+				4808A42C2AC413CD005E1190 /* MyTravelViewController.swift in Sources */,
+				4808A42E2AC41522005E1190 /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -607,6 +659,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4808A4312AC4156A005E1190 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4808A4382AC43144005E1190 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4808A4312AC4156A005E1190 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4808A3EA2AC40F84005E1190 /* Project object */;
 }
