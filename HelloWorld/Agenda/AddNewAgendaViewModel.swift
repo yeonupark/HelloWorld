@@ -24,12 +24,14 @@ class AddNewAgendaViewModel {
     var linkList = Observable(["www.naver.com"])
     var memoList: Observable<[String]> = Observable([])
     
-    func append() {
-        
-    }
+    var dateList: Observable<[Date]> = Observable([])
     
-    func remove() {
+    func dateFormat(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM.dd"
+        let result = dateFormatter.string(from: date)
         
+        return result
     }
 
 }
