@@ -12,7 +12,10 @@ class AddNewAgendaViewController: BaseViewController {
     
     var viewModel = AddNewAgendaViewModel()
 
-    var collectionView = UICollectionView(frame: CGRect(), collectionViewLayout: createLayout())
+    let mainView = AddNewAgendaView()
+    override func loadView() {
+        view.self = mainView
+    }
     
     var dataSource: UICollectionViewDiffableDataSource<Section, String>!
     
@@ -33,18 +36,39 @@ class AddNewAgendaViewController: BaseViewController {
         viewModel.linkList.bind { _ in
             self.updateSnapshot()
         }
+        viewModel.dateList.bind { dateList in
+            if !dateList.isEmpty {
+                let result = self.viewModel.dateFormat(date: dateList[0])
+                self.mainView.startDatetextField.text = result
+                self.mainView.endDateLabel.text?.removeAll()
+            }
+            if dateList.count > 1 {
+                let result = self.viewModel.dateFormat(date: dateList[1])
+                self.mainView.endDateLabel.text = "-    \(result)"
+            }
+        }
 
-        collectionView.delegate = self
+        mainView.collectionView.delegate = self
+        mainView.datePickerView.addTarget(self, action: #selector(getDate(sender: )), for: .valueChanged)
+    }
+    
+    @objc func getDate(sender: UIDatePicker) {
+        let date = sender.date
         
-    }
-    
-    override func configure() {
-        view.addSubview(collectionView)
-    }
-    
-    override func setConstraints() {
-        collectionView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        // 1. 아예 처음 선택한 경우
+        // 2. 두번째 잘 선택한 경우
+        // 3. 첫번째보다 먼저 날짜의 두번째를 선택한 경우 -> 리셋
+        // 4. 두개 이미 잘 들어가 있는데 다시 날짜 선택하는 경우
+        
+        if viewModel.dateList.value.isEmpty {
+            viewModel.dateList.value.append(date)
+        } else if viewModel.dateList.value.count == 1 && viewModel.dateList.value[0] < date {
+            viewModel.dateList.value.append(date)
+        } else if viewModel.dateList.value.count == 1 && viewModel.dateList.value[0] > date {
+            viewModel.dateList.value[0] = date
+        } else if viewModel.dateList.value.count > 1 {
+            viewModel.dateList.value.removeAll()
+            viewModel.dateList.value.append(date)
         }
     }
     
@@ -61,33 +85,9 @@ class AddNewAgendaViewController: BaseViewController {
         dataSource.apply(snapshot)
     }
     
-    static private func createLayout() -> UICollectionViewLayout {
-        
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(44.0))
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
-        
-        let sectionHeader = createSectionHeader()
-        let section = NSCollectionLayoutSection(group: group)
-        section.boundarySupplementaryItems = [sectionHeader]
-        
-        let layout = UICollectionViewCompositionalLayout(section: section)
-        
-        return layout
-    }
-    
-    static private func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
-        
-        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(80))
-        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: sectionHeaderSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
-        return sectionHeader
-    }
-    
     private func configureDataSource() {
         
-        collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SectionHeader")
+        mainView.collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SectionHeader")
         
         let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, String>(handler: { cell, indexPath, itemIdentifier in
             
@@ -112,7 +112,7 @@ class AddNewAgendaViewController: BaseViewController {
             
         })
         
-        dataSource = UICollectionViewDiffableDataSource<Section, String>(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+        dataSource = UICollectionViewDiffableDataSource<Section, String>(collectionView: mainView.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             
             let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
             return cell
@@ -121,15 +121,15 @@ class AddNewAgendaViewController: BaseViewController {
         dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
             if kind == UICollectionView.elementKindSectionHeader {
                 
-                let headerView = self.collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeader", for: indexPath)
+                let headerView = self.mainView.collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeader", for: indexPath)
                 headerView.backgroundColor = .systemPink
                 
                 let section = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
                 let label = UILabel()
-                label.text = "\(section.rawValue)" // 섹션의 로우 값으로 헤더 텍스트 설정
-                label.font = UIFont.boldSystemFont(ofSize: 17) // 원하는 폰트 및 스타일로 설정
-                label.textColor = UIColor.white // 원하는 텍스트 색상으로 설정
-                //label.translatesAutoresizingMaskIntoConstraints = false // 오토레이아웃 설정
+                label.text = "\(section.rawValue)"
+                label.font = UIFont.boldSystemFont(ofSize: 17)
+                label.textColor = UIColor.white
+                //label.translatesAutoresizingMaskIntoConstraints = false
                 
                 let addButton = UIButton()
                 addButton.setImage(UIImage(systemName: "plus"), for: .normal)
@@ -158,7 +158,7 @@ class AddNewAgendaViewController: BaseViewController {
     }
     
     @objc func addButtonClicked(sender: UIButton) {
-        
+        mainView.endEditing(true)
         let alert = UIAlertController(title: "새로운 항목을 추가하세요", message: nil, preferredStyle: .alert)
         alert.addTextField { textField in
             textField.placeholder = "새로운 항목 입력"

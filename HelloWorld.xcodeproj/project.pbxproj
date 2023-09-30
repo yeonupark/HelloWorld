@@ -24,6 +24,7 @@
 		4808A43B2AC52D16005E1190 /* AddNewAgendaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4808A43A2AC52D15005E1190 /* AddNewAgendaViewController.swift */; };
 		4808A43D2AC52F07005E1190 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4808A43C2AC52F07005E1190 /* Observable.swift */; };
 		4808A43F2AC52F56005E1190 /* AddNewAgendaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4808A43E2AC52F56005E1190 /* AddNewAgendaViewModel.swift */; };
+		48ED6F672AC7AE310068C5E4 /* AddNewAgendaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ED6F662AC7AE310068C5E4 /* AddNewAgendaView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		4808A43A2AC52D15005E1190 /* AddNewAgendaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAgendaViewController.swift; sourceTree = "<group>"; };
 		4808A43C2AC52F07005E1190 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		4808A43E2AC52F56005E1190 /* AddNewAgendaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAgendaViewModel.swift; sourceTree = "<group>"; };
+		48ED6F662AC7AE310068C5E4 /* AddNewAgendaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAgendaView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 				4808A42B2AC413CD005E1190 /* MyTravelViewController.swift */,
 				4808A43A2AC52D15005E1190 /* AddNewAgendaViewController.swift */,
 				4808A43E2AC52F56005E1190 /* AddNewAgendaViewModel.swift */,
+				48ED6F662AC7AE310068C5E4 /* AddNewAgendaView.swift */,
 			);
 			path = Agenda;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48ED6F672AC7AE310068C5E4 /* AddNewAgendaView.swift in Sources */,
 				4808A3FA2AC40F84005E1190 /* ViewController.swift in Sources */,
 				4808A4272AC41162005E1190 /* TabBarController.swift in Sources */,
 				4808A3F62AC40F84005E1190 /* AppDelegate.swift in Sources */,
