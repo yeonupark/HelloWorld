@@ -6,3 +6,10 @@
 //
 
 import Foundation
+import UIKit
+
+class AddNewPhotoViewModel {
+    
+    var photoList: Observable<[UIImage]> = Observable([])
+    var isEditable: Observable<Bool> = Observable(false)
+}
