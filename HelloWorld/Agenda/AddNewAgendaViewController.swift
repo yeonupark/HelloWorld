@@ -22,10 +22,13 @@ class AddNewAgendaViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let archiveButton = UIBarButtonItem(image: UIImage(systemName: "archivebox"), style: .plain, target: self, action: #selector(archiveButtonClicked))
+        navigationItem.setRightBarButton(archiveButton, animated: true)
+        
         configureDataSource()
         
         viewModel.checkList.bind { _ in
-            self.updateSnapshot() // 데이터 달라질 때 마다 컬렉션뷰 갱신 해줘
+            self.updateSnapshot()
         }
         viewModel.memoList.bind { _ in
             self.updateSnapshot()
@@ -50,6 +53,11 @@ class AddNewAgendaViewController: BaseViewController {
 
         mainView.collectionView.delegate = self
         mainView.datePickerView.addTarget(self, action: #selector(getDate(sender: )), for: .valueChanged)
+    }
+    
+    @objc func archiveButtonClicked() {
+        navigationController?.pushViewController(AddPhotoViewController(), animated: true)
+        //present(AddPhotoViewController(), animated: true)
     }
     
     @objc func getDate(sender: UIDatePicker) {
