@@ -24,6 +24,9 @@
 		4808A43B2AC52D16005E1190 /* AddNewAgendaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4808A43A2AC52D15005E1190 /* AddNewAgendaViewController.swift */; };
 		4808A43D2AC52F07005E1190 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4808A43C2AC52F07005E1190 /* Observable.swift */; };
 		4808A43F2AC52F56005E1190 /* AddNewAgendaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4808A43E2AC52F56005E1190 /* AddNewAgendaViewModel.swift */; };
+		485990A72ACBBFE9006C3D28 /* TravelAgendaTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485990A62ACBBFE9006C3D28 /* TravelAgendaTable.swift */; };
+		485990AA2ACBC163006C3D28 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 485990A92ACBC163006C3D28 /* Realm */; };
+		485990AC2ACBC163006C3D28 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 485990AB2ACBC163006C3D28 /* RealmSwift */; };
 		48CC05152ACAA7190070D337 /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CC05142ACAA7190070D337 /* AddPhotoViewController.swift */; };
 		48CC05172ACAA7600070D337 /* AddNewPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CC05162ACAA7600070D337 /* AddNewPhotoView.swift */; };
 		48CC05192ACAB99D0070D337 /* AddNewPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CC05182ACAB99D0070D337 /* AddNewPhotoViewModel.swift */; };
@@ -69,6 +72,7 @@
 		4808A43A2AC52D15005E1190 /* AddNewAgendaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAgendaViewController.swift; sourceTree = "<group>"; };
 		4808A43C2AC52F07005E1190 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		4808A43E2AC52F56005E1190 /* AddNewAgendaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAgendaViewModel.swift; sourceTree = "<group>"; };
+		485990A62ACBBFE9006C3D28 /* TravelAgendaTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelAgendaTable.swift; sourceTree = "<group>"; };
 		48CC05142ACAA7190070D337 /* AddPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
 		48CC05162ACAA7600070D337 /* AddNewPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewPhotoView.swift; sourceTree = "<group>"; };
 		48CC05182ACAB99D0070D337 /* AddNewPhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewPhotoViewModel.swift; sourceTree = "<group>"; };
@@ -81,6 +85,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				485990AC2ACBC163006C3D28 /* RealmSwift in Frameworks */,
+				485990AA2ACBC163006C3D28 /* Realm in Frameworks */,
 				4808A4392AC43144005E1190 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -125,7 +131,10 @@
 		4808A3F42AC40F84005E1190 /* HelloWorld */ = {
 			isa = PBXGroup;
 			children = (
-				4808A4282AC412CC005E1190 /* Agenda */,
+				485990A52ACBBF6D006C3D28 /* Realm */,
+				4808A4282AC412CC005E1190 /* MyTravel */,
+				48CC051C2ACB23030070D337 /* AddNewAgenda */,
+				48CC051D2ACB23290070D337 /* Photo */,
 				4808A4252AC41153005E1190 /* Base */,
 				4808A3F52AC40F84005E1190 /* AppDelegate.swift */,
 				4808A3F72AC40F84005E1190 /* SceneDelegate.swift */,
@@ -166,19 +175,41 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		4808A4282AC412CC005E1190 /* Agenda */ = {
+		4808A4282AC412CC005E1190 /* MyTravel */ = {
 			isa = PBXGroup;
 			children = (
 				4808A42B2AC413CD005E1190 /* MyTravelViewController.swift */,
+			);
+			path = MyTravel;
+			sourceTree = "<group>";
+		};
+		485990A52ACBBF6D006C3D28 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				485990A62ACBBFE9006C3D28 /* TravelAgendaTable.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		48CC051C2ACB23030070D337 /* AddNewAgenda */ = {
+			isa = PBXGroup;
+			children = (
 				4808A43A2AC52D15005E1190 /* AddNewAgendaViewController.swift */,
 				4808A43E2AC52F56005E1190 /* AddNewAgendaViewModel.swift */,
 				48ED6F662AC7AE310068C5E4 /* AddNewAgendaView.swift */,
+			);
+			path = AddNewAgenda;
+			sourceTree = "<group>";
+		};
+		48CC051D2ACB23290070D337 /* Photo */ = {
+			isa = PBXGroup;
+			children = (
 				48CC05142ACAA7190070D337 /* AddPhotoViewController.swift */,
 				48CC05162ACAA7600070D337 /* AddNewPhotoView.swift */,
 				48CC05182ACAB99D0070D337 /* AddNewPhotoViewModel.swift */,
 				48CC051A2ACABD780070D337 /* PhotoCollectionViewCell.swift */,
 			);
-			path = Agenda;
+			path = Photo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,6 +230,8 @@
 			name = HelloWorld;
 			packageProductDependencies = (
 				4808A4382AC43144005E1190 /* SnapKit */,
+				485990A92ACBC163006C3D28 /* Realm */,
+				485990AB2ACBC163006C3D28 /* RealmSwift */,
 			);
 			productName = HelloWorld;
 			productReference = 4808A3F22AC40F84005E1190 /* HelloWorld.app */;
@@ -274,6 +307,7 @@
 			mainGroup = 4808A3E92AC40F84005E1190;
 			packageReferences = (
 				4808A4312AC4156A005E1190 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				485990A82ACBC0BC006C3D28 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 4808A3F32AC40F84005E1190 /* Products */;
 			projectDirPath = "";
@@ -326,6 +360,7 @@
 				4808A43F2AC52F56005E1190 /* AddNewAgendaViewModel.swift in Sources */,
 				4808A3F82AC40F84005E1190 /* SceneDelegate.swift in Sources */,
 				4808A4302AC4152C005E1190 /* BaseView.swift in Sources */,
+				485990A72ACBBFE9006C3D28 /* TravelAgendaTable.swift in Sources */,
 				4808A43D2AC52F07005E1190 /* Observable.swift in Sources */,
 				4808A43B2AC52D16005E1190 /* AddNewAgendaViewController.swift in Sources */,
 				4808A42C2AC413CD005E1190 /* MyTravelViewController.swift in Sources */,
@@ -689,6 +724,14 @@
 				minimumVersion = 5.6.0;
 			};
 		};
+		485990A82ACBC0BC006C3D28 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -696,6 +739,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4808A4312AC4156A005E1190 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		485990A92ACBC163006C3D28 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 485990A82ACBC0BC006C3D28 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		485990AB2ACBC163006C3D28 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 485990A82ACBC0BC006C3D28 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

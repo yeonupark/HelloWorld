@@ -22,15 +22,14 @@ class AddNewAgendaViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let archiveButton = UIBarButtonItem(image: UIImage(systemName: "archivebox"), style: .plain, target: self, action: #selector(archiveButtonClicked))
-        navigationItem.setRightBarButton(archiveButton, animated: true)
+        setNavigationBar()
         
         configureDataSource()
         
         viewModel.checkList.bind { _ in
             self.updateSnapshot()
         }
-        viewModel.memoList.bind { _ in
+        viewModel.memoText.bind { _ in
             self.updateSnapshot()
         }
         viewModel.costList.bind { _ in
@@ -53,6 +52,18 @@ class AddNewAgendaViewController: BaseViewController {
 
         mainView.collectionView.delegate = self
         mainView.datePickerView.addTarget(self, action: #selector(getDate(sender: )), for: .valueChanged)
+    }
+    
+    func setNavigationBar() {
+        let archiveButton = UIBarButtonItem(image: UIImage(systemName: "archivebox"), style: .plain, target: self, action: #selector(archiveButtonClicked))
+        
+        let saveButton = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(saveButtonClicked))
+        
+        navigationItem.setRightBarButtonItems([archiveButton, saveButton], animated: true)
+    }
+    
+    @objc func saveButtonClicked() {
+        // realm에 저장
     }
     
     @objc func archiveButtonClicked() {
@@ -82,10 +93,10 @@ class AddNewAgendaViewController: BaseViewController {
     func updateSnapshot() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, String>()
         
-        snapshot.appendSections([.CheckList, .MemoList, .CostList, .LinkList])
+        snapshot.appendSections([.MemoText, .CheckList, .CostList, .LinkList])
         
         snapshot.appendItems(viewModel.checkList.value, toSection: .CheckList)
-        snapshot.appendItems(viewModel.memoList.value, toSection: .MemoList)
+        snapshot.appendItems([viewModel.memoText.value], toSection: .MemoText)
         snapshot.appendItems(viewModel.costList.value, toSection: .CostList)
         snapshot.appendItems(viewModel.linkList.value, toSection: .LinkList)
         
@@ -102,8 +113,8 @@ class AddNewAgendaViewController: BaseViewController {
 
             content.text = itemIdentifier
             content.textProperties.font = .boldSystemFont(ofSize: 15)
-            
-            if indexPath.section == 0 {
+                
+            if indexPath.section == 1 {
                 content.image = UIImage(systemName: "checkmark.square")
                 content.imageProperties.tintColor = .systemPink
             }
@@ -117,11 +128,29 @@ class AddNewAgendaViewController: BaseViewController {
             backgroundConfig.strokeColor = .systemPink
             cell.backgroundConfiguration = backgroundConfig
             
+            
         })
         
         dataSource = UICollectionViewDiffableDataSource<Section, String>(collectionView: mainView.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             
             let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
+            
+            if indexPath.section == 0 {
+
+                let textView = UITextView()
+                textView.backgroundColor = .white
+                textView.isEditable = true
+                textView.font = UIFont.systemFont(ofSize: 17)
+                textView.textContainer.maximumNumberOfLines = 0
+                
+                textView.text = self.viewModel.memoText.value
+                
+                cell.contentView.addSubview(textView)
+                textView.snp.makeConstraints { make in
+                    make.edges.equalToSuperview().inset(8)
+                }
+            }
+            
             return cell
         })
         
@@ -155,7 +184,9 @@ class AddNewAgendaViewController: BaseViewController {
                     make.trailing.equalToSuperview()
                     make.size.equalTo(headerView.snp.height)
                 }
-                
+                if indexPath.section == 0 {
+                    addButton.isHidden = true
+                }
                 return headerView
             }
             
@@ -176,8 +207,7 @@ class AddNewAgendaViewController: BaseViewController {
                 if text.isEmpty { return }
                 
                 switch sender.tag {
-                case 0 : self.viewModel.checkList.value.append(text)
-                case 1 : self.viewModel.memoList.value.append(text)
+                case 1 : self.viewModel.checkList.value.append(text)
                 case 2: self.viewModel.costList.value.append(text)
                 case 3: self.viewModel.linkList.value.append(text)
                 default: print("error")
@@ -194,16 +224,11 @@ class AddNewAgendaViewController: BaseViewController {
     
 }
 
-extension AddNewAgendaViewController: UICollectionViewDelegate {
+extension AddNewAgendaViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         mainView.endEditing(true)
-        
-        guard let user = dataSource.itemIdentifier(for: indexPath) else {
-            return
-        }
-        dump(user) // print로 하나하나 요소 점 찍어서 가져오지 않아도 됨
         
     }
     
