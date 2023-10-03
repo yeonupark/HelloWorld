@@ -142,15 +142,16 @@ extension AddPhotoViewController: UICollectionViewDelegate, UICollectionViewData
         }
         cell.imageView.image = viewModel.photoList.value[indexPath.item]
         cell.deleteButton.isHidden = !viewModel.isEditable.value
-        cell.deleteButton.tag = indexPath.item
-        cell.deleteButton.addTarget(self, action: #selector(deleteButtonClicked(sender: )), for: .touchUpInside)
         
+        if viewModel.isEditable.value {
+            cell.deleteButton.tag = indexPath.item
+            cell.deleteButton.addTarget(self, action: #selector(deleteButtonClicked(sender: )), for: .touchUpInside)
+        }
         return cell
     }
     
     @objc func deleteButtonClicked(sender: UIButton) {
         let index = sender.tag
         viewModel.photoList.value.remove(at: index)
-        print("클릭")
     }
 }
