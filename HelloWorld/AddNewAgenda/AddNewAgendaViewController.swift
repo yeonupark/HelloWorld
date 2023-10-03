@@ -57,7 +57,6 @@ class AddNewAgendaViewController: BaseViewController {
     
     @objc func archiveButtonClicked() {
         navigationController?.pushViewController(AddPhotoViewController(), animated: true)
-        //present(AddPhotoViewController(), animated: true)
     }
     
     @objc func getDate(sender: UIDatePicker) {
@@ -100,11 +99,11 @@ class AddNewAgendaViewController: BaseViewController {
         let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, String>(handler: { cell, indexPath, itemIdentifier in
             
             var content = UIListContentConfiguration.valueCell()
+
             content.text = itemIdentifier
             content.textProperties.font = .boldSystemFont(ofSize: 15)
             
             if indexPath.section == 0 {
-                print(itemIdentifier)
                 content.image = UIImage(systemName: "checkmark.square")
                 content.imageProperties.tintColor = .systemPink
             }
@@ -199,7 +198,8 @@ extension AddNewAgendaViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        //let user = viewModel.list1.value[indexPath.item] 대신
+        mainView.endEditing(true)
+        
         guard let user = dataSource.itemIdentifier(for: indexPath) else {
             return
         }
