@@ -27,6 +27,7 @@
 		485990A72ACBBFE9006C3D28 /* TravelAgendaTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485990A62ACBBFE9006C3D28 /* TravelAgendaTable.swift */; };
 		485990AA2ACBC163006C3D28 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 485990A92ACBC163006C3D28 /* Realm */; };
 		485990AC2ACBC163006C3D28 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 485990AB2ACBC163006C3D28 /* RealmSwift */; };
+		485990F22ACDBC52006C3D28 /* TravelAgendaTableRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485990F12ACDBC52006C3D28 /* TravelAgendaTableRepository.swift */; };
 		48CC05152ACAA7190070D337 /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CC05142ACAA7190070D337 /* AddPhotoViewController.swift */; };
 		48CC05172ACAA7600070D337 /* AddNewPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CC05162ACAA7600070D337 /* AddNewPhotoView.swift */; };
 		48CC05192ACAB99D0070D337 /* AddNewPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CC05182ACAB99D0070D337 /* AddNewPhotoViewModel.swift */; };
@@ -73,6 +74,7 @@
 		4808A43C2AC52F07005E1190 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		4808A43E2AC52F56005E1190 /* AddNewAgendaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAgendaViewModel.swift; sourceTree = "<group>"; };
 		485990A62ACBBFE9006C3D28 /* TravelAgendaTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelAgendaTable.swift; sourceTree = "<group>"; };
+		485990F12ACDBC52006C3D28 /* TravelAgendaTableRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelAgendaTableRepository.swift; sourceTree = "<group>"; };
 		48CC05142ACAA7190070D337 /* AddPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
 		48CC05162ACAA7600070D337 /* AddNewPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewPhotoView.swift; sourceTree = "<group>"; };
 		48CC05182ACAB99D0070D337 /* AddNewPhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewPhotoViewModel.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				485990A62ACBBFE9006C3D28 /* TravelAgendaTable.swift */,
+				485990F12ACDBC52006C3D28 /* TravelAgendaTableRepository.swift */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				485990F22ACDBC52006C3D28 /* TravelAgendaTableRepository.swift in Sources */,
 				48ED6F672AC7AE310068C5E4 /* AddNewAgendaView.swift in Sources */,
 				48CC05152ACAA7190070D337 /* AddPhotoViewController.swift in Sources */,
 				4808A3FA2AC40F84005E1190 /* ViewController.swift in Sources */,

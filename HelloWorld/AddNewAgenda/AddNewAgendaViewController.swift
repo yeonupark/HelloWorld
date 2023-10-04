@@ -26,7 +26,7 @@ class AddNewAgendaViewController: BaseViewController {
         
         configureDataSource()
         
-        viewModel.checkList.bind { _ in
+        viewModel.toDoList.bind { _ in
             self.updateSnapshot()
         }
         viewModel.memoText.bind { _ in
@@ -93,9 +93,9 @@ class AddNewAgendaViewController: BaseViewController {
     func updateSnapshot() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, String>()
         
-        snapshot.appendSections([.MemoText, .CheckList, .CostList, .LinkList])
+        snapshot.appendSections([.MemoText, .ToDoList, .CostList, .LinkList])
         
-        snapshot.appendItems(viewModel.checkList.value, toSection: .CheckList)
+        snapshot.appendItems(viewModel.toDoList.value, toSection: .ToDoList)
         snapshot.appendItems([viewModel.memoText.value], toSection: .MemoText)
         snapshot.appendItems(viewModel.costList.value, toSection: .CostList)
         snapshot.appendItems(viewModel.linkList.value, toSection: .LinkList)
@@ -207,7 +207,7 @@ class AddNewAgendaViewController: BaseViewController {
                 if text.isEmpty { return }
                 
                 switch sender.tag {
-                case 1 : self.viewModel.checkList.value.append(text)
+                case 1 : self.viewModel.toDoList.value.append(text)
                 case 2: self.viewModel.costList.value.append(text)
                 case 3: self.viewModel.linkList.value.append(text)
                 default: print("error")
