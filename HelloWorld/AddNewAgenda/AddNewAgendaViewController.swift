@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
 
 class AddNewAgendaViewController: BaseViewController {
     
@@ -18,6 +19,8 @@ class AddNewAgendaViewController: BaseViewController {
     }
     
     var dataSource: UICollectionViewDiffableDataSource<Section, String>!
+    let repository = TravelAgendaTableRepository()
+    var newTravelAgendaTable = TravelAgendaTable()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +55,8 @@ class AddNewAgendaViewController: BaseViewController {
 
         mainView.collectionView.delegate = self
         mainView.datePickerView.addTarget(self, action: #selector(getDate(sender: )), for: .valueChanged)
+        
+        repository.checkSchemaVersion()
     }
     
     func setNavigationBar() {
@@ -63,7 +68,57 @@ class AddNewAgendaViewController: BaseViewController {
     }
     
     @objc func saveButtonClicked() {
-        // realm에 저장
+
+        guard let startDate = viewModel.dateList.value.first else {
+            let alert = UIAlertController(title: "여행 날짜를 설정해주세요", message: "", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "확인", style: .default)
+            alert.addAction(ok)
+            present(alert, animated: true)
+            return
+        }
+        var endDate = viewModel.dateList.value.last
+        var memo = viewModel.memoText.value
+        
+        newTravelAgendaTable = TravelAgendaTable(title: navigationItem.title ?? "새 여행", startDate: startDate, endDate: endDate, memo: memo, toDoList: fetchTodoList(), costList: fetchCostList(), linkList: fetchLinkList())
+        
+        print(newTravelAgendaTable)
+        
+        repository.addItem(newTravelAgendaTable)
+    }
+    
+    func fetchTodoList() -> List<ToDoObject> {
+        let toDoList = viewModel.toDoList.value
+        
+        var objectList: List<ToDoObject> = List<ToDoObject>()
+        
+        for todo in toDoList {
+            let data = ToDoObject(toDo: todo)
+            objectList.append(data)
+        }
+        return objectList
+        
+    }
+    
+    func fetchCostList() -> List<CostObject> {
+        let costList = viewModel.costList.value
+        var objectList: List<CostObject> = List<CostObject>()
+        
+        for cost in costList {
+            let data = CostObject(cost: cost)
+            objectList.append(data)
+        }
+        return objectList
+    }
+    
+    func fetchLinkList() -> List<LinkObject> {
+        let linkList = viewModel.linkList.value
+        var objectList: List<LinkObject> = List<LinkObject>()
+        
+        for link in linkList {
+            let data = LinkObject(link: link)
+            objectList.append(data)
+        }
+        return objectList
     }
     
     @objc func archiveButtonClicked() {
@@ -143,6 +198,7 @@ class AddNewAgendaViewController: BaseViewController {
                 textView.font = UIFont.systemFont(ofSize: 17)
                 textView.textContainer.maximumNumberOfLines = 0
                 
+                //self.viewModel.memoText.value = textView.text
                 textView.text = self.viewModel.memoText.value
                 
                 cell.contentView.addSubview(textView)

@@ -19,6 +19,10 @@ class TravelAgendaTableRepository: TravelAgendaTableRepositoryType {
     
     private let realm = try! Realm()
     
+    func printRealmLocation() {
+        print("realm 위치: ", Realm.Configuration.defaultConfiguration.fileURL!)
+    }
+    
     func checkSchemaVersion() {
         do {
             let version = try schemaVersionAtURL(realm.configuration.fileURL!)
