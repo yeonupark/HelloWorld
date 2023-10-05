@@ -12,7 +12,7 @@ class AddNewAgendaView: BaseView {
     
     let startDatetextField = {
         let view = UITextField()
-        view.placeholder = "여행 날짜"
+        view.placeholder = "여행 날짜 선택"
         view.tintColor = .clear
         return view
     }()

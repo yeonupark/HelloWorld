@@ -16,12 +16,9 @@ enum Section: String, CaseIterable {
 
 class AddNewAgendaViewModel {
     
-    //var toDoList: Observable<[String]> = Observable([])
-    var toDoList = Observable(["잠자기", "밥먹기", "쇼핑하기"])
-    //var costList: Observable<[String]> = Observable([])
-    var costList = Observable(["10,000원", "45,600원"])
-    //var linkList: Observable<[String]> = Observable([])
-    var linkList = Observable(["www.naver.com"])
+    var toDoList: Observable<[String]> = Observable([])
+    var costList: Observable<[String]> = Observable([])
+    var linkList: Observable<[String]> = Observable([])
     var memoText: Observable<String> = Observable("")
     
     var dateList: Observable<[Date]> = Observable([])
