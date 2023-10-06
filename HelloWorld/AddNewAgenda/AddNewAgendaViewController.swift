@@ -19,8 +19,11 @@ class AddNewAgendaViewController: BaseViewController {
     }
     
     var dataSource: UICollectionViewDiffableDataSource<Section, String>!
+    
     let repository = TravelAgendaTableRepository()
     var newTravelAgendaTable = TravelAgendaTable()
+    
+    var savedImages: [UIImage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +59,7 @@ class AddNewAgendaViewController: BaseViewController {
         mainView.collectionView.delegate = self
         mainView.datePickerView.addTarget(self, action: #selector(getDate(sender: )), for: .valueChanged)
         
+        repository.printRealmLocation()
         repository.checkSchemaVersion()
     }
     
@@ -84,6 +88,7 @@ class AddNewAgendaViewController: BaseViewController {
         print(newTravelAgendaTable)
         
         repository.addItem(newTravelAgendaTable)
+        saveImageToDocument(fileName: "\(newTravelAgendaTable._id)", images: savedImages)
     }
     
     func fetchTodoList() -> List<ToDoObject> {
@@ -122,7 +127,12 @@ class AddNewAgendaViewController: BaseViewController {
     }
     
     @objc func archiveButtonClicked() {
-        navigationController?.pushViewController(AddPhotoViewController(), animated: true)
+        let vc = AddPhotoViewController()
+        vc.completionHandler = { images in
+            self.savedImages = images
+        }
+        vc.viewModel.photoList.value = savedImages
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func getDate(sender: UIDatePicker) {
@@ -275,6 +285,23 @@ class AddNewAgendaViewController: BaseViewController {
         alert.addAction(ok)
         present(alert, animated: true)
         
+    }
+    
+    func saveImageToDocument(fileName: String, images: [UIImage]) {
+        
+        guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        
+        for i in 0...images.count-1 {
+            let fileURL = documentDirectory.appendingPathComponent("\(fileName)\(i)")
+            
+            guard let data = images[i].jpegData(compressionQuality: 0.5) else { return }
+            
+            do {
+                try data.write(to: fileURL)
+            } catch let error {
+                print("이미지 파일 저장 중 오류 발생", error)
+            }
+        }
         
     }
     
@@ -289,3 +316,4 @@ extension AddNewAgendaViewController: UICollectionViewDelegate, UICollectionView
     }
     
 }
+

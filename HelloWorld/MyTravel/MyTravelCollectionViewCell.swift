@@ -5,4 +5,8 @@
 //  Created by Yeonu Park on 2023/10/06.
 //
 
-import Foundation
+import UIKit
+
+class MyTravelCollectionViewCell: UICollectionViewCell {
+    
+}
