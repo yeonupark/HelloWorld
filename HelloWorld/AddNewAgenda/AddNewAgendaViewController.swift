@@ -80,15 +80,17 @@ class AddNewAgendaViewController: BaseViewController {
             present(alert, animated: true)
             return
         }
-        var endDate = viewModel.dateList.value.last
+        let endDate = viewModel.dateList.value.last
         var memo = viewModel.memoText.value
         
-        newTravelAgendaTable = TravelAgendaTable(title: navigationItem.title ?? "새 여행", startDate: startDate, endDate: endDate, memo: memo, toDoList: fetchTodoList(), costList: fetchCostList(), linkList: fetchLinkList())
+        newTravelAgendaTable = TravelAgendaTable(title: navigationItem.title ?? "새 여행", startDate: startDate, endDate: endDate!, memo: memo, toDoList: fetchTodoList(), costList: fetchCostList(), linkList: fetchLinkList())
         
         print(newTravelAgendaTable)
         
         repository.addItem(newTravelAgendaTable)
         saveImageToDocument(fileName: "\(newTravelAgendaTable._id)", images: savedImages)
+        
+        navigationController?.popViewController(animated: true)
     }
     
     func fetchTodoList() -> List<ToDoObject> {
@@ -181,7 +183,7 @@ class AddNewAgendaViewController: BaseViewController {
                 
             if indexPath.section == 1 {
                 content.image = UIImage(systemName: "checkmark.square")
-                content.imageProperties.tintColor = .systemPink
+                content.imageProperties.tintColor = UIColor(named: "Orange")
             }
             
             cell.contentConfiguration = content
@@ -190,7 +192,7 @@ class AddNewAgendaViewController: BaseViewController {
             backgroundConfig.backgroundColor = .white
             //backgroundConfig.cornerRadius = 10
             backgroundConfig.strokeWidth = 1
-            backgroundConfig.strokeColor = .systemPink
+            backgroundConfig.strokeColor = UIColor(named: "Orange")
             cell.backgroundConfiguration = backgroundConfig
             
             
@@ -224,7 +226,7 @@ class AddNewAgendaViewController: BaseViewController {
             if kind == UICollectionView.elementKindSectionHeader {
                 
                 let headerView = self.mainView.collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeader", for: indexPath)
-                headerView.backgroundColor = .systemPink
+                headerView.backgroundColor = UIColor(named: "Orange")
                 
                 let section = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
                 let label = UILabel()
@@ -291,6 +293,7 @@ class AddNewAgendaViewController: BaseViewController {
         
         guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
         
+        if images.isEmpty { return }
         for i in 0...images.count-1 {
             let fileURL = documentDirectory.appendingPathComponent("\(fileName)\(i)")
             

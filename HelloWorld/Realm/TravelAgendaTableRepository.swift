@@ -33,7 +33,7 @@ class TravelAgendaTableRepository: TravelAgendaTableRepositoryType {
     }
     
     func fetch() -> RealmSwift.Results<TravelAgendaTable> {
-        let data = realm.objects(TravelAgendaTable.self)
+        let data = realm.objects(TravelAgendaTable.self).sorted(by: ["startDate", "endDate"])
         return data
     }
     

@@ -8,10 +8,34 @@
 import UIKit
 
 class MyTravelViewController: BaseViewController {
-
+    
+    let mainView = MyTravelView()
+    
+    override func loadView() {
+        self.view = mainView
+    }
+    
+    let viewModel = MyTravelViewModel()
+    let repository = TravelAgendaTableRepository()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setNavigationItem()
+        mainView.collectionView.delegate = self
+        mainView.collectionView.dataSource = self
+        
+        viewModel.myTravelAgendas.bind { _ in
+            self.mainView.collectionView.reloadData()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.myTravelAgendas.value = repository.fetch()
+    }
+    
+    func setNavigationItem() {
         view.backgroundColor = .white
         
         navigationItem.title = "my travel list"
@@ -42,4 +66,30 @@ class MyTravelViewController: BaseViewController {
         vc.title = agendaTitle
         navigationController?.pushViewController(vc, animated: true)
     }
+}
+
+extension MyTravelViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return viewModel.myTravelAgendas.value.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        guard let cell = mainView.collectionView.dequeueReusableCell(withReuseIdentifier: "MyTravelCollectionViewCell", for: indexPath) as? MyTravelCollectionViewCell else { return UICollectionViewCell() }
+        
+        let startDate = viewModel.dateFormat(date: viewModel.myTravelAgendas.value[indexPath.row].startDate)
+        cell.dateLabel.text = startDate
+        
+        if viewModel.myTravelAgendas.value[indexPath.row].endDate != viewModel.myTravelAgendas.value[indexPath.row].startDate {
+            let endDate = viewModel.dateFormat(date: viewModel.myTravelAgendas.value[indexPath.row].endDate)
+            cell.dateLabel.text = "\(startDate) - \(endDate)"
+        }
+        
+        cell.titleLabel.text = viewModel.myTravelAgendas.value[indexPath.row].title
+        return cell
+    }
+    
+    
 }

@@ -13,14 +13,14 @@ class TravelAgendaTable: Object {
     @Persisted(primaryKey: true) var _id: ObjectId
     @Persisted var title: String
     @Persisted var startDate: Date
-    @Persisted var endDate: Date?
+    @Persisted var endDate: Date
     @Persisted var memo: String?
     
     @Persisted var toDoList : List<ToDoObject> = List<ToDoObject>()
     @Persisted var costList : List<CostObject> = List<CostObject>()
     @Persisted var linkList : List<LinkObject> = List<LinkObject>()
     
-    convenience init(title: String, startDate: Date, endDate: Date? = nil, memo: String? = nil, toDoList: List<ToDoObject>, costList: List<CostObject>, linkList: List<LinkObject>) {
+    convenience init(title: String, startDate: Date, endDate: Date, memo: String? = nil, toDoList: List<ToDoObject>, costList: List<CostObject>, linkList: List<LinkObject>) {
         
         self.init()
         
