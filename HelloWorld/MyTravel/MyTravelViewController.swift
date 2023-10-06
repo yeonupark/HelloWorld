@@ -28,6 +28,9 @@ class MyTravelViewController: BaseViewController {
         viewModel.myTravelAgendas.bind { _ in
             self.mainView.collectionView.reloadData()
         }
+        viewModel.isEditable.bind { _ in
+            self.mainView.collectionView.reloadData()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,8 +42,22 @@ class MyTravelViewController: BaseViewController {
         view.backgroundColor = .white
         
         navigationItem.title = "my travel list"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: .add, style: .plain, target: self, action: #selector(addButtonClicked))
         
+        let editButton = UIBarButtonItem(image: .remove, style: .plain, target: self, action: #selector(editButtonClicked(sender: )))
+        let addButton = UIBarButtonItem(image: .add, style: .plain, target: self, action: #selector(addButtonClicked))
+        
+        navigationItem.setLeftBarButton(editButton, animated: true)
+        navigationItem.setRightBarButton(addButton, animated: true)
+    }
+    
+    @objc func editButtonClicked(sender: UIBarButtonItem) {
+        if viewModel.isEditable.value {
+            sender.image = .remove
+            viewModel.isEditable.value = false
+        } else {
+            sender.image = UIImage(systemName: "checkmark.circle.fill")
+            viewModel.isEditable.value = true
+        }
     }
     
     @objc func addButtonClicked() {
@@ -88,8 +105,28 @@ extension MyTravelViewController: UICollectionViewDelegate, UICollectionViewData
         }
         
         cell.titleLabel.text = viewModel.myTravelAgendas.value[indexPath.row].title
+        
+        cell.deleteButton.isHidden = !(viewModel.isEditable.value)
+        
+        if viewModel.isEditable.value {
+            cell.deleteButton.tag = indexPath.row
+            cell.deleteButton.addTarget(self, action: #selector(deleteButtonClicked(sender: )), for: .touchUpInside)
+        }
         return cell
     }
     
+    @objc func deleteButtonClicked(sender: UIButton) {
+        let agendaTable = viewModel.myTravelAgendas.value[sender.tag]
+        
+        let fileName = viewModel.myTravelAgendas.value[sender.tag]._id.stringValue
+        let numberOfImages = viewModel.myTravelAgendas.value[sender.tag].numberOfImages
+        
+        print(fileName)
+        print(numberOfImages)
+        removeImagesFromDocument(fileName: fileName, numberOfImages: numberOfImages)
+        
+        repository.deleteItem(agendaTable)
+        viewModel.myTravelAgendas.value = repository.fetch()
+    }
     
 }
