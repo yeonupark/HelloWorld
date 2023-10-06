@@ -18,6 +18,7 @@ class AddPhotoViewController: BaseViewController {
     }
     
     let viewModel = AddNewPhotoViewModel()
+    var completionHandler: (([UIImage]) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,8 +62,14 @@ class AddPhotoViewController: BaseViewController {
         }
     }
     
-    func setNavigationBar() {
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         
+        completionHandler?(viewModel.photoList.value)
+    }
+    
+    func setNavigationBar() {
+        navigationItem.title = "사진 불러오기"
         let addButton = UIBarButtonItem(image: UIImage(systemName: "camera"), style: .plain, target: self, action: #selector(addButtonClicked))
         
         let editButton = UIBarButtonItem(title: "edit", style: .plain, target: self, action: #selector(editButtonClicked(sender: )))
@@ -102,7 +109,7 @@ class AddPhotoViewController: BaseViewController {
         
         var configuration = PHPickerConfiguration()
         configuration.filter = .images
-        configuration.selectionLimit = 100
+        configuration.selectionLimit = 50
         let picker = PHPickerViewController(configuration: configuration)
         
         picker.delegate = self

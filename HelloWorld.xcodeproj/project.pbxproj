@@ -32,6 +32,7 @@
 		48CC05172ACAA7600070D337 /* AddNewPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CC05162ACAA7600070D337 /* AddNewPhotoView.swift */; };
 		48CC05192ACAB99D0070D337 /* AddNewPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CC05182ACAB99D0070D337 /* AddNewPhotoViewModel.swift */; };
 		48CC051B2ACABD780070D337 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CC051A2ACABD780070D337 /* PhotoCollectionViewCell.swift */; };
+		48DB9E222ACFD6AD0038701C /* MyTravelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E212ACFD6AD0038701C /* MyTravelCollectionViewCell.swift */; };
 		48ED6F672AC7AE310068C5E4 /* AddNewAgendaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ED6F662AC7AE310068C5E4 /* AddNewAgendaView.swift */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +80,7 @@
 		48CC05162ACAA7600070D337 /* AddNewPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewPhotoView.swift; sourceTree = "<group>"; };
 		48CC05182ACAB99D0070D337 /* AddNewPhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewPhotoViewModel.swift; sourceTree = "<group>"; };
 		48CC051A2ACABD780070D337 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		48DB9E212ACFD6AD0038701C /* MyTravelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTravelCollectionViewCell.swift; sourceTree = "<group>"; };
 		48ED6F662AC7AE310068C5E4 /* AddNewAgendaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAgendaView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -181,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				4808A42B2AC413CD005E1190 /* MyTravelViewController.swift */,
+				48DB9E212ACFD6AD0038701C /* MyTravelCollectionViewCell.swift */,
 			);
 			path = MyTravel;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				4808A3F82AC40F84005E1190 /* SceneDelegate.swift in Sources */,
 				4808A4302AC4152C005E1190 /* BaseView.swift in Sources */,
 				485990A72ACBBFE9006C3D28 /* TravelAgendaTable.swift in Sources */,
+				48DB9E222ACFD6AD0038701C /* MyTravelCollectionViewCell.swift in Sources */,
 				4808A43D2AC52F07005E1190 /* Observable.swift in Sources */,
 				4808A43B2AC52D16005E1190 /* AddNewAgendaViewController.swift in Sources */,
 				4808A42C2AC413CD005E1190 /* MyTravelViewController.swift in Sources */,
