@@ -11,8 +11,8 @@ class MyTravelCollectionViewCell: UICollectionViewCell {
     
     let dateLabel = {
         let view = UILabel()
-        view.layer.cornerRadius = 5
-        view.clipsToBounds = true
+//        view.layer.cornerRadius = 5
+//        view.clipsToBounds = true
         view.backgroundColor = UIColor(named: "Orange")
         view.textColor = .black
         view.font = .boldSystemFont(ofSize: 17)
@@ -25,7 +25,13 @@ class MyTravelCollectionViewCell: UICollectionViewCell {
         view.textAlignment = .center
         view.textColor = .black
         view.numberOfLines = 0
-        
+        return view
+    }()
+    
+    let deleteButton = {
+        let view = UIButton()
+        view.setImage(UIImage(systemName: "minus.circle.fill"), for: .normal)
+        view.tintColor = .red
         return view
     }()
     
@@ -44,6 +50,7 @@ class MyTravelCollectionViewCell: UICollectionViewCell {
         contentView.backgroundColor = UIColor(named: "MainColor")
         contentView.addSubview(dateLabel)
         contentView.addSubview(titleLabel)
+        contentView.addSubview(deleteButton)
     }
     
     func setConstraints() {
@@ -54,6 +61,10 @@ class MyTravelCollectionViewCell: UICollectionViewCell {
         dateLabel.snp.makeConstraints { make in
             make.top.leading.equalToSuperview().inset(16)
             make.height.equalTo(30)
+        }
+        deleteButton.snp.makeConstraints { make in
+            make.top.trailing.equalToSuperview().inset(16)
+            make.size.equalTo(30)
         }
     }
 

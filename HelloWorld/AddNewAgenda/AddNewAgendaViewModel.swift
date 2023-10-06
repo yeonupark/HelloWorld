@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum Section: String, CaseIterable {
     case MemoText = "메모"
@@ -22,6 +23,8 @@ class AddNewAgendaViewModel {
     var memoText: Observable<String> = Observable("")
     
     var dateList: Observable<[Date]> = Observable([])
+    
+    var savedImages: Observable<[UIImage]> = Observable([])
     
     func dateFormat(date: Date) -> String {
         let dateFormatter = DateFormatter()

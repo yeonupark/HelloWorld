@@ -23,8 +23,6 @@ class AddNewAgendaViewController: BaseViewController {
     let repository = TravelAgendaTableRepository()
     var newTravelAgendaTable = TravelAgendaTable()
     
-    var savedImages: [UIImage] = []
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,6 +53,9 @@ class AddNewAgendaViewController: BaseViewController {
                 self.mainView.endDateLabel.text = "-    \(result)"
             }
         }
+//        viewModel.savedImages.bind { _ in
+//
+//        }
 
         mainView.collectionView.delegate = self
         mainView.datePickerView.addTarget(self, action: #selector(getDate(sender: )), for: .valueChanged)
@@ -83,12 +84,10 @@ class AddNewAgendaViewController: BaseViewController {
         let endDate = viewModel.dateList.value.last
         var memo = viewModel.memoText.value
         
-        newTravelAgendaTable = TravelAgendaTable(title: navigationItem.title ?? "새 여행", startDate: startDate, endDate: endDate!, memo: memo, toDoList: fetchTodoList(), costList: fetchCostList(), linkList: fetchLinkList())
-        
-        print(newTravelAgendaTable)
+        newTravelAgendaTable = TravelAgendaTable(title: navigationItem.title ?? "새 여행", startDate: startDate, endDate: endDate!, memo: memo, numberOfImages: viewModel.savedImages.value.count, toDoList: fetchTodoList(), costList: fetchCostList(), linkList: fetchLinkList())
         
         repository.addItem(newTravelAgendaTable)
-        saveImageToDocument(fileName: "\(newTravelAgendaTable._id)", images: savedImages)
+        saveImagesToDocument(fileName: "\(newTravelAgendaTable._id)", images: viewModel.savedImages.value)
         
         navigationController?.popViewController(animated: true)
     }
@@ -131,9 +130,9 @@ class AddNewAgendaViewController: BaseViewController {
     @objc func archiveButtonClicked() {
         let vc = AddPhotoViewController()
         vc.completionHandler = { images in
-            self.savedImages = images
+            self.viewModel.savedImages.value = images
         }
-        vc.viewModel.photoList.value = savedImages
+        vc.viewModel.photoList.value = viewModel.savedImages.value
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -286,25 +285,6 @@ class AddNewAgendaViewController: BaseViewController {
         alert.addAction(cancel)
         alert.addAction(ok)
         present(alert, animated: true)
-        
-    }
-    
-    func saveImageToDocument(fileName: String, images: [UIImage]) {
-        
-        guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-        
-        if images.isEmpty { return }
-        for i in 0...images.count-1 {
-            let fileURL = documentDirectory.appendingPathComponent("\(fileName)\(i)")
-            
-            guard let data = images[i].jpegData(compressionQuality: 0.5) else { return }
-            
-            do {
-                try data.write(to: fileURL)
-            } catch let error {
-                print("이미지 파일 저장 중 오류 발생", error)
-            }
-        }
         
     }
     

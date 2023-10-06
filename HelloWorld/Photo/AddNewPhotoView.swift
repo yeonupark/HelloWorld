@@ -21,7 +21,7 @@ class AddNewPhotoView: BaseView {
         layout.minimumLineSpacing = 8
         layout.minimumInteritemSpacing = 8
         let size = UIScreen.main.bounds.width - 32
-        layout.itemSize = CGSize(width: size/3, height: size/3)
+        layout.itemSize = CGSize(width: size/3, height: size/2.5)
         return layout
     }
     

@@ -35,6 +35,7 @@
 		48DB9E222ACFD6AD0038701C /* MyTravelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E212ACFD6AD0038701C /* MyTravelCollectionViewCell.swift */; };
 		48DB9E242ACFDBDC0038701C /* MyTravelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E232ACFDBDC0038701C /* MyTravelView.swift */; };
 		48DB9E262ACFDE550038701C /* MyTravelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E252ACFDE550038701C /* MyTravelViewModel.swift */; };
+		48DB9E282AD06BB10038701C /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E272AD06BB10038701C /* FileManager.swift */; };
 		48ED6F672AC7AE310068C5E4 /* AddNewAgendaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ED6F662AC7AE310068C5E4 /* AddNewAgendaView.swift */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +86,7 @@
 		48DB9E212ACFD6AD0038701C /* MyTravelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTravelCollectionViewCell.swift; sourceTree = "<group>"; };
 		48DB9E232ACFDBDC0038701C /* MyTravelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTravelView.swift; sourceTree = "<group>"; };
 		48DB9E252ACFDE550038701C /* MyTravelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTravelViewModel.swift; sourceTree = "<group>"; };
+		48DB9E272AD06BB10038701C /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		48ED6F662AC7AE310068C5E4 /* AddNewAgendaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAgendaView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -179,6 +181,7 @@
 				4808A42D2AC41522005E1190 /* BaseViewController.swift */,
 				4808A42F2AC4152C005E1190 /* BaseView.swift */,
 				4808A43C2AC52F07005E1190 /* Observable.swift */,
+				48DB9E272AD06BB10038701C /* FileManager.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				485990F22ACDBC52006C3D28 /* TravelAgendaTableRepository.swift in Sources */,
 				48ED6F672AC7AE310068C5E4 /* AddNewAgendaView.swift in Sources */,
 				48CC05152ACAA7190070D337 /* AddPhotoViewController.swift in Sources */,
+				48DB9E282AD06BB10038701C /* FileManager.swift in Sources */,
 				4808A3FA2AC40F84005E1190 /* ViewController.swift in Sources */,
 				4808A4272AC41162005E1190 /* TabBarController.swift in Sources */,
 				4808A3F62AC40F84005E1190 /* AppDelegate.swift in Sources */,
