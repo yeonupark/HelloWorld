@@ -36,6 +36,8 @@
 		48DB9E242ACFDBDC0038701C /* MyTravelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E232ACFDBDC0038701C /* MyTravelView.swift */; };
 		48DB9E262ACFDE550038701C /* MyTravelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E252ACFDE550038701C /* MyTravelViewModel.swift */; };
 		48DB9E282AD06BB10038701C /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E272AD06BB10038701C /* FileManager.swift */; };
+		48DB9E2A2AD130D90038701C /* AddMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E292AD130D90038701C /* AddMemoViewController.swift */; };
+		48DB9E2D2AD15C990038701C /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 48DB9E2C2AD15C990038701C /* Toast */; };
 		48ED6F672AC7AE310068C5E4 /* AddNewAgendaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ED6F662AC7AE310068C5E4 /* AddNewAgendaView.swift */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +89,7 @@
 		48DB9E232ACFDBDC0038701C /* MyTravelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTravelView.swift; sourceTree = "<group>"; };
 		48DB9E252ACFDE550038701C /* MyTravelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTravelViewModel.swift; sourceTree = "<group>"; };
 		48DB9E272AD06BB10038701C /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		48DB9E292AD130D90038701C /* AddMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemoViewController.swift; sourceTree = "<group>"; };
 		48ED6F662AC7AE310068C5E4 /* AddNewAgendaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAgendaView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48DB9E2D2AD15C990038701C /* Toast in Frameworks */,
 				485990AC2ACBC163006C3D28 /* RealmSwift in Frameworks */,
 				485990AA2ACBC163006C3D28 /* Realm in Frameworks */,
 				4808A4392AC43144005E1190 /* SnapKit in Frameworks */,
@@ -212,6 +216,7 @@
 				4808A43A2AC52D15005E1190 /* AddNewAgendaViewController.swift */,
 				4808A43E2AC52F56005E1190 /* AddNewAgendaViewModel.swift */,
 				48ED6F662AC7AE310068C5E4 /* AddNewAgendaView.swift */,
+				48DB9E292AD130D90038701C /* AddMemoViewController.swift */,
 			);
 			path = AddNewAgenda;
 			sourceTree = "<group>";
@@ -247,6 +252,7 @@
 				4808A4382AC43144005E1190 /* SnapKit */,
 				485990A92ACBC163006C3D28 /* Realm */,
 				485990AB2ACBC163006C3D28 /* RealmSwift */,
+				48DB9E2C2AD15C990038701C /* Toast */,
 			);
 			productName = HelloWorld;
 			productReference = 4808A3F22AC40F84005E1190 /* HelloWorld.app */;
@@ -323,6 +329,7 @@
 			packageReferences = (
 				4808A4312AC4156A005E1190 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				485990A82ACBC0BC006C3D28 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				48DB9E2B2AD15C990038701C /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = 4808A3F32AC40F84005E1190 /* Products */;
 			projectDirPath = "";
@@ -387,6 +394,7 @@
 				48CC051B2ACABD780070D337 /* PhotoCollectionViewCell.swift in Sources */,
 				4808A42E2AC41522005E1190 /* BaseViewController.swift in Sources */,
 				48CC05192ACAB99D0070D337 /* AddNewPhotoViewModel.swift in Sources */,
+				48DB9E2A2AD130D90038701C /* AddMemoViewController.swift in Sources */,
 				48CC05172ACAA7600070D337 /* AddNewPhotoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -752,6 +760,14 @@
 				kind = branch;
 			};
 		};
+		48DB9E2B2AD15C990038701C /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -769,6 +785,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 485990A82ACBC0BC006C3D28 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		48DB9E2C2AD15C990038701C /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48DB9E2B2AD15C990038701C /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
