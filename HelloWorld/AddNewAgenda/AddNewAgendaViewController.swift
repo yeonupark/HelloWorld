@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import RealmSwift
+import Toast
 
 class AddNewAgendaViewController: BaseViewController {
     
@@ -82,7 +83,7 @@ class AddNewAgendaViewController: BaseViewController {
             return
         }
         let endDate = viewModel.dateList.value.last
-        var memo = viewModel.memoText.value
+        let memo = viewModel.memoText.value
         
         newTravelAgendaTable = TravelAgendaTable(title: navigationItem.title ?? "새 여행", startDate: startDate, endDate: endDate!, memo: memo, numberOfImages: viewModel.savedImages.value.count, toDoList: fetchTodoList(), costList: fetchCostList(), linkList: fetchLinkList())
         
@@ -94,8 +95,7 @@ class AddNewAgendaViewController: BaseViewController {
     
     func fetchTodoList() -> List<ToDoObject> {
         let toDoList = viewModel.toDoList.value
-        
-        var objectList: List<ToDoObject> = List<ToDoObject>()
+        let objectList: List<ToDoObject> = List<ToDoObject>()
         
         for todo in toDoList {
             let data = ToDoObject(toDo: todo)
@@ -107,7 +107,7 @@ class AddNewAgendaViewController: BaseViewController {
     
     func fetchCostList() -> List<CostObject> {
         let costList = viewModel.costList.value
-        var objectList: List<CostObject> = List<CostObject>()
+        let objectList: List<CostObject> = List<CostObject>()
         
         for cost in costList {
             let data = CostObject(cost: cost)
@@ -118,7 +118,7 @@ class AddNewAgendaViewController: BaseViewController {
     
     func fetchLinkList() -> List<LinkObject> {
         let linkList = viewModel.linkList.value
-        var objectList: List<LinkObject> = List<LinkObject>()
+        let objectList: List<LinkObject> = List<LinkObject>()
         
         for link in linkList {
             let data = LinkObject(link: link)
@@ -162,7 +162,11 @@ class AddNewAgendaViewController: BaseViewController {
         snapshot.appendSections([.MemoText, .ToDoList, .CostList, .LinkList])
         
         snapshot.appendItems(viewModel.toDoList.value, toSection: .ToDoList)
-        snapshot.appendItems([viewModel.memoText.value], toSection: .MemoText)
+        if viewModel.memoText.value == "" {
+            snapshot.appendItems([], toSection: .MemoText)
+        } else {
+            snapshot.appendItems([viewModel.memoText.value], toSection: .MemoText)
+        }
         snapshot.appendItems(viewModel.costList.value, toSection: .CostList)
         snapshot.appendItems(viewModel.linkList.value, toSection: .LinkList)
         
@@ -179,7 +183,6 @@ class AddNewAgendaViewController: BaseViewController {
 
             content.text = itemIdentifier
             content.textProperties.font = .boldSystemFont(ofSize: 15)
-                
             if indexPath.section == 1 {
                 content.image = UIImage(systemName: "checkmark.square")
                 content.imageProperties.tintColor = UIColor(named: "Orange")
@@ -201,20 +204,29 @@ class AddNewAgendaViewController: BaseViewController {
             
             let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
             
-            if indexPath.section == 0 {
-
-                let textView = UITextView()
-                textView.backgroundColor = .white
-                textView.isEditable = true
-                textView.font = UIFont.systemFont(ofSize: 17)
-                textView.textContainer.maximumNumberOfLines = 0
+            if indexPath.section != 0 {
                 
-                //self.viewModel.memoText.value = textView.text
-                textView.text = self.viewModel.memoText.value
+                let deleteButton = UIButton()
+                deleteButton.setImage(UIImage(systemName: "minus.circle.fill"), for: .normal)
+                deleteButton.tintColor = .red
+                deleteButton.tag = indexPath.row
                 
-                cell.contentView.addSubview(textView)
-                textView.snp.makeConstraints { make in
-                    make.edges.equalToSuperview().inset(8)
+                switch indexPath.section {
+                case 1:
+                    deleteButton.addTarget(self, action: #selector(self.deleteTodoListButtonClicekd(sender: )), for: .touchUpInside)
+                case 2:
+                    deleteButton.addTarget(self, action: #selector(self.deleteCostListButtonClicked(sender: )), for: .touchUpInside)
+                case 3:
+                    deleteButton.addTarget(self, action: #selector(self.deleteLinkListButtonClicked(sender: )), for: .touchUpInside)
+                default:
+                    print(" 셀에서 삭제 버튼 클릭 오류 ")
+                }
+                
+                cell.contentView.addSubview(deleteButton)
+                deleteButton.snp.makeConstraints { make in
+                    make.top.bottom.equalToSuperview()
+                    make.trailing.equalToSuperview().inset(10)
+                    make.size.equalTo(20)
                 }
             }
             
@@ -252,7 +264,7 @@ class AddNewAgendaViewController: BaseViewController {
                     make.size.equalTo(headerView.snp.height)
                 }
                 if indexPath.section == 0 {
-                    addButton.isHidden = true
+                    addButton.setImage(UIImage(systemName: "pencil.circle"), for: .normal)
                 }
                 return headerView
             }
@@ -262,8 +274,34 @@ class AddNewAgendaViewController: BaseViewController {
         
     }
     
+    @objc func deleteTodoListButtonClicekd(sender: UIButton) {
+        print(sender.tag)
+        viewModel.toDoList.value.remove(at: sender.tag)
+    }
+    
+    @objc func deleteCostListButtonClicked(sender: UIButton) {
+        viewModel.costList.value.remove(at: sender.tag)
+    }
+    
+    @objc func deleteLinkListButtonClicked(sender: UIButton) {
+        viewModel.linkList.value.remove(at: sender.tag)
+    }
+    
     @objc func addButtonClicked(sender: UIButton) {
+        
         mainView.endEditing(true)
+        
+        if sender.tag == 0 {
+            let vc = AddMemoViewController()
+            vc.modalPresentationStyle = .overFullScreen
+            vc.memoText = viewModel.memoText.value
+            vc.completionHandler = { text in
+                self.viewModel.memoText.value = text
+            }
+            present(vc, animated: true)
+            return
+        }
+        
         let alert = UIAlertController(title: "새로운 항목을 추가하세요", message: nil, preferredStyle: .alert)
         alert.addTextField { textField in
             textField.placeholder = "새로운 항목 입력"
@@ -272,6 +310,11 @@ class AddNewAgendaViewController: BaseViewController {
         let ok = UIAlertAction(title: "확인", style: .default) { _ in
             if let text = alert.textFields?.first?.text {
                 if text.isEmpty { return }
+                
+                if self.viewModel.toDoList.value.contains(text) || self.viewModel.costList.value.contains(text) || self.viewModel.linkList.value.contains(text) {
+                    self.mainView.makeToast("이미 추가된 항목입니다.")
+                    return
+                }
                 
                 switch sender.tag {
                 case 1 : self.viewModel.toDoList.value.append(text)

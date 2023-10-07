@@ -116,17 +116,24 @@ extension MyTravelViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     @objc func deleteButtonClicked(sender: UIButton) {
-        let agendaTable = viewModel.myTravelAgendas.value[sender.tag]
         
         let fileName = viewModel.myTravelAgendas.value[sender.tag]._id.stringValue
         let numberOfImages = viewModel.myTravelAgendas.value[sender.tag].numberOfImages
+        let agendaTable = self.viewModel.myTravelAgendas.value[sender.tag]
         
-        print(fileName)
-        print(numberOfImages)
-        removeImagesFromDocument(fileName: fileName, numberOfImages: numberOfImages)
+        let alert = UIAlertController(title: "여행 계획 삭제", message: "선택하신 여행 계획을 삭제하시겠습니까?", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        let ok = UIAlertAction(title: "확인", style: .default) { _ in
+            
+            self.removeImagesFromDocument(fileName: fileName, numberOfImages: numberOfImages)
+            self.repository.deleteItem(agendaTable)
+            
+            self.viewModel.myTravelAgendas.value = self.repository.fetch()
+        }
+        alert.addAction(cancel)
+        alert.addAction(ok)
+        present(alert, animated: true)
         
-        repository.deleteItem(agendaTable)
-        viewModel.myTravelAgendas.value = repository.fetch()
     }
     
 }
