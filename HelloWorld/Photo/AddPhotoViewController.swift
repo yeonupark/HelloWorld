@@ -41,6 +41,10 @@ class AddPhotoViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        if !viewModel.isFromAddNewAgendaVC {
+            return
+        }
+        
         let status = PHPhotoLibrary.authorizationStatus()
         
         if status == .authorized {
@@ -69,7 +73,6 @@ class AddPhotoViewController: BaseViewController {
     }
     
     func setNavigationBar() {
-        navigationItem.title = "사진 불러오기"
         let addButton = UIBarButtonItem(image: UIImage(systemName: "camera"), style: .plain, target: self, action: #selector(addButtonClicked))
         
         let editButton = UIBarButtonItem(title: "edit", style: .plain, target: self, action: #selector(editButtonClicked(sender: )))
@@ -89,7 +92,27 @@ class AddPhotoViewController: BaseViewController {
     }
     
     @objc func addButtonClicked() {
-        showImagePicker()
+        //showImagePicker()
+        
+        let status = PHPhotoLibrary.authorizationStatus()
+        
+        if status == .authorized {
+            showImagePicker()
+        } else if status == .denied || status == .restricted {
+            showDeniedAlert()
+        } else {
+            PHPhotoLibrary.requestAuthorization { status in
+                if status == .authorized {
+                    DispatchQueue.main.async {
+                        self.showImagePicker()
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        self.showDeniedAlert()
+                    }
+                }
+            }
+        }
     }
     
     func showDeniedAlert() {

@@ -10,6 +10,7 @@ import UIKit
 
 class AddNewPhotoViewModel {
     
+    var isFromAddNewAgendaVC = false
     var photoList: Observable<[UIImage]> = Observable([])
     var isEditable: Observable<Bool> = Observable(false)
 }
