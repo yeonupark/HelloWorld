@@ -86,7 +86,7 @@ class MyTravelViewController: BaseViewController {
 }
 
 extension MyTravelViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return viewModel.myTravelAgendas.value.count
@@ -113,6 +113,15 @@ extension MyTravelViewController: UICollectionViewDelegate, UICollectionViewData
             cell.deleteButton.addTarget(self, action: #selector(deleteButtonClicked(sender: )), for: .touchUpInside)
         }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let table = viewModel.myTravelAgendas.value[indexPath.item]
+        let vc = ShowAgendaViewController()
+        
+        vc.title = table.title
+        vc.viewModel.travelAgendaTable = table
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func deleteButtonClicked(sender: UIButton) {

@@ -24,7 +24,8 @@ class AddNewAgendaViewModel {
     
     var dateList: Observable<[Date]> = Observable([])
     
-    var savedImages: Observable<[UIImage]> = Observable([])
+    var savedImages = [UIImage]()
+    var newTravelAgendaTable = TravelAgendaTable()
     
     func dateFormat(date: Date) -> String {
         let dateFormatter = DateFormatter()

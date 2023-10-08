@@ -38,6 +38,9 @@
 		48DB9E282AD06BB10038701C /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E272AD06BB10038701C /* FileManager.swift */; };
 		48DB9E2A2AD130D90038701C /* AddMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E292AD130D90038701C /* AddMemoViewController.swift */; };
 		48DB9E2D2AD15C990038701C /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 48DB9E2C2AD15C990038701C /* Toast */; };
+		48DB9E322AD1D2640038701C /* ShowAgendaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E312AD1D2640038701C /* ShowAgendaViewController.swift */; };
+		48DB9E342AD1D26F0038701C /* ShowAgendaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E332AD1D26F0038701C /* ShowAgendaView.swift */; };
+		48DB9E362AD1D27B0038701C /* ShowAgendaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E352AD1D27B0038701C /* ShowAgendaViewModel.swift */; };
 		48ED6F672AC7AE310068C5E4 /* AddNewAgendaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ED6F662AC7AE310068C5E4 /* AddNewAgendaView.swift */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +93,9 @@
 		48DB9E252ACFDE550038701C /* MyTravelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTravelViewModel.swift; sourceTree = "<group>"; };
 		48DB9E272AD06BB10038701C /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		48DB9E292AD130D90038701C /* AddMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemoViewController.swift; sourceTree = "<group>"; };
+		48DB9E312AD1D2640038701C /* ShowAgendaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAgendaViewController.swift; sourceTree = "<group>"; };
+		48DB9E332AD1D26F0038701C /* ShowAgendaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAgendaView.swift; sourceTree = "<group>"; };
+		48DB9E352AD1D27B0038701C /* ShowAgendaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAgendaViewModel.swift; sourceTree = "<group>"; };
 		48ED6F662AC7AE310068C5E4 /* AddNewAgendaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAgendaView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -147,6 +153,7 @@
 			children = (
 				485990A52ACBBF6D006C3D28 /* Realm */,
 				4808A4282AC412CC005E1190 /* MyTravel */,
+				48DB9E302AD1D2420038701C /* ShowAgenda */,
 				48CC051C2ACB23030070D337 /* AddNewAgenda */,
 				48CC051D2ACB23290070D337 /* Photo */,
 				4808A4252AC41153005E1190 /* Base */,
@@ -230,6 +237,16 @@
 				48CC051A2ACABD780070D337 /* PhotoCollectionViewCell.swift */,
 			);
 			path = Photo;
+			sourceTree = "<group>";
+		};
+		48DB9E302AD1D2420038701C /* ShowAgenda */ = {
+			isa = PBXGroup;
+			children = (
+				48DB9E312AD1D2640038701C /* ShowAgendaViewController.swift */,
+				48DB9E332AD1D26F0038701C /* ShowAgendaView.swift */,
+				48DB9E352AD1D27B0038701C /* ShowAgendaViewModel.swift */,
+			);
+			path = ShowAgenda;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -379,6 +396,7 @@
 				48CC05152ACAA7190070D337 /* AddPhotoViewController.swift in Sources */,
 				48DB9E282AD06BB10038701C /* FileManager.swift in Sources */,
 				4808A3FA2AC40F84005E1190 /* ViewController.swift in Sources */,
+				48DB9E362AD1D27B0038701C /* ShowAgendaViewModel.swift in Sources */,
 				4808A4272AC41162005E1190 /* TabBarController.swift in Sources */,
 				4808A3F62AC40F84005E1190 /* AppDelegate.swift in Sources */,
 				4808A43F2AC52F56005E1190 /* AddNewAgendaViewModel.swift in Sources */,
@@ -393,7 +411,9 @@
 				4808A42C2AC413CD005E1190 /* MyTravelViewController.swift in Sources */,
 				48CC051B2ACABD780070D337 /* PhotoCollectionViewCell.swift in Sources */,
 				4808A42E2AC41522005E1190 /* BaseViewController.swift in Sources */,
+				48DB9E342AD1D26F0038701C /* ShowAgendaView.swift in Sources */,
 				48CC05192ACAB99D0070D337 /* AddNewPhotoViewModel.swift in Sources */,
+				48DB9E322AD1D2640038701C /* ShowAgendaViewController.swift in Sources */,
 				48DB9E2A2AD130D90038701C /* AddMemoViewController.swift in Sources */,
 				48CC05172ACAA7600070D337 /* AddNewPhotoView.swift in Sources */,
 			);

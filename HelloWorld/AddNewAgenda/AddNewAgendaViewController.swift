@@ -22,7 +22,6 @@ class AddNewAgendaViewController: BaseViewController {
     var dataSource: UICollectionViewDiffableDataSource<Section, String>!
     
     let repository = TravelAgendaTableRepository()
-    var newTravelAgendaTable = TravelAgendaTable()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,14 +53,11 @@ class AddNewAgendaViewController: BaseViewController {
                 self.mainView.endDateLabel.text = "-    \(result)"
             }
         }
-//        viewModel.savedImages.bind { _ in
-//
-//        }
 
         mainView.collectionView.delegate = self
         mainView.datePickerView.addTarget(self, action: #selector(getDate(sender: )), for: .valueChanged)
         
-        repository.printRealmLocation()
+        //repository.printRealmLocation()
         repository.checkSchemaVersion()
     }
     
@@ -85,10 +81,10 @@ class AddNewAgendaViewController: BaseViewController {
         let endDate = viewModel.dateList.value.last
         let memo = viewModel.memoText.value
         
-        newTravelAgendaTable = TravelAgendaTable(title: navigationItem.title ?? "새 여행", startDate: startDate, endDate: endDate!, memo: memo, numberOfImages: viewModel.savedImages.value.count, toDoList: fetchTodoList(), costList: fetchCostList(), linkList: fetchLinkList())
+        viewModel.newTravelAgendaTable = TravelAgendaTable(title: navigationItem.title ?? "새 여행", startDate: startDate, endDate: endDate!, memo: memo, numberOfImages: viewModel.savedImages.count, toDoList: fetchTodoList(), costList: fetchCostList(), linkList: fetchLinkList())
         
-        repository.addItem(newTravelAgendaTable)
-        saveImagesToDocument(fileName: "\(newTravelAgendaTable._id)", images: viewModel.savedImages.value)
+        repository.addItem(viewModel.newTravelAgendaTable)
+        saveImagesToDocument(fileName: "\(viewModel.newTravelAgendaTable._id)", images: viewModel.savedImages)
         
         navigationController?.popViewController(animated: true)
     }
@@ -130,9 +126,11 @@ class AddNewAgendaViewController: BaseViewController {
     @objc func archiveButtonClicked() {
         let vc = AddPhotoViewController()
         vc.completionHandler = { images in
-            self.viewModel.savedImages.value = images
+            self.viewModel.savedImages = images
         }
-        vc.viewModel.photoList.value = viewModel.savedImages.value
+        vc.title = "사진 불러오기"
+        vc.viewModel.isFromAddNewAgendaVC = true
+        vc.viewModel.photoList.value = viewModel.savedImages
         navigationController?.pushViewController(vc, animated: true)
     }
     
