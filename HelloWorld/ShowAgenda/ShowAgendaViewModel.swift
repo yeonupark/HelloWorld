@@ -10,7 +10,7 @@ import UIKit
 
 class ShowAgendaViewModel {
     
-    var isEditable: Observable<Bool> = Observable(false)
+    //var isEditable: Observable<Bool> = Observable(false)
     var travelAgendaTable = TravelAgendaTable()
     
     var toDoList: Observable<[String]> = Observable([])
@@ -20,6 +20,8 @@ class ShowAgendaViewModel {
     
     var dateList: Observable<[Date]> = Observable([])
     
+    var savedImages: [UIImage] = []
+
     func dateFormat(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy.MM.dd"

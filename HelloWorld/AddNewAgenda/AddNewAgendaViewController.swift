@@ -66,7 +66,12 @@ class AddNewAgendaViewController: BaseViewController {
         
         let saveButton = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(saveButtonClicked))
         
-        navigationItem.setRightBarButtonItems([archiveButton, saveButton], animated: true)
+        if viewModel.isUpdatingView {
+            navigationItem.setRightBarButton(saveButton, animated: true)
+        } else {
+            navigationItem.setRightBarButtonItems([archiveButton, saveButton], animated: true)
+        }
+        
     }
     
     @objc func saveButtonClicked() {
@@ -78,15 +83,28 @@ class AddNewAgendaViewController: BaseViewController {
             present(alert, animated: true)
             return
         }
-        let endDate = viewModel.dateList.value.last
+        guard let endDate = viewModel.dateList.value.last else { return }
         let memo = viewModel.memoText.value
         
-        viewModel.newTravelAgendaTable = TravelAgendaTable(title: navigationItem.title ?? "새 여행", startDate: startDate, endDate: endDate!, memo: memo, numberOfImages: viewModel.savedImages.count, toDoList: fetchTodoList(), costList: fetchCostList(), linkList: fetchLinkList())
-        
-        repository.addItem(viewModel.newTravelAgendaTable)
-        saveImagesToDocument(fileName: "\(viewModel.newTravelAgendaTable._id)", images: viewModel.savedImages)
+        if viewModel.isUpdatingView {
+            updateOriginalTable(startDate: startDate, endDate: endDate, memo: memo)
+        } else {
+            addNewTable(startDate: startDate, endDate: endDate, memo: memo)
+        }
         
         navigationController?.popViewController(animated: true)
+    }
+    
+    func updateOriginalTable(startDate: Date, endDate: Date, memo: String) {
+        repository.updateItem(id: viewModel.originalAgendaTable._id, title: viewModel.originalAgendaTable.title, startDate: startDate, endDate: endDate, memo: memo, numberOfImages: viewModel.originalAgendaTable.numberOfImages, toDoList: fetchTodoList(), costList: fetchCostList(), linkList: fetchLinkList())
+    }
+    
+    func addNewTable(startDate: Date, endDate: Date, memo: String) {
+        viewModel.newTravelAgendaTable = TravelAgendaTable(title: navigationItem.title ?? "새 여행", startDate: startDate, endDate: endDate, memo: memo, numberOfImages: viewModel.savedImages.count, toDoList: fetchTodoList(), costList: fetchCostList(), linkList: fetchLinkList())
+        
+        repository.addItem(viewModel.newTravelAgendaTable)
+        
+        saveImagesToDocument(fileName: "\(viewModel.newTravelAgendaTable._id)", images: viewModel.savedImages)
     }
     
     func fetchTodoList() -> List<ToDoObject> {
@@ -336,7 +354,7 @@ extension AddNewAgendaViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         mainView.endEditing(true)
-        
+        print(viewModel.dateList.value)
     }
     
 }
