@@ -17,15 +17,24 @@ class ShowAgendaViewController: BaseViewController {
     var dataSource: UICollectionViewDiffableDataSource<Section, String>!
     
     let viewModel = ShowAgendaViewModel()
+    let repository = TravelAgendaTableRepository()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setNavigationBar()
-        showDate()
-        fetchAllData()
         
         configureDataSource()
+        
+        mainView.collectionView.delegate = self
+        mainView.startDatetextField.isEnabled = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        showDate()
+        fetchAllData()
         
         viewModel.toDoList.bind { _ in
             self.updateSnapshot()
@@ -39,19 +48,16 @@ class ShowAgendaViewController: BaseViewController {
         viewModel.linkList.bind { _ in
             self.updateSnapshot()
         }
-        
-        mainView.collectionView.delegate = self
-        
     }
     
     func showDate() {
         
-        let startDate = viewModel.travelAgendaTable.startDate
+        guard let startDate = viewModel.dateList.value.first else { return }
         mainView.startDatetextField.text = viewModel.dateFormat(date: startDate)
+        guard let endDate = viewModel.dateList.value.last else { return }
         
-        if viewModel.travelAgendaTable.endDate != viewModel.travelAgendaTable.startDate {
-            let endDate = viewModel.dateFormat(date: viewModel.travelAgendaTable.endDate)
-            mainView.endDateLabel.text = "-    \(endDate)"
+        if endDate != startDate {
+            mainView.endDateLabel.text = "-    \(viewModel.dateFormat(date: endDate))"
         }
     }
     
@@ -63,6 +69,8 @@ class ShowAgendaViewController: BaseViewController {
         viewModel.toDoList.value = fetchTodoList()
         viewModel.costList.value = fetchCostList()
         viewModel.linkList.value = fetchLinkList()
+        viewModel.dateList.value.append(viewModel.travelAgendaTable.startDate)
+        viewModel.dateList.value.append(viewModel.travelAgendaTable.endDate)
     }
     
     func fetchTodoList() -> [String] {
@@ -101,20 +109,40 @@ class ShowAgendaViewController: BaseViewController {
     func setNavigationBar() {
         let archiveButton = UIBarButtonItem(image: UIImage(systemName: "archivebox"), style: .plain, target: self, action: #selector(archiveButtonClicked))
         
-        let editButton = UIBarButtonItem(title: "편집", style: .plain, target: self, action: #selector(editButtonClicked))
+        let editButton = UIBarButtonItem(title: "edit", style: .plain, target: self, action: #selector(editButtonClicked(sender: )))
         
         navigationItem.setRightBarButtonItems([archiveButton, editButton], animated: true)
     }
     
-    @objc func editButtonClicked() {
+    @objc func editButtonClicked(sender: UIBarButtonItem) {
+
+        navigationItem.backButtonTitle = "취소"
         
+        let vc = AddNewAgendaViewController()
+        vc.title = "수정하기"
+        vc.viewModel.isUpdatingView = true
+        
+        vc.viewModel.dateList = viewModel.dateList
+        vc.viewModel.memoText = viewModel.memoText
+        vc.viewModel.toDoList = viewModel.toDoList
+        vc.viewModel.costList = viewModel.costList
+        vc.viewModel.linkList = viewModel.linkList
+        
+        vc.viewModel.originalAgendaTable = viewModel.travelAgendaTable
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
+    
     
     @objc func archiveButtonClicked() {
         let vc = AddPhotoViewController()
         vc.title = "저장된 사진"
         
-        vc.viewModel.photoList.value = loadImageFromDocument(fileName: viewModel.travelAgendaTable._id.stringValue, numberOfImages: viewModel.travelAgendaTable.numberOfImages)
+        vc.completionHandler = { images in
+            self.viewModel.savedImages = images
+        }
+        
+        vc.viewModel.photoList.value = viewModel.savedImages
         vc.viewModel.isFromAddNewAgendaVC = false
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -167,32 +195,6 @@ class ShowAgendaViewController: BaseViewController {
             
             let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
             
-//            if indexPath.section != 0 {
-//                
-//                let deleteButton = UIButton()
-//                deleteButton.setImage(UIImage(systemName: "minus.circle.fill"), for: .normal)
-//                deleteButton.tintColor = .red
-//                deleteButton.tag = indexPath.row
-//                
-//                switch indexPath.section {
-//                case 1:
-//                    deleteButton.addTarget(self, action: #selector(self.deleteTodoListButtonClicekd(sender: )), for: .touchUpInside)
-//                case 2:
-//                    deleteButton.addTarget(self, action: #selector(self.deleteCostListButtonClicked(sender: )), for: .touchUpInside)
-//                case 3:
-//                    deleteButton.addTarget(self, action: #selector(self.deleteLinkListButtonClicked(sender: )), for: .touchUpInside)
-//                default:
-//                    print(" 셀에서 삭제 버튼 클릭 오류 ")
-//                }
-//                
-//                cell.contentView.addSubview(deleteButton)
-//                deleteButton.snp.makeConstraints { make in
-//                    make.top.bottom.equalToSuperview()
-//                    make.trailing.equalToSuperview().inset(10)
-//                    make.size.equalTo(20)
-//                }
-//            }
-            
             return cell
         })
         
@@ -204,7 +206,6 @@ class ShowAgendaViewController: BaseViewController {
                 
                 let section = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
                 let label = UILabel()
-                print("오예",section.rawValue)
                 label.text = "\(section.rawValue)"
                 label.font = UIFont.boldSystemFont(ofSize: 17)
                 label.textColor = UIColor.white
@@ -215,34 +216,25 @@ class ShowAgendaViewController: BaseViewController {
                     make.edges.equalToSuperview().inset(10)
                 }
                 
-                /*
-                let addButton = UIButton()
-                addButton.setImage(UIImage(systemName: "plus"), for: .normal)
-                addButton.tag = indexPath.section
-                addButton.tintColor = .white
-                addButton.addTarget(self, action: #selector(self.addButtonClicked(sender: )), for: .touchUpInside)
-                
-                headerView.addSubview(label)
-                headerView.addSubview(addButton)
-                
-                label.snp.makeConstraints { make in
-                    make.edges.equalToSuperview().inset(10)
-                }
-                addButton.snp.makeConstraints { make in
-                    make.top.bottom.equalToSuperview()
-                    make.trailing.equalToSuperview()
-                    make.size.equalTo(headerView.snp.height)
-                }
-                if indexPath.section == 0 {
-                    addButton.setImage(UIImage(systemName: "pencil.circle"), for: .normal)
-                }
-                 */
                 return headerView
             }
             
             return UICollectionReusableView()
         }
         
+    }
+    
+    @objc func deleteTodoListButtonClicekd(sender: UIButton) {
+        print(sender.tag)
+        viewModel.toDoList.value.remove(at: sender.tag)
+    }
+    
+    @objc func deleteCostListButtonClicked(sender: UIButton) {
+        viewModel.costList.value.remove(at: sender.tag)
+    }
+    
+    @objc func deleteLinkListButtonClicked(sender: UIButton) {
+        viewModel.linkList.value.remove(at: sender.tag)
     }
     
 }

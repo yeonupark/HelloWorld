@@ -81,6 +81,7 @@ class MyTravelViewController: BaseViewController {
     func addNewAgenda(agendaTitle: String) {
         let vc = AddNewAgendaViewController()
         vc.title = agendaTitle
+        vc.viewModel.isUpdatingView = false
         navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -121,6 +122,8 @@ extension MyTravelViewController: UICollectionViewDelegate, UICollectionViewData
         
         vc.title = table.title
         vc.viewModel.travelAgendaTable = table
+        vc.viewModel.savedImages = loadImageFromDocument(fileName: table._id.stringValue, numberOfImages: table.numberOfImages)
+        
         navigationController?.pushViewController(vc, animated: true)
     }
     

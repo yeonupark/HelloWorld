@@ -59,4 +59,16 @@ class TravelAgendaTableRepository: TravelAgendaTableRepositoryType {
         }
     }
     
+    func updateItem(id: RealmSwift.ObjectId, title: String, startDate: Date, endDate: Date, memo: String, numberOfImages: Int, toDoList: List<ToDoObject>, costList: List<CostObject>, linkList: List<LinkObject>) {
+        
+        do {
+            try realm.write {
+                realm.create(TravelAgendaTable.self, value: ["_id" : id, "title": title, "startDate": startDate, "endDate": endDate, "memo": memo, "numberOfImages": numberOfImages, "toDoList": toDoList, "costList": costList, "linkList": linkList], update: .modified)
+            }
+        }
+        catch {
+            print(error)
+        }
+    }
+    
 }

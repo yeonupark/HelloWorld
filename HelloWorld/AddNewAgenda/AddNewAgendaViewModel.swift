@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 
 enum Section: String, CaseIterable {
     case MemoText = "메모"
@@ -16,6 +17,12 @@ enum Section: String, CaseIterable {
 }
 
 class AddNewAgendaViewModel {
+    
+    var isUpdatingView = false
+    var originalAgendaTable = TravelAgendaTable()
+//    var existedID: ObjectId = ObjectId()
+//    var numberOfImages: Int = 0
+//    var title: String = ""
     
     var toDoList: Observable<[String]> = Observable([])
     var costList: Observable<[String]> = Observable([])
