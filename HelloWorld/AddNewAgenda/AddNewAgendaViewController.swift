@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import RealmSwift
 import Toast
+import MapKit
 
 class AddNewAgendaViewController: BaseViewController {
     
@@ -53,12 +54,55 @@ class AddNewAgendaViewController: BaseViewController {
                 self.mainView.endDateLabel.text = "-    \(result)"
             }
         }
+        
+        if viewModel.isUpdatingView {
+            viewModel.placeName = viewModel.originalAgendaTable.placeName
+            viewModel.latitude = viewModel.originalAgendaTable.latitude
+            viewModel.longitude = viewModel.originalAgendaTable.longitude
+            setMap()
+        }
 
         mainView.collectionView.delegate = self
         mainView.datePickerView.addTarget(self, action: #selector(getDate(sender: )), for: .valueChanged)
-        
+        mainView.mapClickButton.addTarget(self, action: #selector(mapButtonClicked), for: .touchUpInside)
         //repository.printRealmLocation()
         repository.checkSchemaVersion()
+    }
+    
+    func setMap() {
+        guard let name = viewModel.placeName else { return }
+        guard let lat = viewModel.latitude else { return }
+        guard let lon = viewModel.longitude else { return }
+        
+        let center = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+        let region = MKCoordinateRegion(center: center, latitudinalMeters: 1000, longitudinalMeters: 1000)
+        mainView.mapView.setRegion(region, animated: true)
+        
+        let annotation = MKPointAnnotation()
+        annotation.title = name
+        annotation.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+        mainView.mapView.addAnnotation(annotation)
+    }
+    
+    @objc func mapButtonClicked() {
+        let vc = MapViewController()
+        vc.completionHandler = { name, lat, lon in
+            self.viewModel.placeName = name
+            self.viewModel.latitude = lat
+            self.viewModel.longitude = lon
+            
+            self.setMap()
+        }
+        if let lat = viewModel.latitude {
+            vc.viewModel.latitude.value = lat
+        }
+        if let lon = viewModel.longitude {
+            vc.viewModel.longitude.value = lon
+        }
+        if let placeName = viewModel.placeName {
+            vc.viewModel.placeName.value = placeName
+        }
+        present(vc, animated: true)
     }
     
     func setNavigationBar() {
@@ -96,11 +140,16 @@ class AddNewAgendaViewController: BaseViewController {
     }
     
     func updateOriginalTable(startDate: Date, endDate: Date, memo: String) {
-        repository.updateItem(id: viewModel.originalAgendaTable._id, title: viewModel.originalAgendaTable.title, startDate: startDate, endDate: endDate, memo: memo, numberOfImages: viewModel.originalAgendaTable.numberOfImages, toDoList: fetchTodoList(), costList: fetchCostList(), linkList: fetchLinkList())
+        
+        guard let name = viewModel.placeName else { return }
+        guard let lat = viewModel.latitude else { return }
+        guard let lon = viewModel.longitude else { return }
+        
+        repository.updateItem(id: viewModel.originalAgendaTable._id, title: viewModel.originalAgendaTable.title, startDate: startDate, endDate: endDate, memo: memo, numberOfImages: viewModel.originalAgendaTable.numberOfImages, toDoList: fetchTodoList(), costList: fetchCostList(), linkList: fetchLinkList(), placeName: name, latitude: lat, longitude: lon)
     }
     
     func addNewTable(startDate: Date, endDate: Date, memo: String) {
-        viewModel.newTravelAgendaTable = TravelAgendaTable(title: navigationItem.title ?? "새 여행", startDate: startDate, endDate: endDate, memo: memo, numberOfImages: viewModel.savedImages.count, toDoList: fetchTodoList(), costList: fetchCostList(), linkList: fetchLinkList())
+        viewModel.newTravelAgendaTable = TravelAgendaTable(title: navigationItem.title ?? "새 여행", startDate: startDate, endDate: endDate, memo: memo, numberOfImages: viewModel.savedImages.count, toDoList: fetchTodoList(), costList: fetchCostList(), linkList: fetchLinkList(), placeName: viewModel.placeName, latitude: viewModel.latitude, longitude: viewModel.longitude)
         
         repository.addItem(viewModel.newTravelAgendaTable)
         

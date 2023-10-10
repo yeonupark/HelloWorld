@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let config = Realm.Configuration(schemaVersion: 7) { migration, oldSchemaVersion in
+        let config = Realm.Configuration(schemaVersion: 8) { migration, oldSchemaVersion in
             
             if oldSchemaVersion < 1 { }
             
@@ -30,6 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if oldSchemaVersion < 6 { } // endDate: Date? -> endDate: Date
             
             if oldSchemaVersion < 7 { } // numberOfImages 추가
+            
+            if oldSchemaVersion < 8 { } // placeName, latitude, longitude 추가
                 
         }
         

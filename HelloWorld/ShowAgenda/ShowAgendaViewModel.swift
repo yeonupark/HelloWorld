@@ -10,7 +10,6 @@ import UIKit
 
 class ShowAgendaViewModel {
     
-    //var isEditable: Observable<Bool> = Observable(false)
     var travelAgendaTable = TravelAgendaTable()
     
     var toDoList: Observable<[String]> = Observable([])

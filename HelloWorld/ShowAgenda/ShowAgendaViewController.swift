@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapKit
 
 class ShowAgendaViewController: BaseViewController {
     
@@ -33,8 +34,9 @@ class ShowAgendaViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        showDate()
         fetchAllData()
+        showDate()
+        setMap()
         
         viewModel.toDoList.bind { _ in
             self.updateSnapshot()
@@ -48,6 +50,21 @@ class ShowAgendaViewController: BaseViewController {
         viewModel.linkList.bind { _ in
             self.updateSnapshot()
         }
+    }
+    
+    func setMap() {
+        guard let name = viewModel.travelAgendaTable.placeName else { return }
+        guard let lat = viewModel.travelAgendaTable.latitude else { return }
+        guard let lon = viewModel.travelAgendaTable.longitude else { return }
+        
+        let center = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+        let region = MKCoordinateRegion(center: center, latitudinalMeters: 1000, longitudinalMeters: 1000)
+        mainView.mapView.setRegion(region, animated: true)
+        
+        let annotation = MKPointAnnotation()
+        annotation.title = name
+        annotation.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+        mainView.mapView.addAnnotation(annotation)
     }
     
     func showDate() {
@@ -133,11 +150,10 @@ class ShowAgendaViewController: BaseViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    
     @objc func archiveButtonClicked() {
         let vc = AddPhotoViewController()
         vc.title = "저장된 사진"
-        
+        navigationItem.backButtonTitle = "저장"
         vc.completionHandler = { images in
             self.viewModel.savedImages = images
         }

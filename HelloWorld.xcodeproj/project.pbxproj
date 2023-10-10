@@ -41,6 +41,9 @@
 		48DB9E322AD1D2640038701C /* ShowAgendaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E312AD1D2640038701C /* ShowAgendaViewController.swift */; };
 		48DB9E342AD1D26F0038701C /* ShowAgendaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E332AD1D26F0038701C /* ShowAgendaView.swift */; };
 		48DB9E362AD1D27B0038701C /* ShowAgendaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E352AD1D27B0038701C /* ShowAgendaViewModel.swift */; };
+		48DB9E392AD4DAB90038701C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E382AD4DAB90038701C /* MapViewController.swift */; };
+		48DB9E3B2AD518580038701C /* MyMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E3A2AD518570038701C /* MyMapView.swift */; };
+		48DB9E3F2AD542E80038701C /* MyMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E3E2AD542E80038701C /* MyMapViewModel.swift */; };
 		48ED6F672AC7AE310068C5E4 /* AddNewAgendaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ED6F662AC7AE310068C5E4 /* AddNewAgendaView.swift */; };
 /* End PBXBuildFile section */
 
@@ -96,6 +99,9 @@
 		48DB9E312AD1D2640038701C /* ShowAgendaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAgendaViewController.swift; sourceTree = "<group>"; };
 		48DB9E332AD1D26F0038701C /* ShowAgendaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAgendaView.swift; sourceTree = "<group>"; };
 		48DB9E352AD1D27B0038701C /* ShowAgendaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAgendaViewModel.swift; sourceTree = "<group>"; };
+		48DB9E382AD4DAB90038701C /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		48DB9E3A2AD518570038701C /* MyMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMapView.swift; sourceTree = "<group>"; };
+		48DB9E3E2AD542E80038701C /* MyMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMapViewModel.swift; sourceTree = "<group>"; };
 		48ED6F662AC7AE310068C5E4 /* AddNewAgendaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAgendaView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -151,6 +157,7 @@
 		4808A3F42AC40F84005E1190 /* HelloWorld */ = {
 			isa = PBXGroup;
 			children = (
+				48DB9E372AD4DA6B0038701C /* Map */,
 				485990A52ACBBF6D006C3D28 /* Realm */,
 				4808A4282AC412CC005E1190 /* MyTravel */,
 				48DB9E302AD1D2420038701C /* ShowAgenda */,
@@ -247,6 +254,16 @@
 				48DB9E352AD1D27B0038701C /* ShowAgendaViewModel.swift */,
 			);
 			path = ShowAgenda;
+			sourceTree = "<group>";
+		};
+		48DB9E372AD4DA6B0038701C /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				48DB9E382AD4DAB90038701C /* MapViewController.swift */,
+				48DB9E3A2AD518570038701C /* MyMapView.swift */,
+				48DB9E3E2AD542E80038701C /* MyMapViewModel.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -398,6 +415,7 @@
 				4808A3FA2AC40F84005E1190 /* ViewController.swift in Sources */,
 				48DB9E362AD1D27B0038701C /* ShowAgendaViewModel.swift in Sources */,
 				4808A4272AC41162005E1190 /* TabBarController.swift in Sources */,
+				48DB9E3B2AD518580038701C /* MyMapView.swift in Sources */,
 				4808A3F62AC40F84005E1190 /* AppDelegate.swift in Sources */,
 				4808A43F2AC52F56005E1190 /* AddNewAgendaViewModel.swift in Sources */,
 				4808A3F82AC40F84005E1190 /* SceneDelegate.swift in Sources */,
@@ -410,10 +428,12 @@
 				48DB9E262ACFDE550038701C /* MyTravelViewModel.swift in Sources */,
 				4808A42C2AC413CD005E1190 /* MyTravelViewController.swift in Sources */,
 				48CC051B2ACABD780070D337 /* PhotoCollectionViewCell.swift in Sources */,
+				48DB9E392AD4DAB90038701C /* MapViewController.swift in Sources */,
 				4808A42E2AC41522005E1190 /* BaseViewController.swift in Sources */,
 				48DB9E342AD1D26F0038701C /* ShowAgendaView.swift in Sources */,
 				48CC05192ACAB99D0070D337 /* AddNewPhotoViewModel.swift in Sources */,
 				48DB9E322AD1D2640038701C /* ShowAgendaViewController.swift in Sources */,
+				48DB9E3F2AD542E80038701C /* MyMapViewModel.swift in Sources */,
 				48DB9E2A2AD130D90038701C /* AddMemoViewController.swift in Sources */,
 				48CC05172ACAA7600070D337 /* AddNewPhotoView.swift in Sources */,
 			);

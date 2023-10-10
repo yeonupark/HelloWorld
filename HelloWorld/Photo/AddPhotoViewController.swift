@@ -183,5 +183,9 @@ extension AddPhotoViewController: UICollectionViewDelegate, UICollectionViewData
     @objc func deleteButtonClicked(sender: UIButton) {
         let index = sender.tag
         viewModel.photoList.value.remove(at: index)
+        
+        if !viewModel.isFromAddNewAgendaVC {
+            
+        }
     }
 }
