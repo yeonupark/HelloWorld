@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import RealmSwift
+import MapKit
 
 enum Section: String, CaseIterable {
     case MemoText = "메모"
@@ -20,9 +21,6 @@ class AddNewAgendaViewModel {
     
     var isUpdatingView = false
     var originalAgendaTable = TravelAgendaTable()
-//    var existedID: ObjectId = ObjectId()
-//    var numberOfImages: Int = 0
-//    var title: String = ""
     
     var toDoList: Observable<[String]> = Observable([])
     var costList: Observable<[String]> = Observable([])
@@ -33,6 +31,10 @@ class AddNewAgendaViewModel {
     
     var savedImages = [UIImage]()
     var newTravelAgendaTable = TravelAgendaTable()
+    
+    var placeName: String? = nil
+    var latitude: CLLocationDegrees? = nil
+    var longitude: CLLocationDegrees? = nil
     
     func dateFormat(date: Date) -> String {
         let dateFormatter = DateFormatter()

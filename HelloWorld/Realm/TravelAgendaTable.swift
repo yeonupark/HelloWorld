@@ -6,7 +6,8 @@
 //
 
 import RealmSwift
-import UIKit
+//import UIKit
+import MapKit
 
 class TravelAgendaTable: Object {
     
@@ -21,7 +22,11 @@ class TravelAgendaTable: Object {
     @Persisted var costList : List<CostObject> = List<CostObject>()
     @Persisted var linkList : List<LinkObject> = List<LinkObject>()
     
-    convenience init(title: String, startDate: Date, endDate: Date, memo: String? = nil, numberOfImages: Int, toDoList: List<ToDoObject>, costList: List<CostObject>, linkList: List<LinkObject>) {
+    @Persisted var placeName: String?
+    @Persisted var latitude: CLLocationDegrees?
+    @Persisted var longitude: CLLocationDegrees?
+    
+    convenience init(title: String, startDate: Date, endDate: Date, memo: String? = nil, numberOfImages: Int, toDoList: List<ToDoObject>, costList: List<CostObject>, linkList: List<LinkObject>, placeName: String?, latitude: CLLocationDegrees?, longitude: CLLocationDegrees?) {
         
         self.init()
         
@@ -34,6 +39,10 @@ class TravelAgendaTable: Object {
         self.toDoList = toDoList
         self.costList = costList
         self.linkList = linkList
+        
+        self.placeName = placeName
+        self.latitude = latitude
+        self.longitude = longitude
     }
 }
 

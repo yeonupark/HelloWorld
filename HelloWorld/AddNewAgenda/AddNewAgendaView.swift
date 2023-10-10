@@ -39,6 +39,16 @@ class AddNewAgendaView: BaseView {
         return view
     }()
     
+    let mapClickButton = {
+        let view = UIButton()
+        view.setImage(UIImage(systemName: "hand.tap.fill"), for: .normal)
+        view.tintColor = .black
+        view.layer.cornerRadius = 20
+        view.backgroundColor = .white
+        
+        return view
+    }()
+    
     var collectionView = UICollectionView(frame: CGRect(), collectionViewLayout: createLayout())
     
     static private func createLayout() -> UICollectionViewLayout {
@@ -71,6 +81,7 @@ class AddNewAgendaView: BaseView {
         addSubview(endDateLabel)
         addSubview(mapView)
         addSubview(collectionView)
+        mapView.addSubview(mapClickButton)
     }
     
     override func setConstraints() {
@@ -94,6 +105,10 @@ class AddNewAgendaView: BaseView {
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(mapView.snp.bottom)
             make.horizontalEdges.bottom.equalToSuperview()
+        }
+        mapClickButton.snp.makeConstraints { make in
+            make.top.trailing.equalToSuperview().inset(20)
+            make.size.equalTo(40)
         }
     }
 }

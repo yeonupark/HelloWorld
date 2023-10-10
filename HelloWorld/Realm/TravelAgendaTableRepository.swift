@@ -7,6 +7,7 @@
 
 import Foundation
 import RealmSwift
+import MapKit
 
 protocol TravelAgendaTableRepositoryType: AnyObject {
     func checkSchemaVersion()
@@ -59,11 +60,11 @@ class TravelAgendaTableRepository: TravelAgendaTableRepositoryType {
         }
     }
     
-    func updateItem(id: RealmSwift.ObjectId, title: String, startDate: Date, endDate: Date, memo: String, numberOfImages: Int, toDoList: List<ToDoObject>, costList: List<CostObject>, linkList: List<LinkObject>) {
+    func updateItem(id: RealmSwift.ObjectId, title: String, startDate: Date, endDate: Date, memo: String, numberOfImages: Int, toDoList: List<ToDoObject>, costList: List<CostObject>, linkList: List<LinkObject>, placeName: String, latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
         
         do {
             try realm.write {
-                realm.create(TravelAgendaTable.self, value: ["_id" : id, "title": title, "startDate": startDate, "endDate": endDate, "memo": memo, "numberOfImages": numberOfImages, "toDoList": toDoList, "costList": costList, "linkList": linkList], update: .modified)
+                realm.create(TravelAgendaTable.self, value: ["_id" : id, "title": title, "startDate": startDate, "endDate": endDate, "memo": memo, "numberOfImages": numberOfImages, "toDoList": toDoList, "costList": costList, "linkList": linkList, "placeName": placeName, "latitude": latitude, "longitude": longitude], update: .modified)
             }
         }
         catch {
