@@ -44,6 +44,11 @@
 		48DB9E392AD4DAB90038701C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E382AD4DAB90038701C /* MapViewController.swift */; };
 		48DB9E3B2AD518580038701C /* MyMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E3A2AD518570038701C /* MyMapView.swift */; };
 		48DB9E3F2AD542E80038701C /* MyMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E3E2AD542E80038701C /* MyMapViewModel.swift */; };
+		48DB9E412AD68A970038701C /* LocationTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E402AD68A970038701C /* LocationTable.swift */; };
+		48DB9E432AD68C370038701C /* LocationTableRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E422AD68C370038701C /* LocationTableRepository.swift */; };
+		48DB9E462AD69E990038701C /* WorldMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E452AD69E990038701C /* WorldMapViewController.swift */; };
+		48DB9E482AD69EFC0038701C /* WorldMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E472AD69EFC0038701C /* WorldMapView.swift */; };
+		48DB9E4A2AD6A08D0038701C /* WorldMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E492AD6A08D0038701C /* WorldMapViewModel.swift */; };
 		48ED6F672AC7AE310068C5E4 /* AddNewAgendaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ED6F662AC7AE310068C5E4 /* AddNewAgendaView.swift */; };
 /* End PBXBuildFile section */
 
@@ -102,6 +107,11 @@
 		48DB9E382AD4DAB90038701C /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		48DB9E3A2AD518570038701C /* MyMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMapView.swift; sourceTree = "<group>"; };
 		48DB9E3E2AD542E80038701C /* MyMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMapViewModel.swift; sourceTree = "<group>"; };
+		48DB9E402AD68A970038701C /* LocationTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTable.swift; sourceTree = "<group>"; };
+		48DB9E422AD68C370038701C /* LocationTableRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableRepository.swift; sourceTree = "<group>"; };
+		48DB9E452AD69E990038701C /* WorldMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldMapViewController.swift; sourceTree = "<group>"; };
+		48DB9E472AD69EFC0038701C /* WorldMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldMapView.swift; sourceTree = "<group>"; };
+		48DB9E492AD6A08D0038701C /* WorldMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldMapViewModel.swift; sourceTree = "<group>"; };
 		48ED6F662AC7AE310068C5E4 /* AddNewAgendaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAgendaView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,6 +167,7 @@
 		4808A3F42AC40F84005E1190 /* HelloWorld */ = {
 			isa = PBXGroup;
 			children = (
+				48DB9E442AD69E850038701C /* WorldMap */,
 				48DB9E372AD4DA6B0038701C /* Map */,
 				485990A52ACBBF6D006C3D28 /* Realm */,
 				4808A4282AC412CC005E1190 /* MyTravel */,
@@ -220,6 +231,8 @@
 			children = (
 				485990A62ACBBFE9006C3D28 /* TravelAgendaTable.swift */,
 				485990F12ACDBC52006C3D28 /* TravelAgendaTableRepository.swift */,
+				48DB9E402AD68A970038701C /* LocationTable.swift */,
+				48DB9E422AD68C370038701C /* LocationTableRepository.swift */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -264,6 +277,16 @@
 				48DB9E3E2AD542E80038701C /* MyMapViewModel.swift */,
 			);
 			path = Map;
+			sourceTree = "<group>";
+		};
+		48DB9E442AD69E850038701C /* WorldMap */ = {
+			isa = PBXGroup;
+			children = (
+				48DB9E452AD69E990038701C /* WorldMapViewController.swift */,
+				48DB9E472AD69EFC0038701C /* WorldMapView.swift */,
+				48DB9E492AD6A08D0038701C /* WorldMapViewModel.swift */,
+			);
+			path = WorldMap;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -409,16 +432,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				485990F22ACDBC52006C3D28 /* TravelAgendaTableRepository.swift in Sources */,
+				48DB9E432AD68C370038701C /* LocationTableRepository.swift in Sources */,
+				48DB9E4A2AD6A08D0038701C /* WorldMapViewModel.swift in Sources */,
 				48ED6F672AC7AE310068C5E4 /* AddNewAgendaView.swift in Sources */,
 				48CC05152ACAA7190070D337 /* AddPhotoViewController.swift in Sources */,
 				48DB9E282AD06BB10038701C /* FileManager.swift in Sources */,
 				4808A3FA2AC40F84005E1190 /* ViewController.swift in Sources */,
 				48DB9E362AD1D27B0038701C /* ShowAgendaViewModel.swift in Sources */,
+				48DB9E462AD69E990038701C /* WorldMapViewController.swift in Sources */,
 				4808A4272AC41162005E1190 /* TabBarController.swift in Sources */,
 				48DB9E3B2AD518580038701C /* MyMapView.swift in Sources */,
+				48DB9E412AD68A970038701C /* LocationTable.swift in Sources */,
 				4808A3F62AC40F84005E1190 /* AppDelegate.swift in Sources */,
 				4808A43F2AC52F56005E1190 /* AddNewAgendaViewModel.swift in Sources */,
 				4808A3F82AC40F84005E1190 /* SceneDelegate.swift in Sources */,
+				48DB9E482AD69EFC0038701C /* WorldMapView.swift in Sources */,
 				4808A4302AC4152C005E1190 /* BaseView.swift in Sources */,
 				48DB9E242ACFDBDC0038701C /* MyTravelView.swift in Sources */,
 				485990A72ACBBFE9006C3D28 /* TravelAgendaTable.swift in Sources */,

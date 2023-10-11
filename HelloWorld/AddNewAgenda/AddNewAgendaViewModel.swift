@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 import RealmSwift
-import MapKit
 
 enum Section: String, CaseIterable {
     case MemoText = "메모"
@@ -33,8 +32,8 @@ class AddNewAgendaViewModel {
     var newTravelAgendaTable = TravelAgendaTable()
     
     var placeName: String? = nil
-    var latitude: CLLocationDegrees? = nil
-    var longitude: CLLocationDegrees? = nil
+    var latitude: Double? = nil
+    var longitude: Double? = nil
     
     func dateFormat(date: Date) -> String {
         let dateFormatter = DateFormatter()

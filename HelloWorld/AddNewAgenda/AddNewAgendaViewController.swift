@@ -23,6 +23,7 @@ class AddNewAgendaViewController: BaseViewController {
     var dataSource: UICollectionViewDiffableDataSource<Section, String>!
     
     let repository = TravelAgendaTableRepository()
+    let locationRepository = LocationTableRepository()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -146,14 +147,22 @@ class AddNewAgendaViewController: BaseViewController {
         guard let lon = viewModel.longitude else { return }
         
         repository.updateItem(id: viewModel.originalAgendaTable._id, title: viewModel.originalAgendaTable.title, startDate: startDate, endDate: endDate, memo: memo, numberOfImages: viewModel.originalAgendaTable.numberOfImages, toDoList: fetchTodoList(), costList: fetchCostList(), linkList: fetchLinkList(), placeName: name, latitude: lat, longitude: lon)
+        
+        locationRepository.updateItem(id: viewModel.originalAgendaTable._id.stringValue, placeName: name, latitude: lat, longitude: lon)
     }
     
     func addNewTable(startDate: Date, endDate: Date, memo: String) {
         viewModel.newTravelAgendaTable = TravelAgendaTable(title: navigationItem.title ?? "새 여행", startDate: startDate, endDate: endDate, memo: memo, numberOfImages: viewModel.savedImages.count, toDoList: fetchTodoList(), costList: fetchCostList(), linkList: fetchLinkList(), placeName: viewModel.placeName, latitude: viewModel.latitude, longitude: viewModel.longitude)
         
         repository.addItem(viewModel.newTravelAgendaTable)
-        
         saveImagesToDocument(fileName: "\(viewModel.newTravelAgendaTable._id)", images: viewModel.savedImages)
+        
+        guard let lat = viewModel.latitude else { return }
+        guard let lon = viewModel.longitude else { return }
+        
+        let item = LocationTable(id: viewModel.newTravelAgendaTable._id.stringValue, placeName: viewModel.placeName ?? "", latitude: lat, longitude: lon)
+        locationRepository.addItem(item)
+        
     }
     
     func fetchTodoList() -> List<ToDoObject> {
