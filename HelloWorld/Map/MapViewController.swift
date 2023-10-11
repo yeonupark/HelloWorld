@@ -90,6 +90,7 @@ extension MapViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.isHidden = true
+        mainView.endEditing(true)
         
         let location = viewModel.searchedResults.value[indexPath.row]
         geocoder.geocodeAddressString(location) { placemarks, error in
@@ -104,7 +105,6 @@ extension MapViewController: UITableViewDelegate, UITableViewDataSource {
             self.viewModel.longitude.value = lon
             self.viewModel.placeName.value = name
             
-            //self.addToMap(name: name, lat: lat, lon: lon)
         }
     }
     

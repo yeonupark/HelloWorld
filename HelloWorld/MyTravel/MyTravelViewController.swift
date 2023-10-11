@@ -17,6 +17,7 @@ class MyTravelViewController: BaseViewController {
     
     let viewModel = MyTravelViewModel()
     let repository = TravelAgendaTableRepository()
+    let locationRepository = LocationTableRepository()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -139,6 +140,7 @@ extension MyTravelViewController: UICollectionViewDelegate, UICollectionViewData
             
             self.removeImagesFromDocument(fileName: fileName, numberOfImages: numberOfImages)
             self.repository.deleteItem(agendaTable)
+            self.locationRepository.deleteItemFromID(fileName)
             
             self.viewModel.myTravelAgendas.value = self.repository.fetch()
         }

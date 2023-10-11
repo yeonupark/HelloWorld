@@ -29,6 +29,8 @@ class ShowAgendaViewController: BaseViewController {
         
         mainView.collectionView.delegate = self
         mainView.startDatetextField.isEnabled = false
+        mainView.mapClickButton.setImage(UIImage(systemName: "eyes"), for: .normal)
+        mainView.mapClickButton.addTarget(self, action: #selector(mapButtonClicked), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,6 +52,26 @@ class ShowAgendaViewController: BaseViewController {
         viewModel.linkList.bind { _ in
             self.updateSnapshot()
         }
+    }
+    
+    @objc func mapButtonClicked() {
+        let vc = MapViewController()
+            
+        vc.mainView.mapView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        if let lat = viewModel.travelAgendaTable.latitude {
+            vc.viewModel.latitude.value = lat
+        }
+        if let lon = viewModel.travelAgendaTable.longitude {
+            vc.viewModel.longitude.value = lon
+        }
+        if let placeName = viewModel.travelAgendaTable.placeName {
+            vc.viewModel.placeName.value = placeName
+        }
+        
+        present(vc, animated: true)
     }
     
     func setMap() {
