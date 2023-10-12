@@ -10,5 +10,5 @@ import RealmSwift
 
 class WorldMapViewModel {
     
-    var myTravelAgendas: Observable<Results<LocationTable>> = Observable(LocationTableRepository().fetch())
+    var myLocations: Observable<Results<LocationTable>> = Observable(LocationTableRepository().fetch())
 }
