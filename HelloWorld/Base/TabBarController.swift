@@ -23,7 +23,7 @@ class TabBarController: UITabBarController {
         agendaTab.tabBarItem = agendaTabBarItem
         
         let worldMapTab = UINavigationController(rootViewController: WorldMapViewController())
-        let worldMpTabBarItem = UITabBarItem(title: "지도", image: UIImage(systemName: "globe.asia.australia.fill"), tag: 1)
+        let worldMpTabBarItem = UITabBarItem(title: "날씨 및 시간", image: UIImage(systemName: "globe.asia.australia.fill"), tag: 1)
         worldMapTab.tabBarItem = worldMpTabBarItem
         
         viewControllers = [agendaTab, worldMapTab]

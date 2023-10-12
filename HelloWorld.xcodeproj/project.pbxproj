@@ -49,6 +49,11 @@
 		48DB9E462AD69E990038701C /* WorldMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E452AD69E990038701C /* WorldMapViewController.swift */; };
 		48DB9E482AD69EFC0038701C /* WorldMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E472AD69EFC0038701C /* WorldMapView.swift */; };
 		48DB9E4A2AD6A08D0038701C /* WorldMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E492AD6A08D0038701C /* WorldMapViewModel.swift */; };
+		48DB9E9C2AD7A8800038701C /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E9B2AD7A8800038701C /* WeatherViewController.swift */; };
+		48DB9E9E2AD7A8890038701C /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E9D2AD7A8890038701C /* WeatherView.swift */; };
+		48DB9EA02AD7B6CB0038701C /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E9F2AD7B6CB0038701C /* WeatherViewModel.swift */; };
+		48DB9EA22AD7C01A0038701C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 48DB9EA12AD7C01A0038701C /* .gitignore */; };
+		48DB9EA42AD7C0300038701C /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9EA32AD7C0300038701C /* APIKey.swift */; };
 		48ED6F672AC7AE310068C5E4 /* AddNewAgendaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ED6F662AC7AE310068C5E4 /* AddNewAgendaView.swift */; };
 /* End PBXBuildFile section */
 
@@ -112,6 +117,11 @@
 		48DB9E452AD69E990038701C /* WorldMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldMapViewController.swift; sourceTree = "<group>"; };
 		48DB9E472AD69EFC0038701C /* WorldMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldMapView.swift; sourceTree = "<group>"; };
 		48DB9E492AD6A08D0038701C /* WorldMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldMapViewModel.swift; sourceTree = "<group>"; };
+		48DB9E9B2AD7A8800038701C /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		48DB9E9D2AD7A8890038701C /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
+		48DB9E9F2AD7B6CB0038701C /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		48DB9EA12AD7C01A0038701C /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		48DB9EA32AD7C0300038701C /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		48ED6F662AC7AE310068C5E4 /* AddNewAgendaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAgendaView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -167,6 +177,8 @@
 		4808A3F42AC40F84005E1190 /* HelloWorld */ = {
 			isa = PBXGroup;
 			children = (
+				48DB9EA52AD7C06A0038701C /* Network */,
+				48DB9E9A2AD7A8700038701C /* Weather */,
 				48DB9E442AD69E850038701C /* WorldMap */,
 				48DB9E372AD4DA6B0038701C /* Map */,
 				485990A52ACBBF6D006C3D28 /* Realm */,
@@ -289,6 +301,25 @@
 			path = WorldMap;
 			sourceTree = "<group>";
 		};
+		48DB9E9A2AD7A8700038701C /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				48DB9E9B2AD7A8800038701C /* WeatherViewController.swift */,
+				48DB9E9D2AD7A8890038701C /* WeatherView.swift */,
+				48DB9E9F2AD7B6CB0038701C /* WeatherViewModel.swift */,
+			);
+			path = Weather;
+			sourceTree = "<group>";
+		};
+		48DB9EA52AD7C06A0038701C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				48DB9EA12AD7C01A0038701C /* .gitignore */,
+				48DB9EA32AD7C0300038701C /* APIKey.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -404,6 +435,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48DB9EA22AD7C01A0038701C /* .gitignore in Resources */,
 				4808A4022AC40F85005E1190 /* LaunchScreen.storyboard in Resources */,
 				4808A3FF2AC40F85005E1190 /* Assets.xcassets in Resources */,
 				4808A3FD2AC40F84005E1190 /* Main.storyboard in Resources */,
@@ -432,9 +464,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				485990F22ACDBC52006C3D28 /* TravelAgendaTableRepository.swift in Sources */,
+				48DB9EA02AD7B6CB0038701C /* WeatherViewModel.swift in Sources */,
+				48DB9E9C2AD7A8800038701C /* WeatherViewController.swift in Sources */,
 				48DB9E432AD68C370038701C /* LocationTableRepository.swift in Sources */,
 				48DB9E4A2AD6A08D0038701C /* WorldMapViewModel.swift in Sources */,
 				48ED6F672AC7AE310068C5E4 /* AddNewAgendaView.swift in Sources */,
+				48DB9E9E2AD7A8890038701C /* WeatherView.swift in Sources */,
 				48CC05152ACAA7190070D337 /* AddPhotoViewController.swift in Sources */,
 				48DB9E282AD06BB10038701C /* FileManager.swift in Sources */,
 				4808A3FA2AC40F84005E1190 /* ViewController.swift in Sources */,
@@ -459,6 +494,7 @@
 				48DB9E392AD4DAB90038701C /* MapViewController.swift in Sources */,
 				4808A42E2AC41522005E1190 /* BaseViewController.swift in Sources */,
 				48DB9E342AD1D26F0038701C /* ShowAgendaView.swift in Sources */,
+				48DB9EA42AD7C0300038701C /* APIKey.swift in Sources */,
 				48CC05192ACAB99D0070D337 /* AddNewPhotoViewModel.swift in Sources */,
 				48DB9E322AD1D2640038701C /* ShowAgendaViewController.swift in Sources */,
 				48DB9E3F2AD542E80038701C /* MyMapViewModel.swift in Sources */,
