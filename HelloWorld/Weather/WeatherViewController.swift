@@ -19,6 +19,7 @@ class WeatherViewController: BaseViewController {
     override func viewDidLoad() {
         
         setLabel()
+        //getWorldTime()
     }
     
     func setLabel() {
@@ -26,14 +27,11 @@ class WeatherViewController: BaseViewController {
     }
     
     func getWorldTime() {
-        let city = "london".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        let url = URL(string: "https://api.api-ninjas.com/v1/worldtime?city="+city!)!
-        var request = URLRequest(url: url)
-        request.setValue("YOUR_API_KEY", forHTTPHeaderField: "X-Api-Key")
-        let task = URLSession.shared.dataTask(with: request) {(data, response, error) in
-            guard let data = data else { return }
-            print(String(data: data, encoding: .utf8)!)
+        WorldTimeAPIManager.shared.callRequest(lat: viewModel.latitude, lon: viewModel.longitude) { data in
+            self.mainView.dateLabel.text =  data?.date
+            guard let hour = data?.hour else { return }
+            guard let minute = data?.minute else { return }
+            self.mainView.timeLabel.text = "\(hour) : \(minute)"
         }
-        task.resume()
     }
 }

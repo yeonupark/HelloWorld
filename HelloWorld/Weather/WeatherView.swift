@@ -29,7 +29,6 @@ class WeatherView: BaseView {
     let dateLabel = {
         let view = UILabel()
         view.backgroundColor = UIColor(named: "Orange")
-        view.text = "2023-10-12"
         
         return view
     }()
@@ -37,7 +36,6 @@ class WeatherView: BaseView {
     let timeLabel = {
         let view = UILabel()
         view.backgroundColor = UIColor(named: "Orange")
-        view.text = "14:28"
         
         return view
     }()
