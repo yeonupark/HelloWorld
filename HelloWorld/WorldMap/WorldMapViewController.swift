@@ -70,6 +70,9 @@ extension WorldMapViewController: MKMapViewDelegate {
         if let title = annotation.title {
             vc.viewModel.placeName = title ?? ""
         }
+        vc.viewModel.latitude = annotation.coordinate.latitude
+        vc.viewModel.longitude = annotation.coordinate.longitude
+        
         present(vc, animated: true)
     }
 }
