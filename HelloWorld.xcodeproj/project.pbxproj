@@ -56,6 +56,7 @@
 		48DB9EA72AD7C1D90038701C /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9EA62AD7C1D90038701C /* APIKeys.swift */; };
 		48DB9EA92AD7C6E80038701C /* WorldTimeAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9EA82AD7C6E80038701C /* WorldTimeAPIManager.swift */; };
 		48DB9EAC2AD7C7550038701C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 48DB9EAB2AD7C7550038701C /* Alamofire */; };
+		48DB9EAF2AD83E490038701C /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9EAE2AD83E490038701C /* WeatherTableViewCell.swift */; };
 		48ED6F672AC7AE310068C5E4 /* AddNewAgendaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ED6F662AC7AE310068C5E4 /* AddNewAgendaView.swift */; };
 /* End PBXBuildFile section */
 
@@ -125,6 +126,7 @@
 		48DB9EA12AD7C01A0038701C /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		48DB9EA62AD7C1D90038701C /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		48DB9EA82AD7C6E80038701C /* WorldTimeAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldTimeAPIManager.swift; sourceTree = "<group>"; };
+		48DB9EAE2AD83E490038701C /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
 		48ED6F662AC7AE310068C5E4 /* AddNewAgendaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAgendaView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -312,6 +314,7 @@
 				48DB9E9B2AD7A8800038701C /* WeatherViewController.swift */,
 				48DB9E9D2AD7A8890038701C /* WeatherView.swift */,
 				48DB9E9F2AD7B6CB0038701C /* WeatherViewModel.swift */,
+				48DB9EAE2AD83E490038701C /* WeatherTableViewCell.swift */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 				48DB9E242ACFDBDC0038701C /* MyTravelView.swift in Sources */,
 				485990A72ACBBFE9006C3D28 /* TravelAgendaTable.swift in Sources */,
 				48DB9E222ACFD6AD0038701C /* MyTravelCollectionViewCell.swift in Sources */,
+				48DB9EAF2AD83E490038701C /* WeatherTableViewCell.swift in Sources */,
 				4808A43D2AC52F07005E1190 /* Observable.swift in Sources */,
 				4808A43B2AC52D16005E1190 /* AddNewAgendaViewController.swift in Sources */,
 				48DB9E262ACFDE550038701C /* MyTravelViewModel.swift in Sources */,
@@ -687,6 +691,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = HelloWorld/HelloWorld.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = A8NKCBCXX2;
@@ -715,6 +720,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = HelloWorld/HelloWorld.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = A8NKCBCXX2;

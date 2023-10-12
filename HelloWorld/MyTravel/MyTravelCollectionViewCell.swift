@@ -9,6 +9,16 @@ import UIKit
 
 class MyTravelCollectionViewCell: UICollectionViewCell {
     
+    let backView = {
+        let view = UIView()
+        view.layer.cornerRadius = 20
+        view.clipsToBounds = true
+        view.backgroundColor = UIColor(named: "MainColor")
+        view.layer.opacity = 100
+       
+        return view
+    }()
+    
     let dateLabel = {
         let view = UILabel()
 //        view.layer.cornerRadius = 5
@@ -47,13 +57,17 @@ class MyTravelCollectionViewCell: UICollectionViewCell {
     }
     
     func configure() {
-        contentView.backgroundColor = UIColor(named: "MainColor")
-        contentView.addSubview(dateLabel)
-        contentView.addSubview(titleLabel)
-        contentView.addSubview(deleteButton)
+        //contentView.backgroundColor = UIColor(named: "MainColor")
+        contentView.addSubview(backView)
+        backView.addSubview(dateLabel)
+        backView.addSubview(titleLabel)
+        backView.addSubview(deleteButton)
     }
     
     func setConstraints() {
+        backView.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(30)
+        }
         titleLabel.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.horizontalEdges.equalToSuperview().inset(40)

@@ -29,26 +29,51 @@ class WeatherView: BaseView {
     let dateLabel = {
         let view = UILabel()
         view.backgroundColor = UIColor(named: "Orange")
-        
+        view.text = "2023-10-11"
         return view
     }()
     
     let timeLabel = {
         let view = UILabel()
         view.backgroundColor = UIColor(named: "Orange")
+        view.text = "22:10"
+        return view
+    }()
+    
+    let currentTempLabel = {
+        let view = UILabel()
+        view.font = .boldSystemFont(ofSize: 25)
+        return view
+    }()
+    
+    let currentConditionImage = {
+        let view = UIImageView()
+        view.tintColor = .black
+        return view
+    }()
+    
+    let highestTempLabel = {
+        let view = UILabel()
         
         return view
     }()
     
-    let weatherView = {
-        let view = UIView()
+    let lowestTempLabel = {
+        let view = UILabel()
+        
+        return view
+    }()
+    
+    let dailyTableView = {
+        let view = UITableView()
+        view.register(WeatherTableViewCell.self, forCellReuseIdentifier: "WeatherTableViewCell")
         
         return view
     }()
     
     override func configure() {
         backgroundColor = .white
-        for item in [placeLabel, infoLabel, dateLabel, timeLabel, weatherView] {
+        for item in [placeLabel, infoLabel, dateLabel, timeLabel, currentTempLabel, currentConditionImage, highestTempLabel, lowestTempLabel, dailyTableView] {
             addSubview(item)
         }
     }
@@ -73,6 +98,21 @@ class WeatherView: BaseView {
             make.top.equalTo(dateLabel.snp.bottom).offset(8)
             make.trailing.equalToSuperview().inset(30)
             make.height.equalTo(30)
+        }
+        currentTempLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(110)
+            make.leading.equalToSuperview().inset(30)
+            make.height.equalTo(50)
+        }
+        currentConditionImage.snp.makeConstraints { make in
+            make.top.equalTo(currentTempLabel.snp.bottom).inset(8)
+            make.leading.equalToSuperview().inset(30)
+            make.size.equalTo(50)
+        }
+        dailyTableView.snp.makeConstraints { make in
+            make.horizontalEdges.equalToSuperview().inset(30)
+            make.top.equalTo(currentConditionImage.snp.bottom).offset(50)
+            make.bottom.equalToSuperview().inset(100)
         }
     }
 }

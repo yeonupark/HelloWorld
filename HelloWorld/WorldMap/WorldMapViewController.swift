@@ -21,7 +21,7 @@ class WorldMapViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel.myTravelAgendas.bind { _ in
+        viewModel.myLocations.bind { _ in
             self.setAnnotations()
         }
         
@@ -32,14 +32,14 @@ class WorldMapViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        viewModel.myTravelAgendas.value = locationRepository.fetch()
+        viewModel.myLocations.value = locationRepository.fetch()
     }
     
     func setMap() {
         
         setAnnotations()
         
-        guard let place = viewModel.myTravelAgendas.value.first else { return }
+        guard let place = viewModel.myLocations.value.first else { return }
         let center = CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude)
         let region = MKCoordinateRegion(center: center, latitudinalMeters: 10000000, longitudinalMeters: 10000000)
         mainView.mapView.setRegion(region, animated: true)
@@ -49,7 +49,7 @@ class WorldMapViewController: BaseViewController {
         
         mainView.mapView.removeAnnotations(mainView.mapView.annotations)
         
-        let locations = viewModel.myTravelAgendas.value
+        let locations = viewModel.myLocations.value
         
         for table in locations {
             let name = table.placeName
