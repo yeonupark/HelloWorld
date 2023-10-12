@@ -53,7 +53,7 @@
 		48DB9E9E2AD7A8890038701C /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E9D2AD7A8890038701C /* WeatherView.swift */; };
 		48DB9EA02AD7B6CB0038701C /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E9F2AD7B6CB0038701C /* WeatherViewModel.swift */; };
 		48DB9EA22AD7C01A0038701C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 48DB9EA12AD7C01A0038701C /* .gitignore */; };
-		48DB9EA42AD7C0300038701C /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9EA32AD7C0300038701C /* APIKey.swift */; };
+		48DB9EA72AD7C1D90038701C /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9EA62AD7C1D90038701C /* APIKeys.swift */; };
 		48ED6F672AC7AE310068C5E4 /* AddNewAgendaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ED6F662AC7AE310068C5E4 /* AddNewAgendaView.swift */; };
 /* End PBXBuildFile section */
 
@@ -121,7 +121,7 @@
 		48DB9E9D2AD7A8890038701C /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		48DB9E9F2AD7B6CB0038701C /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		48DB9EA12AD7C01A0038701C /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		48DB9EA32AD7C0300038701C /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		48DB9EA62AD7C1D90038701C /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		48ED6F662AC7AE310068C5E4 /* AddNewAgendaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAgendaView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -194,6 +194,7 @@
 				4808A3FE2AC40F85005E1190 /* Assets.xcassets */,
 				4808A4002AC40F85005E1190 /* LaunchScreen.storyboard */,
 				4808A4032AC40F85005E1190 /* Info.plist */,
+				48DB9EA12AD7C01A0038701C /* .gitignore */,
 			);
 			path = HelloWorld;
 			sourceTree = "<group>";
@@ -314,8 +315,7 @@
 		48DB9EA52AD7C06A0038701C /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				48DB9EA12AD7C01A0038701C /* .gitignore */,
-				48DB9EA32AD7C0300038701C /* APIKey.swift */,
+				48DB9EA62AD7C1D90038701C /* APIKeys.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -491,10 +491,10 @@
 				48DB9E262ACFDE550038701C /* MyTravelViewModel.swift in Sources */,
 				4808A42C2AC413CD005E1190 /* MyTravelViewController.swift in Sources */,
 				48CC051B2ACABD780070D337 /* PhotoCollectionViewCell.swift in Sources */,
+				48DB9EA72AD7C1D90038701C /* APIKeys.swift in Sources */,
 				48DB9E392AD4DAB90038701C /* MapViewController.swift in Sources */,
 				4808A42E2AC41522005E1190 /* BaseViewController.swift in Sources */,
 				48DB9E342AD1D26F0038701C /* ShowAgendaView.swift in Sources */,
-				48DB9EA42AD7C0300038701C /* APIKey.swift in Sources */,
 				48CC05192ACAB99D0070D337 /* AddNewPhotoViewModel.swift in Sources */,
 				48DB9E322AD1D2640038701C /* ShowAgendaViewController.swift in Sources */,
 				48DB9E3F2AD542E80038701C /* MyMapViewModel.swift in Sources */,
