@@ -128,20 +128,22 @@ class ShowAgendaViewController: BaseViewController {
                 stringList.append(data)
             }
         }
-        
+        print(stringList)
         return stringList
     }
     
     func fetchCostList(id: String) -> [String] {
         
         let objectList = costRepository.fetch()
-        
+        print(objectList)
         var stringList: [String] = []
         for item in objectList {
-            let data = item.cost
-            stringList.append(data)
+            if item.agendaID == id {
+                let data = item.cost
+                stringList.append(data)
+            }
         }
-        
+        print(stringList)
         return stringList
     }
     
@@ -151,8 +153,10 @@ class ShowAgendaViewController: BaseViewController {
         
         var stringList: [String] = []
         for item in objectList {
-            let data = item.link
-            stringList.append(data)
+            if item.agendaID == id {
+                let data = item.link
+                stringList.append(data)
+            }
         }
         
         return stringList
