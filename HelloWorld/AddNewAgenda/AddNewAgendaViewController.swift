@@ -363,9 +363,7 @@ class AddNewAgendaViewController: BaseViewController {
     
     @objc func deleteTodoListButtonClicekd(sender: UIButton) {
         //print(sender.tag)
-//        toDoRepository.deleteItemFromID(viewModel.originalAgendaTable._id.stringValue)
         viewModel.toDoList.value.remove(at: sender.tag)
-        print(viewModel.toDoList.value)
     }
     
     @objc func deleteCostListButtonClicked(sender: UIButton) {
@@ -427,7 +425,6 @@ extension AddNewAgendaViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         mainView.endEditing(true)
-        print(viewModel.dateList.value)
     }
     
 }
