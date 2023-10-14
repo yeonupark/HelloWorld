@@ -57,6 +57,8 @@
 		48DB9EA92AD7C6E80038701C /* WorldTimeAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9EA82AD7C6E80038701C /* WorldTimeAPIManager.swift */; };
 		48DB9EAC2AD7C7550038701C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 48DB9EAB2AD7C7550038701C /* Alamofire */; };
 		48DB9EAF2AD83E490038701C /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9EAE2AD83E490038701C /* WeatherTableViewCell.swift */; };
+		48DB9EB12ADA712F0038701C /* ToDoTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9EB02ADA712F0038701C /* ToDoTable.swift */; };
+		48DB9EB32ADA741C0038701C /* InnerTableRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9EB22ADA741C0038701C /* InnerTableRepository.swift */; };
 		48ED6F672AC7AE310068C5E4 /* AddNewAgendaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ED6F662AC7AE310068C5E4 /* AddNewAgendaView.swift */; };
 /* End PBXBuildFile section */
 
@@ -127,6 +129,8 @@
 		48DB9EA62AD7C1D90038701C /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		48DB9EA82AD7C6E80038701C /* WorldTimeAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldTimeAPIManager.swift; sourceTree = "<group>"; };
 		48DB9EAE2AD83E490038701C /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
+		48DB9EB02ADA712F0038701C /* ToDoTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTable.swift; sourceTree = "<group>"; };
+		48DB9EB22ADA741C0038701C /* InnerTableRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnerTableRepository.swift; sourceTree = "<group>"; };
 		48ED6F662AC7AE310068C5E4 /* AddNewAgendaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAgendaView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -252,6 +256,8 @@
 				485990F12ACDBC52006C3D28 /* TravelAgendaTableRepository.swift */,
 				48DB9E402AD68A970038701C /* LocationTable.swift */,
 				48DB9E422AD68C370038701C /* LocationTableRepository.swift */,
+				48DB9EB02ADA712F0038701C /* ToDoTable.swift */,
+				48DB9EB22ADA741C0038701C /* InnerTableRepository.swift */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -473,6 +479,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48DB9EB32ADA741C0038701C /* InnerTableRepository.swift in Sources */,
+				48DB9EB12ADA712F0038701C /* ToDoTable.swift in Sources */,
 				485990F22ACDBC52006C3D28 /* TravelAgendaTableRepository.swift in Sources */,
 				48DB9EA02AD7B6CB0038701C /* WeatherViewModel.swift in Sources */,
 				48DB9E9C2AD7A8800038701C /* WeatherViewController.swift in Sources */,

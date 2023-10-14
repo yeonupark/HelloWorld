@@ -18,7 +18,10 @@ class ShowAgendaViewController: BaseViewController {
     var dataSource: UICollectionViewDiffableDataSource<Section, String>!
     
     let viewModel = ShowAgendaViewModel()
-    let repository = TravelAgendaTableRepository()
+    //let repository = TravelAgendaTableRepository()
+    let toDoRepository = ToDoTableRepository()
+    let costRepository = CostTableRepository()
+    let linkRepository = LinkTableRepository()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,26 +108,34 @@ class ShowAgendaViewController: BaseViewController {
         if let memo = viewModel.travelAgendaTable.memo {
             viewModel.memoText.value = memo
         }
-        viewModel.toDoList.value = fetchTodoList()
-        viewModel.costList.value = fetchCostList()
-        viewModel.linkList.value = fetchLinkList()
+        let id = viewModel.travelAgendaTable._id.stringValue
+        viewModel.toDoList.value = fetchTodoList(id: id)
+        viewModel.costList.value = fetchCostList(id: id)
+        viewModel.linkList.value = fetchLinkList(id: id)
+        
         viewModel.dateList.value.append(viewModel.travelAgendaTable.startDate)
         viewModel.dateList.value.append(viewModel.travelAgendaTable.endDate)
     }
     
-    func fetchTodoList() -> [String] {
-        let objectList = viewModel.travelAgendaTable.toDoList
+    func fetchTodoList(id: String) -> [String] {
+        
+        let objectList =  toDoRepository.fetch()
+        
         var stringList: [String] = []
         for item in objectList {
-            let data = item.toDo
-            stringList.append(data)
+            if item.agendaID == id {
+                let data = item.toDo
+                stringList.append(data)
+            }
         }
         
         return stringList
     }
     
-    func fetchCostList() -> [String] {
-        let objectList = viewModel.travelAgendaTable.costList
+    func fetchCostList(id: String) -> [String] {
+        
+        let objectList = costRepository.fetch()
+        
         var stringList: [String] = []
         for item in objectList {
             let data = item.cost
@@ -134,8 +145,10 @@ class ShowAgendaViewController: BaseViewController {
         return stringList
     }
     
-    func fetchLinkList() -> [String] {
-        let objectList = viewModel.travelAgendaTable.linkList
+    func fetchLinkList(id: String) -> [String] {
+        
+        let objectList = linkRepository.fetch()
+        
         var stringList: [String] = []
         for item in objectList {
             let data = item.link

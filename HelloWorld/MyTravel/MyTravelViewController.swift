@@ -16,7 +16,10 @@ class MyTravelViewController: BaseViewController {
     }
     
     let viewModel = MyTravelViewModel()
-    let repository = TravelAgendaTableRepository()
+    let agendaRepository = TravelAgendaTableRepository()
+    let todoRepository = ToDoTableRepository()
+    let costRepository = CostTableRepository()
+    let linkRepository = LinkTableRepository()
     let locationRepository = LocationTableRepository()
     
     override func viewDidLoad() {
@@ -36,7 +39,7 @@ class MyTravelViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.myTravelAgendas.value = repository.fetch()
+        viewModel.myTravelAgendas.value = agendaRepository.fetch()
     }
     
     func setNavigationItem() {
@@ -139,10 +142,13 @@ extension MyTravelViewController: UICollectionViewDelegate, UICollectionViewData
         let ok = UIAlertAction(title: "확인", style: .default) { _ in
             
             self.removeImagesFromDocument(fileName: fileName, numberOfImages: numberOfImages)
-            self.repository.deleteItem(agendaTable)
+            self.agendaRepository.deleteItem(agendaTable)
+            self.todoRepository.deleteItemFromID(fileName)
+            self.costRepository.deleteItemFromID(fileName)
+            self.linkRepository.deleteItemFromID(fileName)
             self.locationRepository.deleteItemFromID(fileName)
             
-            self.viewModel.myTravelAgendas.value = self.repository.fetch()
+            self.viewModel.myTravelAgendas.value = self.agendaRepository.fetch()
         }
         alert.addAction(cancel)
         alert.addAction(ok)

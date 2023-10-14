@@ -18,15 +18,15 @@ class TravelAgendaTable: Object {
     @Persisted var memo: String?
     @Persisted var numberOfImages: Int
     
-    @Persisted var toDoList : List<ToDoObject> = List<ToDoObject>()
-    @Persisted var costList : List<CostObject> = List<CostObject>()
-    @Persisted var linkList : List<LinkObject> = List<LinkObject>()
+//    @Persisted var toDoList : List<TodoTable> = List<TodoTable>()
+//    @Persisted var costList : List<CostTable> = List<CostTable>()
+//    @Persisted var linkList : List<LinkTable> = List<LinkTable>()
     
     @Persisted var placeName: String?
     @Persisted var latitude: CLLocationDegrees?
     @Persisted var longitude: CLLocationDegrees?
     
-    convenience init(title: String, startDate: Date, endDate: Date, memo: String? = nil, numberOfImages: Int, toDoList: List<ToDoObject>, costList: List<CostObject>, linkList: List<LinkObject>, placeName: String?, latitude: CLLocationDegrees?, longitude: CLLocationDegrees?) {
+    convenience init(title: String, startDate: Date, endDate: Date, memo: String? = nil, numberOfImages: Int, placeName: String?, latitude: CLLocationDegrees?, longitude: CLLocationDegrees?) {
         
         self.init()
         
@@ -36,44 +36,13 @@ class TravelAgendaTable: Object {
         self.memo = memo
         self.numberOfImages = numberOfImages
         
-        self.toDoList = toDoList
-        self.costList = costList
-        self.linkList = linkList
+//        self.toDoList = toDoList
+//        self.costList = costList
+//        self.linkList = linkList
         
         self.placeName = placeName
         self.latitude = latitude
         self.longitude = longitude
-    }
-}
-
-class ToDoObject: Object {
-    @Persisted(primaryKey: true) var _id: ObjectId
-    @Persisted var toDo: String
-    
-    convenience init(toDo: String) {
-        self.init()
-        self.toDo = toDo
-    }
-
-}
-
-class CostObject: Object {
-    @Persisted(primaryKey: true) var _id: ObjectId
-    @Persisted var cost: String
-    
-    convenience init(cost: String) {
-        self.init()
-        self.cost = cost
-    }
-}
-
-class LinkObject: Object {
-    @Persisted(primaryKey: true) var _id: ObjectId
-    @Persisted var link: String
-    
-    convenience init(link: String) {
-        self.init()
-        self.link = link
     }
 }
 
