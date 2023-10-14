@@ -22,8 +22,11 @@ class AddNewAgendaViewController: BaseViewController {
     
     var dataSource: UICollectionViewDiffableDataSource<Section, String>!
     
-    let repository = TravelAgendaTableRepository()
+    let agendaRepository = TravelAgendaTableRepository()
     let locationRepository = LocationTableRepository()
+    let toDoRepository = ToDoTableRepository()
+    let costRepository = CostTableRepository()
+    let linkRepository = LinkTableRepository()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +70,7 @@ class AddNewAgendaViewController: BaseViewController {
         mainView.datePickerView.addTarget(self, action: #selector(getDate(sender: )), for: .valueChanged)
         mainView.mapClickButton.addTarget(self, action: #selector(mapButtonClicked), for: .touchUpInside)
         //repository.printRealmLocation()
-        repository.checkSchemaVersion()
+        agendaRepository.checkSchemaVersion()
     }
     
     func setMap() {
@@ -146,57 +149,67 @@ class AddNewAgendaViewController: BaseViewController {
         guard let lat = viewModel.latitude else { return }
         guard let lon = viewModel.longitude else { return }
         
-        repository.updateItem(id: viewModel.originalAgendaTable._id, title: viewModel.originalAgendaTable.title, startDate: startDate, endDate: endDate, memo: memo, numberOfImages: viewModel.originalAgendaTable.numberOfImages, toDoList: fetchTodoList(), costList: fetchCostList(), linkList: fetchLinkList(), placeName: name, latitude: lat, longitude: lon)
+        agendaRepository.updateItem(id: viewModel.originalAgendaTable._id, title: viewModel.originalAgendaTable.title, startDate: startDate, endDate: endDate, memo: memo, numberOfImages: viewModel.originalAgendaTable.numberOfImages, placeName: name, latitude: lat, longitude: lon)
+        
+        let agendaID = viewModel.originalAgendaTable._id.stringValue
+        
+        toDoRepository.deleteItemFromID(agendaID)
+        addToDoTable(agendaID: agendaID)
+        
+        costRepository.deleteItemFromID(agendaID)
+        addCostTable(agendaID: agendaID)
+        
+        linkRepository.deleteItemFromID(agendaID)
+        addLinkTable(agendaID: agendaID)
         
         locationRepository.updateItem(id: viewModel.originalAgendaTable._id.stringValue, placeName: name, latitude: lat, longitude: lon)
     }
     
     func addNewTable(startDate: Date, endDate: Date, memo: String) {
-        viewModel.newTravelAgendaTable = TravelAgendaTable(title: navigationItem.title ?? "새 여행", startDate: startDate, endDate: endDate, memo: memo, numberOfImages: viewModel.savedImages.count, toDoList: fetchTodoList(), costList: fetchCostList(), linkList: fetchLinkList(), placeName: viewModel.placeName, latitude: viewModel.latitude, longitude: viewModel.longitude)
+        viewModel.newTravelAgendaTable = TravelAgendaTable(title: navigationItem.title ?? "새 여행", startDate: startDate, endDate: endDate, memo: memo, numberOfImages: viewModel.savedImages.count, placeName: viewModel.placeName, latitude: viewModel.latitude, longitude: viewModel.longitude)
         
-        repository.addItem(viewModel.newTravelAgendaTable)
+        agendaRepository.addItem(viewModel.newTravelAgendaTable)
         saveImagesToDocument(fileName: "\(viewModel.newTravelAgendaTable._id)", images: viewModel.savedImages)
+        
+        let id = viewModel.newTravelAgendaTable._id.stringValue
+        
+        addToDoTable(agendaID: id)
+        addCostTable(agendaID: id)
+        addLinkTable(agendaID: id)
         
         guard let lat = viewModel.latitude else { return }
         guard let lon = viewModel.longitude else { return }
         
-        let item = LocationTable(id: viewModel.newTravelAgendaTable._id.stringValue, placeName: viewModel.placeName ?? "", latitude: lat, longitude: lon)
+        let item = LocationTable(id: id, placeName: viewModel.placeName ?? "", latitude: lat, longitude: lon)
         locationRepository.addItem(item)
         
     }
     
-    func fetchTodoList() -> List<ToDoObject> {
+    func addToDoTable(agendaID: String) {
         let toDoList = viewModel.toDoList.value
-        let objectList: List<ToDoObject> = List<ToDoObject>()
         
         for todo in toDoList {
-            let data = ToDoObject(toDo: todo)
-            objectList.append(data)
+            let item = ToDoTable(agendaID: agendaID, toDo: todo)
+            toDoRepository.addItem(item)
         }
-        return objectList
-        
     }
     
-    func fetchCostList() -> List<CostObject> {
+    func addCostTable(agendaID: String) {
         let costList = viewModel.costList.value
-        let objectList: List<CostObject> = List<CostObject>()
         
         for cost in costList {
-            let data = CostObject(cost: cost)
-            objectList.append(data)
+            let item = CostTable(agendaID: agendaID, cost: cost)
+            costRepository.addItem(item)
         }
-        return objectList
     }
     
-    func fetchLinkList() -> List<LinkObject> {
+    func addLinkTable(agendaID: String) {
         let linkList = viewModel.linkList.value
-        let objectList: List<LinkObject> = List<LinkObject>()
         
         for link in linkList {
-            let data = LinkObject(link: link)
-            objectList.append(data)
+            let item = LinkTable(agendaID: agendaID, link: link)
+            linkRepository.addItem(item)
         }
-        return objectList
     }
     
     @objc func archiveButtonClicked() {
@@ -349,8 +362,10 @@ class AddNewAgendaViewController: BaseViewController {
     }
     
     @objc func deleteTodoListButtonClicekd(sender: UIButton) {
-        print(sender.tag)
+        //print(sender.tag)
+//        toDoRepository.deleteItemFromID(viewModel.originalAgendaTable._id.stringValue)
         viewModel.toDoList.value.remove(at: sender.tag)
+        print(viewModel.toDoList.value)
     }
     
     @objc func deleteCostListButtonClicked(sender: UIButton) {

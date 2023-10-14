@@ -10,7 +10,6 @@ import RealmSwift
 
 protocol LocationTableRepositoryType: AnyObject {
     
-    func checkSchemaVersion()
     func fetch() -> Results<LocationTable>
     func addItem(_ item: LocationTable)
     func deleteItemFromID(_ id: String)
@@ -19,15 +18,6 @@ protocol LocationTableRepositoryType: AnyObject {
 class LocationTableRepository: LocationTableRepositoryType {
     
     private let realm = try! Realm()
-    
-    func checkSchemaVersion() {
-        do {
-            let version = try schemaVersionAtURL(realm.configuration.fileURL!)
-            print("Schema Version: \(version)")
-        } catch {
-            print(error)
-        }
-    }
     
     func fetch() -> RealmSwift.Results<LocationTable> {
         

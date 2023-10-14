@@ -52,13 +52,19 @@ class WeatherViewController: BaseViewController {
                 let weather = try await WeatherService.shared.weather(for: location)
                 
                 let currentWeather = weather.currentWeather
-                let temp = currentWeather.temperature.formatted().prefix(5)
-                mainView.currentTempLabel.text = "\(temp)°C"
+                //let temp = currentWeather.temperature.formatted().prefix(5)
+                //mainView.currentTempLabel.text = "\(temp)°C"
+                mainView.currentTempLabel.text = "\(currentWeather.temperature)"
                 mainView.currentConditionImage.image = UIImage(systemName: currentWeather.symbolName)
                 
                 let dailyWeather = weather.dailyForecast
                 for day in dailyWeather {
-                    let date = day.date.formatted().prefix(5)
+                    
+                    let str = day.date.formatted()
+                    let start = str.index(str.startIndex, offsetBy: 5)
+                    let end = str.index(str.startIndex, offsetBy: 10)
+                    let date = str.substring(with: start..<end)
+                    
                     let data = DailyWeather(date: String(date), conditionSymbol: day.symbolName, highestTemp: "\(day.highTemperature)", lowerstTemp: "\(day.lowTemperature)")
                     viewModel.dailyWeatherList.append(data)
                 }
