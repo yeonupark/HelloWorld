@@ -24,6 +24,10 @@
 		4808A43B2AC52D16005E1190 /* AddNewAgendaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4808A43A2AC52D15005E1190 /* AddNewAgendaViewController.swift */; };
 		4808A43D2AC52F07005E1190 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4808A43C2AC52F07005E1190 /* Observable.swift */; };
 		4808A43F2AC52F56005E1190 /* AddNewAgendaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4808A43E2AC52F56005E1190 /* AddNewAgendaViewModel.swift */; };
+		480C825D2ADBB71200613CDB /* ExchangeRateAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480C825C2ADBB71200613CDB /* ExchangeRateAPIManager.swift */; };
+		480C82602ADBBDE000613CDB /* ExchangeRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480C825F2ADBBDE000613CDB /* ExchangeRateViewController.swift */; };
+		480C82622ADBC07B00613CDB /* ExchangeRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480C82612ADBC07B00613CDB /* ExchangeRateView.swift */; };
+		480C82642ADBC74600613CDB /* ExchangeRateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480C82632ADBC74600613CDB /* ExchangeRateViewModel.swift */; };
 		485990A72ACBBFE9006C3D28 /* TravelAgendaTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485990A62ACBBFE9006C3D28 /* TravelAgendaTable.swift */; };
 		485990AA2ACBC163006C3D28 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 485990A92ACBC163006C3D28 /* Realm */; };
 		485990AC2ACBC163006C3D28 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 485990AB2ACBC163006C3D28 /* RealmSwift */; };
@@ -100,6 +104,10 @@
 		4808A43A2AC52D15005E1190 /* AddNewAgendaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAgendaViewController.swift; sourceTree = "<group>"; };
 		4808A43C2AC52F07005E1190 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		4808A43E2AC52F56005E1190 /* AddNewAgendaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAgendaViewModel.swift; sourceTree = "<group>"; };
+		480C825C2ADBB71200613CDB /* ExchangeRateAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateAPIManager.swift; sourceTree = "<group>"; };
+		480C825F2ADBBDE000613CDB /* ExchangeRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateViewController.swift; sourceTree = "<group>"; };
+		480C82612ADBC07B00613CDB /* ExchangeRateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateView.swift; sourceTree = "<group>"; };
+		480C82632ADBC74600613CDB /* ExchangeRateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateViewModel.swift; sourceTree = "<group>"; };
 		485990A62ACBBFE9006C3D28 /* TravelAgendaTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelAgendaTable.swift; sourceTree = "<group>"; };
 		485990F12ACDBC52006C3D28 /* TravelAgendaTableRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelAgendaTableRepository.swift; sourceTree = "<group>"; };
 		48CC05142ACAA7190070D337 /* AddPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				48DB9EA52AD7C06A0038701C /* Network */,
+				480C825E2ADBBDC700613CDB /* ExchangeRate */,
 				48DB9E9A2AD7A8700038701C /* Weather */,
 				48DB9E442AD69E850038701C /* WorldMap */,
 				48DB9E372AD4DA6B0038701C /* Map */,
@@ -247,6 +256,16 @@
 				48DB9E252ACFDE550038701C /* MyTravelViewModel.swift */,
 			);
 			path = MyTravel;
+			sourceTree = "<group>";
+		};
+		480C825E2ADBBDC700613CDB /* ExchangeRate */ = {
+			isa = PBXGroup;
+			children = (
+				480C825F2ADBBDE000613CDB /* ExchangeRateViewController.swift */,
+				480C82612ADBC07B00613CDB /* ExchangeRateView.swift */,
+				480C82632ADBC74600613CDB /* ExchangeRateViewModel.swift */,
+			);
+			path = ExchangeRate;
 			sourceTree = "<group>";
 		};
 		485990A52ACBBF6D006C3D28 /* Realm */ = {
@@ -330,6 +349,7 @@
 			children = (
 				48DB9EA62AD7C1D90038701C /* APIKeys.swift */,
 				48DB9EA82AD7C6E80038701C /* WorldTimeAPIManager.swift */,
+				480C825C2ADBB71200613CDB /* ExchangeRateAPIManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -494,6 +514,7 @@
 				48DB9E362AD1D27B0038701C /* ShowAgendaViewModel.swift in Sources */,
 				48DB9E462AD69E990038701C /* WorldMapViewController.swift in Sources */,
 				4808A4272AC41162005E1190 /* TabBarController.swift in Sources */,
+				480C825D2ADBB71200613CDB /* ExchangeRateAPIManager.swift in Sources */,
 				48DB9E3B2AD518580038701C /* MyMapView.swift in Sources */,
 				48DB9E412AD68A970038701C /* LocationTable.swift in Sources */,
 				4808A3F62AC40F84005E1190 /* AppDelegate.swift in Sources */,
@@ -505,6 +526,7 @@
 				48DB9E242ACFDBDC0038701C /* MyTravelView.swift in Sources */,
 				485990A72ACBBFE9006C3D28 /* TravelAgendaTable.swift in Sources */,
 				48DB9E222ACFD6AD0038701C /* MyTravelCollectionViewCell.swift in Sources */,
+				480C82622ADBC07B00613CDB /* ExchangeRateView.swift in Sources */,
 				48DB9EAF2AD83E490038701C /* WeatherTableViewCell.swift in Sources */,
 				4808A43D2AC52F07005E1190 /* Observable.swift in Sources */,
 				4808A43B2AC52D16005E1190 /* AddNewAgendaViewController.swift in Sources */,
@@ -512,10 +534,12 @@
 				4808A42C2AC413CD005E1190 /* MyTravelViewController.swift in Sources */,
 				48CC051B2ACABD780070D337 /* PhotoCollectionViewCell.swift in Sources */,
 				48DB9EA72AD7C1D90038701C /* APIKeys.swift in Sources */,
+				480C82602ADBBDE000613CDB /* ExchangeRateViewController.swift in Sources */,
 				48DB9E392AD4DAB90038701C /* MapViewController.swift in Sources */,
 				4808A42E2AC41522005E1190 /* BaseViewController.swift in Sources */,
 				48DB9E342AD1D26F0038701C /* ShowAgendaView.swift in Sources */,
 				48CC05192ACAB99D0070D337 /* AddNewPhotoViewModel.swift in Sources */,
+				480C82642ADBC74600613CDB /* ExchangeRateViewModel.swift in Sources */,
 				48DB9E322AD1D2640038701C /* ShowAgendaViewController.swift in Sources */,
 				48DB9E3F2AD542E80038701C /* MyMapViewModel.swift in Sources */,
 				48DB9E2A2AD130D90038701C /* AddMemoViewController.swift in Sources */,

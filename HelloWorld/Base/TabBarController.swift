@@ -23,10 +23,14 @@ class TabBarController: UITabBarController {
         agendaTab.tabBarItem = agendaTabBarItem
         
         let worldMapTab = UINavigationController(rootViewController: WorldMapViewController())
-        let worldMpTabBarItem = UITabBarItem(title: "날씨 및 시간", image: UIImage(systemName: "globe.asia.australia.fill"), tag: 1)
-        worldMapTab.tabBarItem = worldMpTabBarItem
+        let worldMapTabBarItem = UITabBarItem(title: "날씨 및 시간", image: UIImage(systemName: "globe.asia.australia.fill"), tag: 1)
+        worldMapTab.tabBarItem = worldMapTabBarItem
         
-        viewControllers = [agendaTab, worldMapTab]
+        let exchangeRateTab = UINavigationController(rootViewController: ExchangeRateViewController())
+        let exchangeRateTabBarItem = UITabBarItem(title: "환율 계산", image: UIImage(systemName: "dollarsign.arrow.circlepath"), tag: 2)
+        exchangeRateTab.tabBarItem = exchangeRateTabBarItem
+        
+        viewControllers = [agendaTab, worldMapTab, exchangeRateTab]
         
     }
 }
