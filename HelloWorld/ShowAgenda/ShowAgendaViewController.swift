@@ -18,7 +18,7 @@ class ShowAgendaViewController: BaseViewController {
     var dataSource: UICollectionViewDiffableDataSource<Section, String>!
     
     let viewModel = ShowAgendaViewModel()
-    //let repository = TravelAgendaTableRepository()
+    let agendaRepository = TravelAgendaTableRepository()
     let toDoRepository = ToDoTableRepository()
     let costRepository = CostTableRepository()
     let linkRepository = LinkTableRepository()
@@ -192,10 +192,13 @@ class ShowAgendaViewController: BaseViewController {
         navigationItem.backButtonTitle = "저장"
         vc.completionHandler = { images in
             self.viewModel.savedImages = images
+            self.agendaRepository.updateNumberOfImages(id: self.viewModel.travelAgendaTable._id, numberOfImages: images.count)
         }
         
         vc.viewModel.photoList.value = viewModel.savedImages
         vc.viewModel.isFromAddNewAgendaVC = false
+        vc.viewModel.tableID = viewModel.travelAgendaTable._id.stringValue
+        vc.viewModel.originalNumberOfPhotos = viewModel.savedImages.count
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -230,6 +233,9 @@ class ShowAgendaViewController: BaseViewController {
                 content.image = UIImage(systemName: "checkmark.square")
                 content.imageProperties.tintColor = UIColor(named: "Orange")
             }
+            if indexPath.section == 3 {
+                content.textProperties.color = .clear
+            }
             
             cell.contentConfiguration = content
             
@@ -246,6 +252,33 @@ class ShowAgendaViewController: BaseViewController {
         dataSource = UICollectionViewDiffableDataSource<Section, String>(collectionView: mainView.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             
             let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
+            
+//            if indexPath.section == 1 {
+//                let checkButton = UIButton()
+//                checkButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
+//                checkButton.tintColor = UIColor(named: "Orange")
+//                checkButton.addTarget(self, action: #selector(self.checkButtonClicked(sender: )), for: .touchUpInside)
+//                
+//                cell.contentView.addSubview(checkButton)
+//                checkButton.snp.makeConstraints { make in
+//                    make.top.bottom.equalToSuperview()
+//                    make.leading.equalToSuperview().inset(10)
+//                    make.size.equalTo(30)
+//                }
+//            }
+            
+            if indexPath.section == 3 {
+                let textField = UITextView()
+                textField.text = itemIdentifier
+                textField.font = .boldSystemFont(ofSize: 15)
+                textField.isEditable = false
+                
+                cell.contentView.addSubview(textField)
+                textField.snp.makeConstraints { make in
+                    make.verticalEdges.equalToSuperview().inset(5)
+                    make.leading.trailing.equalToSuperview().inset(10)
+                }
+            }
             
             return cell
         })
@@ -276,19 +309,9 @@ class ShowAgendaViewController: BaseViewController {
         
     }
     
-    @objc func deleteTodoListButtonClicekd(sender: UIButton) {
-        print(sender.tag)
-        viewModel.toDoList.value.remove(at: sender.tag)
-    }
-    
-    @objc func deleteCostListButtonClicked(sender: UIButton) {
-        viewModel.costList.value.remove(at: sender.tag)
-    }
-    
-    @objc func deleteLinkListButtonClicked(sender: UIButton) {
-        viewModel.linkList.value.remove(at: sender.tag)
-    }
-    
+//    @objc func checkButtonClicked(sender: UIButton) {
+//        print("클릭")
+//    }
 }
 
 extension ShowAgendaViewController: UICollectionViewDelegate {

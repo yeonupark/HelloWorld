@@ -66,29 +66,34 @@ class AddPhotoViewController: BaseViewController {
         }
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-        completionHandler?(viewModel.photoList.value)
-    }
-    
     func setNavigationBar() {
         let addButton = UIBarButtonItem(image: UIImage(systemName: "camera"), style: .plain, target: self, action: #selector(addButtonClicked))
-        
+        addButton.isHidden = true
         let editButton = UIBarButtonItem(title: "edit", style: .plain, target: self, action: #selector(editButtonClicked(sender: )))
         
-        navigationItem.setRightBarButtonItems([addButton, editButton], animated: true)
+        navigationItem.setRightBarButtonItems([editButton, addButton], animated: true)
         
     }
     
     @objc func editButtonClicked(sender: UIBarButtonItem) {
         if viewModel.isEditable.value {
+            saveImages()
             sender.title = "edit"
             viewModel.isEditable.value = false
+            navigationItem.rightBarButtonItems![1].isHidden = true
         } else {
             sender.title = "done"
             viewModel.isEditable.value = true
+            navigationItem.rightBarButtonItems![1].isHidden = false
         }
+    }
+    
+    func saveImages() {
+        guard let id = viewModel.tableID else { return }
+        
+        removeImagesFromDocument(fileName: id, numberOfImages: viewModel.originalNumberOfPhotos)
+        saveImagesToDocument(fileName: "\(id)", images: viewModel.photoList.value)
+        completionHandler?(viewModel.photoList.value)
     }
     
     @objc func addButtonClicked() {

@@ -69,7 +69,7 @@ class AddNewAgendaViewController: BaseViewController {
         mainView.collectionView.delegate = self
         mainView.datePickerView.addTarget(self, action: #selector(getDate(sender: )), for: .valueChanged)
         mainView.mapClickButton.addTarget(self, action: #selector(mapButtonClicked), for: .touchUpInside)
-        //repository.printRealmLocation()
+        //agendaRepository.printRealmLocation()
         agendaRepository.checkSchemaVersion()
     }
     
