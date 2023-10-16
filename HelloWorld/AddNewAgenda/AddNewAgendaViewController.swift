@@ -169,10 +169,12 @@ class AddNewAgendaViewController: BaseViewController {
         viewModel.newTravelAgendaTable = TravelAgendaTable(title: navigationItem.title ?? "새 여행", startDate: startDate, endDate: endDate, memo: memo, numberOfImages: viewModel.savedImages.count, placeName: viewModel.placeName, latitude: viewModel.latitude, longitude: viewModel.longitude)
         
         agendaRepository.addItem(viewModel.newTravelAgendaTable)
-        saveImagesToDocument(fileName: "\(viewModel.newTravelAgendaTable._id)", images: viewModel.savedImages)
         
         let id = viewModel.newTravelAgendaTable._id.stringValue
         
+        makeFolder(folderName: id)
+        saveImagesToDocument(folderName: id, images: viewModel.savedImages)
+   
         addToDoTable(agendaID: id)
         addCostTable(agendaID: id)
         addLinkTable(agendaID: id)

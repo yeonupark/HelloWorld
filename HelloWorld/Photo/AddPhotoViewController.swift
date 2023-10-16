@@ -66,6 +66,12 @@ class AddPhotoViewController: BaseViewController {
         }
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        if viewModel.isFromAddNewAgendaVC {
+            completionHandler?(viewModel.photoList.value)
+        }
+    }
+    
     func setNavigationBar() {
         let addButton = UIBarButtonItem(image: UIImage(systemName: "camera"), style: .plain, target: self, action: #selector(addButtonClicked))
         addButton.isHidden = true
@@ -91,8 +97,8 @@ class AddPhotoViewController: BaseViewController {
     func saveImages() {
         guard let id = viewModel.tableID else { return }
         
-        removeImagesFromDocument(fileName: id, numberOfImages: viewModel.originalNumberOfPhotos)
-        saveImagesToDocument(fileName: "\(id)", images: viewModel.photoList.value)
+        removeImagesFromDocument(folderName: id, numberOfImages: viewModel.originalNumberOfPhotos)
+        saveImagesToDocument(folderName: "\(id)", images: viewModel.photoList.value)
         completionHandler?(viewModel.photoList.value)
     }
     

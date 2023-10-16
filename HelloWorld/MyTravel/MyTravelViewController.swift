@@ -126,14 +126,14 @@ extension MyTravelViewController: UICollectionViewDelegate, UICollectionViewData
         
         vc.title = table.title
         vc.viewModel.travelAgendaTable = table
-        vc.viewModel.savedImages = loadImageFromDocument(fileName: table._id.stringValue, numberOfImages: table.numberOfImages)
+        vc.viewModel.savedImages = loadImageFromDocument(folderName: table._id.stringValue, numberOfImages: table.numberOfImages)
         
         navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func deleteButtonClicked(sender: UIButton) {
         
-        let fileName = viewModel.myTravelAgendas.value[sender.tag]._id.stringValue
+        let id = viewModel.myTravelAgendas.value[sender.tag]._id.stringValue
         let numberOfImages = viewModel.myTravelAgendas.value[sender.tag].numberOfImages
         let agendaTable = self.viewModel.myTravelAgendas.value[sender.tag]
         
@@ -141,12 +141,13 @@ extension MyTravelViewController: UICollectionViewDelegate, UICollectionViewData
         let cancel = UIAlertAction(title: "취소", style: .cancel)
         let ok = UIAlertAction(title: "확인", style: .default) { _ in
             
-            self.removeImagesFromDocument(fileName: fileName, numberOfImages: numberOfImages)
+            self.removeImagesFromDocument(folderName: id, numberOfImages: numberOfImages)
+            self.removeFolder(folderName: id)
             self.agendaRepository.deleteItem(agendaTable)
-            self.todoRepository.deleteItemFromID(fileName)
-            self.costRepository.deleteItemFromID(fileName)
-            self.linkRepository.deleteItemFromID(fileName)
-            self.locationRepository.deleteItemFromID(fileName)
+            self.todoRepository.deleteItemFromID(id)
+            self.costRepository.deleteItemFromID(id)
+            self.linkRepository.deleteItemFromID(id)
+            self.locationRepository.deleteItemFromID(id)
             
             self.viewModel.myTravelAgendas.value = self.agendaRepository.fetch()
         }
