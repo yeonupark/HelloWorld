@@ -72,4 +72,15 @@ class TravelAgendaTableRepository: TravelAgendaTableRepositoryType {
         }
     }
     
+    func updateNumberOfImages(id: RealmSwift.ObjectId, numberOfImages: Int) {
+        
+        do {
+            try realm.write {
+                realm.create(TravelAgendaTable.self, value: ["_id" : id, "numberOfImages" : numberOfImages], update: .modified)
+            }
+        }
+        catch {
+            print(error)
+        }
+    }
 }

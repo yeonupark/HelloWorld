@@ -41,7 +41,7 @@ class WorldMapViewController: BaseViewController {
         
         guard let place = viewModel.myLocations.value.first else { return }
         let center = CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude)
-        let region = MKCoordinateRegion(center: center, latitudinalMeters: 10000000, longitudinalMeters: 10000000)
+        let region = MKCoordinateRegion(center: center, latitudinalMeters: 3000000, longitudinalMeters: 3000000)
         mainView.mapView.setRegion(region, animated: true)
     }
     

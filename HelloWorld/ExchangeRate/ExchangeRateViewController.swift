@@ -57,15 +57,16 @@ class ExchangeRateViewController: BaseViewController {
             return
         }
         
-        ExchangeRateAPIManager.shared.callRequest(from: String(original), to: String(convert)) { result in
-            guard let result = result else {
-                print("API 호출 결과 오류")
-                return
-            }
-            self.viewModel.exchangeRate = result.exchange_rate
-            print("환율: ", self.viewModel.exchangeRate)
-        }
+//        ExchangeRateAPIManager.shared.callRequest(from: String(original), to: String(convert)) { result in
+//            guard let result = result else {
+//                print("API 호출 결과 오류")
+//                return
+//            }
+//            self.viewModel.exchangeRate = result.exchange_rate
+//            print("환율: ", self.viewModel.exchangeRate)
+//        }
         self.mainView.inputTextField.text = ""
+        self.mainView.inputLabel.text = ""
         self.mainView.resultLabel.text = ""
         mainView.resultView.isHidden = false
     }

@@ -11,6 +11,9 @@ import UIKit
 class AddNewPhotoViewModel {
     
     var isFromAddNewAgendaVC = false
+    var tableID : String?
+    var originalNumberOfPhotos : Int = 0
+    
     var photoList: Observable<[UIImage]> = Observable([])
     var isEditable: Observable<Bool> = Observable(false)
 }
