@@ -303,9 +303,9 @@ class AddNewAgendaViewController: BaseViewController {
                 deleteButton.addAction(UIAction(handler: { _ in
                     
                     switch indexPath.section {
-                    case 1: self.deleteFromToDoList(item: itemIdentifier)
-                    case 2: self.deleteFromCostList(item: itemIdentifier)
-                    case 3: self.deleteFromLinkList(item: itemIdentifier)
+                    case 1: self.viewModel.deleteFromToDoList(item: itemIdentifier)
+                    case 2: self.viewModel.deleteFromCostList(item: itemIdentifier)
+                    case 3: self.viewModel.deleteFromLinkList(item: itemIdentifier)
                     default: print("셀에서 삭제버튼 클릭시 오류")
                     }
                 }), for: .touchUpInside)
@@ -342,33 +342,6 @@ class AddNewAgendaViewController: BaseViewController {
                 return headerView
             }
             return UICollectionReusableView()
-        }
-    }
-    
-    func deleteFromToDoList(item: String) {
-        let arr = viewModel.toDoList.value
-        for i in 0..<arr.count {
-            if arr[i] == item {
-                viewModel.toDoList.value.remove(at: i)
-            }
-        }
-    }
-    
-    func deleteFromCostList(item: String) {
-        let arr = viewModel.costList.value
-        for i in 0..<arr.count {
-            if arr[i] == item {
-                viewModel.costList.value.remove(at: i)
-            }
-        }
-    }
-    
-    func deleteFromLinkList(item: String) {
-        let arr = viewModel.linkList.value
-        for i in 0..<arr.count {
-            if arr[i] == item {
-                viewModel.linkList.value.remove(at: i)
-            }
         }
     }
     

@@ -18,4 +18,16 @@ class ExchangeRateViewModel {
     var convertedMoney: Observable<Double?> = Observable(nil)
     
     var exchangeRate: Double = 1
+    
+    func exchange(originalMoney: Double) -> Double {
+        let convertedMoney = originalMoney * exchangeRate
+        
+        return convertedMoney
+    }
+    
+    func format(for number: Double) -> String {
+        let numberFormat = NumberFormatter()
+        numberFormat.numberStyle = .decimal
+        return numberFormat.string(for: number)!
+    }
 }

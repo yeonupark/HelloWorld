@@ -191,6 +191,15 @@ extension AddPhotoViewController: UICollectionViewDelegate, UICollectionViewData
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = DetailPhotoViewController()
+        vc.detailPhoto = viewModel.photoList.value[indexPath.item]
+        vc.modalPresentationStyle = .overFullScreen
+        
+        present(vc, animated: true)
+        
+    }
+    
     @objc func deleteButtonClicked(sender: UIButton) {
         let index = sender.tag
         viewModel.photoList.value.remove(at: index)

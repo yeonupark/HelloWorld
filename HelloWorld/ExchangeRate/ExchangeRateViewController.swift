@@ -30,12 +30,12 @@ class ExchangeRateViewController: BaseViewController {
             guard let num = money else {
                 return
             }
-            self.mainView.inputLabel.text = self.format(for: Double(num))
-            self.viewModel.convertedMoney.value = self.exchange(originalMoney: Double(num))
+            self.mainView.inputLabel.text = self.viewModel.format(for: Double(num))
+            self.viewModel.convertedMoney.value = self.viewModel.exchange(originalMoney: Double(num))
         }
         viewModel.convertedMoney.bind { money in
             if let num = money {
-                self.mainView.resultLabel.text = self.format(for: num)
+                self.mainView.resultLabel.text = self.viewModel.format(for: num)
             }
         }
         
@@ -70,18 +70,6 @@ class ExchangeRateViewController: BaseViewController {
         self.mainView.resultLabel.text = ""
         mainView.resultView.isHidden = false
     }
-    
-    func exchange(originalMoney: Double) -> Double {
-        let convertedMoney = originalMoney * viewModel.exchangeRate
-        
-        return convertedMoney
-    }
-    
-    func format(for number: Double) -> String {
-            let numberFormat = NumberFormatter()
-            numberFormat.numberStyle = .decimal
-            return numberFormat.string(for: number)!
-        }
 }
 
 extension ExchangeRateViewController: UIPickerViewDelegate, UIPickerViewDataSource {
