@@ -42,5 +42,31 @@ class AddNewAgendaViewModel {
         
         return result
     }
-
+    
+    func deleteFromToDoList(item: String) {
+        let arr = toDoList.value
+        for i in 0..<arr.count {
+            if arr[i] == item {
+                toDoList.value.remove(at: i)
+            }
+        }
+    }
+    
+    func deleteFromCostList(item: String) {
+        let arr = costList.value
+        for i in 0..<arr.count {
+            if arr[i] == item {
+                costList.value.remove(at: i)
+            }
+        }
+    }
+    
+    func deleteFromLinkList(item: String) {
+        let arr = linkList.value
+        for i in 0..<arr.count {
+            if arr[i] == item {
+                linkList.value.remove(at: i)
+            }
+        }
+    }
 }

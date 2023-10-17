@@ -16,4 +16,6 @@ class AddNewPhotoViewModel {
     
     var photoList: Observable<[UIImage]> = Observable([])
     var isEditable: Observable<Bool> = Observable(false)
+    
+    var pngValueList: [Int] = []
 }
