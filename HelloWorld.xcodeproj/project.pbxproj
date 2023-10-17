@@ -32,6 +32,7 @@
 		485990AA2ACBC163006C3D28 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 485990A92ACBC163006C3D28 /* Realm */; };
 		485990AC2ACBC163006C3D28 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 485990AB2ACBC163006C3D28 /* RealmSwift */; };
 		485990F22ACDBC52006C3D28 /* TravelAgendaTableRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485990F12ACDBC52006C3D28 /* TravelAgendaTableRepository.swift */; };
+		488723B32ADED4F800A3A02E /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488723B22ADED4F800A3A02E /* SectionHeaderView.swift */; };
 		48CC05152ACAA7190070D337 /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CC05142ACAA7190070D337 /* AddPhotoViewController.swift */; };
 		48CC05172ACAA7600070D337 /* AddNewPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CC05162ACAA7600070D337 /* AddNewPhotoView.swift */; };
 		48CC05192ACAB99D0070D337 /* AddNewPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CC05182ACAB99D0070D337 /* AddNewPhotoViewModel.swift */; };
@@ -43,7 +44,6 @@
 		48DB9E2A2AD130D90038701C /* AddMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E292AD130D90038701C /* AddMemoViewController.swift */; };
 		48DB9E2D2AD15C990038701C /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 48DB9E2C2AD15C990038701C /* Toast */; };
 		48DB9E322AD1D2640038701C /* ShowAgendaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E312AD1D2640038701C /* ShowAgendaViewController.swift */; };
-		48DB9E342AD1D26F0038701C /* ShowAgendaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E332AD1D26F0038701C /* ShowAgendaView.swift */; };
 		48DB9E362AD1D27B0038701C /* ShowAgendaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E352AD1D27B0038701C /* ShowAgendaViewModel.swift */; };
 		48DB9E392AD4DAB90038701C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E382AD4DAB90038701C /* MapViewController.swift */; };
 		48DB9E3B2AD518580038701C /* MyMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E3A2AD518570038701C /* MyMapView.swift */; };
@@ -110,6 +110,7 @@
 		480C82632ADBC74600613CDB /* ExchangeRateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateViewModel.swift; sourceTree = "<group>"; };
 		485990A62ACBBFE9006C3D28 /* TravelAgendaTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelAgendaTable.swift; sourceTree = "<group>"; };
 		485990F12ACDBC52006C3D28 /* TravelAgendaTableRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelAgendaTableRepository.swift; sourceTree = "<group>"; };
+		488723B22ADED4F800A3A02E /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		48CC05142ACAA7190070D337 /* AddPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
 		48CC05162ACAA7600070D337 /* AddNewPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewPhotoView.swift; sourceTree = "<group>"; };
 		48CC05182ACAB99D0070D337 /* AddNewPhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewPhotoViewModel.swift; sourceTree = "<group>"; };
@@ -120,7 +121,6 @@
 		48DB9E272AD06BB10038701C /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		48DB9E292AD130D90038701C /* AddMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemoViewController.swift; sourceTree = "<group>"; };
 		48DB9E312AD1D2640038701C /* ShowAgendaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAgendaViewController.swift; sourceTree = "<group>"; };
-		48DB9E332AD1D26F0038701C /* ShowAgendaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAgendaView.swift; sourceTree = "<group>"; };
 		48DB9E352AD1D27B0038701C /* ShowAgendaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAgendaViewModel.swift; sourceTree = "<group>"; };
 		48DB9E382AD4DAB90038701C /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		48DB9E3A2AD518570038701C /* MyMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMapView.swift; sourceTree = "<group>"; };
@@ -288,6 +288,7 @@
 				4808A43E2AC52F56005E1190 /* AddNewAgendaViewModel.swift */,
 				48ED6F662AC7AE310068C5E4 /* AddNewAgendaView.swift */,
 				48DB9E292AD130D90038701C /* AddMemoViewController.swift */,
+				488723B22ADED4F800A3A02E /* SectionHeaderView.swift */,
 			);
 			path = AddNewAgenda;
 			sourceTree = "<group>";
@@ -307,7 +308,6 @@
 			isa = PBXGroup;
 			children = (
 				48DB9E312AD1D2640038701C /* ShowAgendaViewController.swift */,
-				48DB9E332AD1D26F0038701C /* ShowAgendaView.swift */,
 				48DB9E352AD1D27B0038701C /* ShowAgendaViewModel.swift */,
 			);
 			path = ShowAgenda;
@@ -508,6 +508,7 @@
 				48DB9E4A2AD6A08D0038701C /* WorldMapViewModel.swift in Sources */,
 				48ED6F672AC7AE310068C5E4 /* AddNewAgendaView.swift in Sources */,
 				48DB9E9E2AD7A8890038701C /* WeatherView.swift in Sources */,
+				488723B32ADED4F800A3A02E /* SectionHeaderView.swift in Sources */,
 				48CC05152ACAA7190070D337 /* AddPhotoViewController.swift in Sources */,
 				48DB9E282AD06BB10038701C /* FileManager.swift in Sources */,
 				4808A3FA2AC40F84005E1190 /* ViewController.swift in Sources */,
@@ -537,7 +538,6 @@
 				480C82602ADBBDE000613CDB /* ExchangeRateViewController.swift in Sources */,
 				48DB9E392AD4DAB90038701C /* MapViewController.swift in Sources */,
 				4808A42E2AC41522005E1190 /* BaseViewController.swift in Sources */,
-				48DB9E342AD1D26F0038701C /* ShowAgendaView.swift in Sources */,
 				48CC05192ACAB99D0070D337 /* AddNewPhotoViewModel.swift in Sources */,
 				480C82642ADBC74600613CDB /* ExchangeRateViewModel.swift in Sources */,
 				48DB9E322AD1D2640038701C /* ShowAgendaViewController.swift in Sources */,

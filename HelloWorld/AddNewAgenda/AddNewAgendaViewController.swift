@@ -264,7 +264,7 @@ class AddNewAgendaViewController: BaseViewController {
     
     private func configureDataSource() {
         
-        mainView.collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SectionHeader")
+        mainView.collectionView.register(SectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SectionHeader")
         
         let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, String>(handler: { cell, indexPath, itemIdentifier in
             
@@ -302,7 +302,7 @@ class AddNewAgendaViewController: BaseViewController {
                 
                 switch indexPath.section {
                 case 1:
-                    deleteButton.addTarget(self, action: #selector(self.deleteTodoListButtonClicekd(sender: )), for: .touchUpInside)
+                    deleteButton.addTarget(self, action: #selector(self.deleteTodoListButtonClicked(sender: )), for: .touchUpInside)
                 case 2:
                     deleteButton.addTarget(self, action: #selector(self.deleteCostListButtonClicked(sender: )), for: .touchUpInside)
                 case 3:
@@ -325,46 +325,29 @@ class AddNewAgendaViewController: BaseViewController {
         dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
             if kind == UICollectionView.elementKindSectionHeader {
                 
-                let headerView = self.mainView.collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeader", for: indexPath)
-                headerView.backgroundColor = UIColor(named: "Orange")
+                guard let headerView = self.mainView.collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeader", for: indexPath) as? SectionHeaderView else {
+                    return UICollectionReusableView()
+                }
                 
                 let section = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
-                let label = UILabel()
-                label.text = "\(section.rawValue)"
-                label.font = UIFont.boldSystemFont(ofSize: 17)
-                label.textColor = UIColor.white
-                //label.translatesAutoresizingMaskIntoConstraints = false
+                headerView.headerLabel.text = "\(section.rawValue)"
                 
-                let addButton = UIButton()
-                addButton.setImage(UIImage(systemName: "plus"), for: .normal)
-                addButton.tag = indexPath.section
-                addButton.tintColor = .white
-                addButton.addTarget(self, action: #selector(self.addButtonClicked(sender: )), for: .touchUpInside)
+                headerView.addSectionButton.tag = indexPath.section
+                headerView.addSectionButton.addTarget(self, action: #selector(self.addButtonClicked(sender:)), for: .touchUpInside)
                 
-                headerView.addSubview(label)
-                headerView.addSubview(addButton)
-                
-                label.snp.makeConstraints { make in
-                    make.edges.equalToSuperview().inset(10)
-                }
-                addButton.snp.makeConstraints { make in
-                    make.top.bottom.equalToSuperview()
-                    make.trailing.equalToSuperview()
-                    make.size.equalTo(headerView.snp.height)
-                }
                 if indexPath.section == 0 {
-                    addButton.setImage(UIImage(systemName: "pencil.circle"), for: .normal)
+                    headerView.addSectionButton.setImage(UIImage(systemName: "pencil.circle"), for: .normal)
+                } else {
+                    headerView.addSectionButton.setImage(UIImage(systemName: "plus"), for: .normal)
                 }
                 return headerView
             }
-            
             return UICollectionReusableView()
         }
-        
     }
     
-    @objc func deleteTodoListButtonClicekd(sender: UIButton) {
-        //print(sender.tag)
+    @objc func deleteTodoListButtonClicked(sender: UIButton) {
+        print(sender.tag)
         viewModel.toDoList.value.remove(at: sender.tag)
     }
     
