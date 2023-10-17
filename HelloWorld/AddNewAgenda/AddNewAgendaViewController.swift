@@ -300,16 +300,15 @@ class AddNewAgendaViewController: BaseViewController {
                 deleteButton.tintColor = .red
                 deleteButton.tag = indexPath.row
                 
-                switch indexPath.section {
-                case 1:
-                    deleteButton.addTarget(self, action: #selector(self.deleteTodoListButtonClicked(sender: )), for: .touchUpInside)
-                case 2:
-                    deleteButton.addTarget(self, action: #selector(self.deleteCostListButtonClicked(sender: )), for: .touchUpInside)
-                case 3:
-                    deleteButton.addTarget(self, action: #selector(self.deleteLinkListButtonClicked(sender: )), for: .touchUpInside)
-                default:
-                    print(" 셀에서 삭제 버튼 클릭 오류 ")
-                }
+                deleteButton.addAction(UIAction(handler: { _ in
+                    
+                    switch indexPath.section {
+                    case 1: self.deleteFromToDoList(item: itemIdentifier)
+                    case 2: self.deleteFromCostList(item: itemIdentifier)
+                    case 3: self.deleteFromLinkList(item: itemIdentifier)
+                    default: print("셀에서 삭제버튼 클릭시 오류")
+                    }
+                }), for: .touchUpInside)
                 
                 cell.contentView.addSubview(deleteButton)
                 deleteButton.snp.makeConstraints { make in
@@ -346,17 +345,31 @@ class AddNewAgendaViewController: BaseViewController {
         }
     }
     
-    @objc func deleteTodoListButtonClicked(sender: UIButton) {
-        print(sender.tag)
-        viewModel.toDoList.value.remove(at: sender.tag)
+    func deleteFromToDoList(item: String) {
+        let arr = viewModel.toDoList.value
+        for i in 0..<arr.count {
+            if arr[i] == item {
+                viewModel.toDoList.value.remove(at: i)
+            }
+        }
     }
     
-    @objc func deleteCostListButtonClicked(sender: UIButton) {
-        viewModel.costList.value.remove(at: sender.tag)
+    func deleteFromCostList(item: String) {
+        let arr = viewModel.costList.value
+        for i in 0..<arr.count {
+            if arr[i] == item {
+                viewModel.costList.value.remove(at: i)
+            }
+        }
     }
     
-    @objc func deleteLinkListButtonClicked(sender: UIButton) {
-        viewModel.linkList.value.remove(at: sender.tag)
+    func deleteFromLinkList(item: String) {
+        let arr = viewModel.linkList.value
+        for i in 0..<arr.count {
+            if arr[i] == item {
+                viewModel.linkList.value.remove(at: i)
+            }
+        }
     }
     
     @objc func addButtonClicked(sender: UIButton) {
