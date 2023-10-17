@@ -221,7 +221,7 @@ class ShowAgendaViewController: BaseViewController {
     
     private func configureDataSource() {
         
-        mainView.collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SectionHeader")
+        mainView.collectionView.register(SectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SectionHeader")
         
         let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, String>(handler: { cell, indexPath, itemIdentifier in
             
@@ -286,24 +286,20 @@ class ShowAgendaViewController: BaseViewController {
         dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
             if kind == UICollectionView.elementKindSectionHeader {
                 
-                let headerView = self.mainView.collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeader", for: indexPath)
-                headerView.backgroundColor = UIColor(named: "Orange")
-                
-                let section = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
-                let label = UILabel()
-                label.text = "\(section.rawValue)"
-                label.font = UIFont.boldSystemFont(ofSize: 17)
-                label.textColor = UIColor.white
-                //label.translatesAutoresizingMaskIntoConstraints = false
-                
-                headerView.addSubview(label)
-                label.snp.makeConstraints { make in
-                    make.edges.equalToSuperview().inset(10)
+                guard let headerView = self.mainView.collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeader", for: indexPath) as? SectionHeaderView else {
+                    return UICollectionReusableView()
                 }
                 
+                let section = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
+                headerView.headerLabel.text = "\(section.rawValue)"
+                
+                headerView.addSectionButton.isHidden = true
+                
+                if indexPath.section == 0 {
+                    headerView.addSectionButton.setImage(UIImage(systemName: "pencil.circle"), for: .normal)
+                }
                 return headerView
             }
-            
             return UICollectionReusableView()
         }
         
