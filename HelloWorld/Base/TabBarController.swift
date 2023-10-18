@@ -11,12 +11,14 @@ class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
         setTabBar()
+        setTapBarFont()
     }
     
     func setTabBar() {
         tabBar.backgroundColor = .white
-        tabBar.tintColor = .systemBlue
+        tabBar.tintColor = Constant.Color.subColor
         tabBar.isTranslucent = false
+        //tabBar.backgroundColor = Constant.Color.mainColor
         
         let agendaTab = UINavigationController(rootViewController: MyTravelViewController())
         let agendaTabBarItem = UITabBarItem(title: "계획", image: UIImage(systemName: "note.text"), tag: 0)
@@ -32,5 +34,13 @@ class TabBarController: UITabBarController {
         
         viewControllers = [agendaTab, worldMapTab, exchangeRateTab]
         
+    }
+    
+    func setTapBarFont() {
+        guard let font = UIFont(name: Constant.FontName.regular, size: 12) else {
+            return
+        }
+        let attributes = [NSAttributedString.Key.font: font]
+        UITabBarItem.appearance().setTitleTextAttributes(attributes, for: .normal)
     }
 }

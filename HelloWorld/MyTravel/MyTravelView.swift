@@ -10,9 +10,19 @@ import UIKit
 
 class MyTravelView: BaseView {
     
+    let backgroundView = {
+        let view = UIImageView()
+        view.image = UIImage(named: "FishImage")
+        view.contentMode = .scaleAspectFill
+        
+        return view
+    }()
+    
     lazy var collectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
         view.register(MyTravelCollectionViewCell.self, forCellWithReuseIdentifier: "MyTravelCollectionViewCell")
+        
+        view.backgroundColor = .clear
         return view
     }()
     
@@ -25,12 +35,15 @@ class MyTravelView: BaseView {
         return layout
     }
     
-    
     override func configure() {
+        addSubview(backgroundView)
         addSubview(collectionView)
     }
     
     override func setConstraints() {
+        backgroundView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }

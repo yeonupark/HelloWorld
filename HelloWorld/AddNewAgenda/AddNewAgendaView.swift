@@ -13,12 +13,15 @@ class AddNewAgendaView: BaseView {
     let startDatetextField = {
         let view = UITextField()
         view.placeholder = "여행 날짜 선택"
+        view.font = UIFont(name: Constant.FontName.regular, size: 15)
+        
         view.tintColor = .clear
         return view
     }()
     
     let endDateLabel = {
         let view = UILabel()
+        view.font = UIFont(name: Constant.FontName.regular, size: 15)
         
         return view
     }()
