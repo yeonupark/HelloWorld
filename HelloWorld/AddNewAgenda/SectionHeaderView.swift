@@ -19,7 +19,7 @@ class SectionHeaderView: UICollectionReusableView {
     
     let headerLabel = {
         let view = UILabel()
-        view.font = UIFont.boldSystemFont(ofSize: 17)
+        view.font = UIFont(name: Constant.FontName.regular, size: 16)! 
         view.textColor = UIColor.white
         view.translatesAutoresizingMaskIntoConstraints = false
         

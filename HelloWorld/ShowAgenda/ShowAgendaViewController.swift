@@ -228,7 +228,7 @@ class ShowAgendaViewController: BaseViewController {
             var content = UIListContentConfiguration.valueCell()
 
             content.text = itemIdentifier
-            content.textProperties.font = .boldSystemFont(ofSize: 15)
+            content.textProperties.font = UIFont(name: Constant.FontName.regular, size: 15)!
             if indexPath.section == 1 {
                 content.image = UIImage(systemName: "checkmark.square")
                 content.imageProperties.tintColor = UIColor(named: "Orange")

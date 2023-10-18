@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4808A3F62AC40F84005E1190 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4808A3F52AC40F84005E1190 /* AppDelegate.swift */; };
 		4808A3F82AC40F84005E1190 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4808A3F72AC40F84005E1190 /* SceneDelegate.swift */; };
-		4808A3FA2AC40F84005E1190 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4808A3F92AC40F84005E1190 /* ViewController.swift */; };
 		4808A3FD2AC40F84005E1190 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4808A3FB2AC40F84005E1190 /* Main.storyboard */; };
 		4808A3FF2AC40F85005E1190 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4808A3FE2AC40F85005E1190 /* Assets.xcassets */; };
 		4808A4022AC40F85005E1190 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4808A4002AC40F85005E1190 /* LaunchScreen.storyboard */; };
@@ -34,6 +33,10 @@
 		485990F22ACDBC52006C3D28 /* TravelAgendaTableRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485990F12ACDBC52006C3D28 /* TravelAgendaTableRepository.swift */; };
 		488723B32ADED4F800A3A02E /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488723B22ADED4F800A3A02E /* SectionHeaderView.swift */; };
 		488723B52ADEE17C00A3A02E /* DetailPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488723B42ADEE17C00A3A02E /* DetailPhotoViewController.swift */; };
+		488723C12AE042A800A3A02E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488723C02AE042A800A3A02E /* Constant.swift */; };
+		488723CF2AE0493D00A3A02E /* NEXON Football Gothic B.otf in Resources */ = {isa = PBXBuildFile; fileRef = 488723CE2AE0493D00A3A02E /* NEXON Football Gothic B.otf */; };
+		488723D82AE04BF900A3A02E /* GimpoGothicBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 488723D62AE04BF900A3A02E /* GimpoGothicBold.otf */; };
+		488723D92AE04BF900A3A02E /* GimpoGothicRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 488723D72AE04BF900A3A02E /* GimpoGothicRegular.otf */; };
 		48CC05152ACAA7190070D337 /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CC05142ACAA7190070D337 /* AddPhotoViewController.swift */; };
 		48CC05172ACAA7600070D337 /* AddNewPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CC05162ACAA7600070D337 /* AddNewPhotoView.swift */; };
 		48CC05192ACAB99D0070D337 /* AddNewPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CC05182ACAB99D0070D337 /* AddNewPhotoViewModel.swift */; };
@@ -88,7 +91,6 @@
 		4808A3F22AC40F84005E1190 /* HelloWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4808A3F52AC40F84005E1190 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4808A3F72AC40F84005E1190 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4808A3F92AC40F84005E1190 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4808A3FC2AC40F84005E1190 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4808A3FE2AC40F85005E1190 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4808A4012AC40F85005E1190 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -113,6 +115,10 @@
 		485990F12ACDBC52006C3D28 /* TravelAgendaTableRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelAgendaTableRepository.swift; sourceTree = "<group>"; };
 		488723B22ADED4F800A3A02E /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		488723B42ADEE17C00A3A02E /* DetailPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPhotoViewController.swift; sourceTree = "<group>"; };
+		488723C02AE042A800A3A02E /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		488723CE2AE0493D00A3A02E /* NEXON Football Gothic B.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NEXON Football Gothic B.otf"; sourceTree = "<group>"; };
+		488723D62AE04BF900A3A02E /* GimpoGothicBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GimpoGothicBold.otf; sourceTree = "<group>"; };
+		488723D72AE04BF900A3A02E /* GimpoGothicRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GimpoGothicRegular.otf; sourceTree = "<group>"; };
 		48CC05142ACAA7190070D337 /* AddPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
 		48CC05162ACAA7600070D337 /* AddNewPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewPhotoView.swift; sourceTree = "<group>"; };
 		48CC05182ACAB99D0070D337 /* AddNewPhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewPhotoViewModel.swift; sourceTree = "<group>"; };
@@ -210,9 +216,11 @@
 				4808A4252AC41153005E1190 /* Base */,
 				4808A3F52AC40F84005E1190 /* AppDelegate.swift */,
 				4808A3F72AC40F84005E1190 /* SceneDelegate.swift */,
-				4808A3F92AC40F84005E1190 /* ViewController.swift */,
 				4808A3FB2AC40F84005E1190 /* Main.storyboard */,
 				4808A3FE2AC40F85005E1190 /* Assets.xcassets */,
+				488723CE2AE0493D00A3A02E /* NEXON Football Gothic B.otf */,
+				488723D62AE04BF900A3A02E /* GimpoGothicBold.otf */,
+				488723D72AE04BF900A3A02E /* GimpoGothicRegular.otf */,
 				4808A4002AC40F85005E1190 /* LaunchScreen.storyboard */,
 				4808A4032AC40F85005E1190 /* Info.plist */,
 				48DB9EA12AD7C01A0038701C /* .gitignore */,
@@ -245,6 +253,7 @@
 				4808A42F2AC4152C005E1190 /* BaseView.swift */,
 				4808A43C2AC52F07005E1190 /* Observable.swift */,
 				48DB9E272AD06BB10038701C /* FileManager.swift */,
+				488723C02AE042A800A3A02E /* Constant.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -477,6 +486,9 @@
 				48DB9EA22AD7C01A0038701C /* .gitignore in Resources */,
 				4808A4022AC40F85005E1190 /* LaunchScreen.storyboard in Resources */,
 				4808A3FF2AC40F85005E1190 /* Assets.xcassets in Resources */,
+				488723D82AE04BF900A3A02E /* GimpoGothicBold.otf in Resources */,
+				488723D92AE04BF900A3A02E /* GimpoGothicRegular.otf in Resources */,
+				488723CF2AE0493D00A3A02E /* NEXON Football Gothic B.otf in Resources */,
 				4808A3FD2AC40F84005E1190 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -514,7 +526,6 @@
 				488723B32ADED4F800A3A02E /* SectionHeaderView.swift in Sources */,
 				48CC05152ACAA7190070D337 /* AddPhotoViewController.swift in Sources */,
 				48DB9E282AD06BB10038701C /* FileManager.swift in Sources */,
-				4808A3FA2AC40F84005E1190 /* ViewController.swift in Sources */,
 				48DB9E362AD1D27B0038701C /* ShowAgendaViewModel.swift in Sources */,
 				48DB9E462AD69E990038701C /* WorldMapViewController.swift in Sources */,
 				4808A4272AC41162005E1190 /* TabBarController.swift in Sources */,
@@ -536,6 +547,7 @@
 				4808A43B2AC52D16005E1190 /* AddNewAgendaViewController.swift in Sources */,
 				48DB9E262ACFDE550038701C /* MyTravelViewModel.swift in Sources */,
 				4808A42C2AC413CD005E1190 /* MyTravelViewController.swift in Sources */,
+				488723C12AE042A800A3A02E /* Constant.swift in Sources */,
 				488723B52ADEE17C00A3A02E /* DetailPhotoViewController.swift in Sources */,
 				48CC051B2ACABD780070D337 /* PhotoCollectionViewCell.swift in Sources */,
 				48DB9EA72AD7C1D90038701C /* APIKeys.swift in Sources */,
@@ -745,6 +757,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.marpark.HelloWorld;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -774,6 +789,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.marpark.HelloWorld;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

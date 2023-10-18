@@ -66,7 +66,7 @@ class MyTravelViewController: BaseViewController {
     
     @objc func addButtonClicked() {
         
-        let alert = UIAlertController(title: "다음 목적지는 어디인가요?", message: "새로운 여행 계획을 추가해보세요", preferredStyle: .alert)
+        let alert = UIAlertController(title: "새로운 여행 계획을 추가해보세요", message: "다음 목적지는 어디인가요?", preferredStyle: .alert)
         alert.addTextField { textField in
             textField.placeholder = "계획 제목 입력"
         }
