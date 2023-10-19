@@ -21,7 +21,7 @@ class WeatherViewController: BaseViewController {
     override func viewDidLoad() {
         
         setLabel()
-        //getWorldTime()
+        getWorldTime()
         getWeather()
         
         mainView.dailyTableView.delegate = self
@@ -35,6 +35,17 @@ class WeatherViewController: BaseViewController {
     }
     
     func getWorldTime() {
+        
+        if viewModel.longitude > 124 && viewModel.longitude < 132 && viewModel.latitude > 33 && viewModel.latitude < 43 {
+//            let date = DateFormatter()
+//            date.locale = Locale(identifier: "Asia/Seoul")
+//            date.timeZone = TimeZone(identifier: "Asia/Seoul")
+//            date.dateFormat = "HH : mm"
+//            self.mainView.timeLabel.text = "\(date)"
+            mainView.timeView.isHidden = true
+            return
+        }
+        
         WorldTimeAPIManager.shared.callRequest(lat: viewModel.latitude, lon: viewModel.longitude) { data in
             self.mainView.dateLabel.text =  data?.date
             guard let hour = data?.hour else { return }
@@ -52,18 +63,13 @@ class WeatherViewController: BaseViewController {
                 let weather = try await WeatherService.shared.weather(for: location)
                 
                 let currentWeather = weather.currentWeather
-                //let temp = currentWeather.temperature.formatted().prefix(5)
-                //mainView.currentTempLabel.text = "\(temp)°C"
-                mainView.currentTempLabel.text = "\(currentWeather.temperature)"
+                let temp = currentWeather.temperature.value
+                mainView.currentTempLabel.text = "\(Int(temp))°C"
                 mainView.currentConditionImage.image = UIImage(systemName: currentWeather.symbolName)
                 
                 let dailyWeather = weather.dailyForecast
                 for day in dailyWeather {
-                    
-                    let str = day.date.formatted()
-                    let start = str.index(str.startIndex, offsetBy: 5)
-                    let end = str.index(str.startIndex, offsetBy: 10)
-                    let date = str.substring(with: start..<end)
+                    let date = viewModel.dateFormat(date: day.date)
                     
                     let data = DailyWeather(date: String(date), conditionSymbol: day.symbolName, highestTemp: "\(day.highTemperature)", lowerstTemp: "\(day.lowTemperature)")
                     viewModel.dailyWeatherList.append(data)
@@ -92,7 +98,7 @@ extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
         let data = viewModel.dailyWeatherList[indexPath.row]
         cell.dateLabel.text = data.date
         cell.symbolImage.image = UIImage(systemName: data.conditionSymbol)
-        cell.tempLabel.text = "\(data.lowerstTemp) / \(data.highestTemp)"
+        cell.tempLabel.text = "\(data.lowerstTemp) - \(data.highestTemp)"
         
         return cell
 

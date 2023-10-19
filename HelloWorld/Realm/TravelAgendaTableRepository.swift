@@ -60,7 +60,7 @@ class TravelAgendaTableRepository: TravelAgendaTableRepositoryType {
         }
     }
     
-    func updateItem(id: RealmSwift.ObjectId, title: String, startDate: Date, endDate: Date, memo: String, numberOfImages: Int, placeName: String, latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+    func updateItem(id: RealmSwift.ObjectId, title: String, startDate: Date, endDate: Date, memo: String, numberOfImages: Int, placeName: String?, latitude: CLLocationDegrees?, longitude: CLLocationDegrees?) {
         
         do {
             try realm.write {

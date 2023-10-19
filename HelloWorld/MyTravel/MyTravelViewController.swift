@@ -45,7 +45,7 @@ class MyTravelViewController: BaseViewController {
     func setNavigationItem() {
         view.backgroundColor = .white
         
-        navigationItem.title = "my travel list"
+        navigationItem.title = "나의 여행 계획"
         
         let editButton = UIBarButtonItem(image: .remove, style: .plain, target: self, action: #selector(editButtonClicked(sender: )))
         let addButton = UIBarButtonItem(image: .add, style: .plain, target: self, action: #selector(addButtonClicked))

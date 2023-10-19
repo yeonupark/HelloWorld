@@ -76,7 +76,7 @@ class AddPhotoViewController: BaseViewController {
         let addButton = UIBarButtonItem(image: UIImage(systemName: "camera"), style: .plain, target: self, action: #selector(addButtonClicked))
         addButton.isHidden = true
         let editButton = UIBarButtonItem(title: "edit", style: .plain, target: self, action: #selector(editButtonClicked(sender: )))
-        
+        editButton.setTitleTextAttributes(Constant.BarButtonAttribute.rightBarButton, for: .normal)
         navigationItem.setRightBarButtonItems([editButton, addButton], animated: true)
         
     }

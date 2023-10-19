@@ -14,6 +14,14 @@ class WeatherViewModel {
     var longitude: Double = 0
     
     var dailyWeatherList: [DailyWeather] = []
+    
+    func dateFormat(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd"
+        let result = dateFormatter.string(from: date)
+        
+        return result
+    }
 }
 
 struct DailyWeather {

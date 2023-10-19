@@ -15,6 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        UIBarButtonItem.appearance().setTitleTextAttributes(Constant.BarButtonAttribute.rightBarButton as [NSAttributedString.Key : Any], for: .normal)
+        UILabel.appearance().font = UIFont(name: Constant.FontName.bold, size: 15)
+        
         let config = Realm.Configuration(schemaVersion: 10) { migration, oldSchemaVersion in
             
             if oldSchemaVersion < 1 { }

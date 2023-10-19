@@ -113,13 +113,13 @@ class AddNewAgendaViewController: BaseViewController {
         let archiveButton = UIBarButtonItem(image: UIImage(systemName: "archivebox"), style: .plain, target: self, action: #selector(archiveButtonClicked))
         
         let saveButton = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(saveButtonClicked))
+        saveButton.setTitleTextAttributes(Constant.BarButtonAttribute.rightBarButton, for: .normal)
         
         if viewModel.isUpdatingView {
             navigationItem.setRightBarButton(saveButton, animated: true)
         } else {
             navigationItem.setRightBarButtonItems([archiveButton, saveButton], animated: true)
         }
-        
     }
     
     @objc func saveButtonClicked() {
@@ -145,11 +145,7 @@ class AddNewAgendaViewController: BaseViewController {
     
     func updateOriginalTable(startDate: Date, endDate: Date, memo: String) {
         
-        guard let name = viewModel.placeName else { return }
-        guard let lat = viewModel.latitude else { return }
-        guard let lon = viewModel.longitude else { return }
-        
-        agendaRepository.updateItem(id: viewModel.originalAgendaTable._id, title: viewModel.originalAgendaTable.title, startDate: startDate, endDate: endDate, memo: memo, numberOfImages: viewModel.originalAgendaTable.numberOfImages, placeName: name, latitude: lat, longitude: lon)
+        agendaRepository.updateItem(id: viewModel.originalAgendaTable._id, title: viewModel.originalAgendaTable.title, startDate: startDate, endDate: endDate, memo: memo, numberOfImages: viewModel.originalAgendaTable.numberOfImages, placeName: viewModel.placeName, latitude: viewModel.latitude, longitude: viewModel.longitude)
         
         let agendaID = viewModel.originalAgendaTable._id.stringValue
         
@@ -162,6 +158,9 @@ class AddNewAgendaViewController: BaseViewController {
         linkRepository.deleteItemFromID(agendaID)
         addLinkTable(agendaID: agendaID)
         
+        guard let name = viewModel.placeName else { return }
+        guard let lat = viewModel.latitude else { return }
+        guard let lon = viewModel.longitude else { return }
         locationRepository.updateItem(id: viewModel.originalAgendaTable._id.stringValue, placeName: name, latitude: lat, longitude: lon)
     }
     

@@ -18,6 +18,12 @@ class WeatherView: BaseView {
         return view
     }()
     
+    let timeView = {
+        let view = UIView()
+        
+        return view
+    }()
+    
     let infoLabel = {
         let view = UILabel()
         view.backgroundColor = UIColor(named: "Orange")
@@ -73,8 +79,13 @@ class WeatherView: BaseView {
     
     override func configure() {
         backgroundColor = .white
-        for item in [placeLabel, infoLabel, dateLabel, timeLabel, currentTempLabel, currentConditionImage, highestTempLabel, lowestTempLabel, dailyTableView] {
+        
+        for item in [timeView, placeLabel, currentTempLabel, currentConditionImage, highestTempLabel, lowestTempLabel, dailyTableView] {
             addSubview(item)
+        }
+        
+        for item in [infoLabel, dateLabel, timeLabel] {
+            timeView.addSubview(item)
         }
     }
     
@@ -84,19 +95,24 @@ class WeatherView: BaseView {
             make.centerX.equalToSuperview()
             make.height.equalTo(40)
         }
-        infoLabel.snp.makeConstraints { make in
+        timeView.snp.makeConstraints { make in
             make.top.equalTo(placeLabel.snp.bottom).offset(20)
             make.trailing.equalToSuperview().inset(30)
+            make.size.equalTo(180)
+        }
+        infoLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(20)
+            make.trailing.equalToSuperview().inset(10)
             make.height.equalTo(30)
         }
         dateLabel.snp.makeConstraints { make in
             make.top.equalTo(infoLabel.snp.bottom).offset(8)
-            make.trailing.equalToSuperview().inset(30)
+            make.trailing.equalToSuperview().inset(10)
             make.height.equalTo(30)
         }
         timeLabel.snp.makeConstraints { make in
             make.top.equalTo(dateLabel.snp.bottom).offset(8)
-            make.trailing.equalToSuperview().inset(30)
+            make.trailing.equalToSuperview().inset(10)
             make.height.equalTo(30)
         }
         currentTempLabel.snp.makeConstraints { make in

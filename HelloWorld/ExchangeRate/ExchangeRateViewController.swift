@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ExchangeRateViewController: BaseViewController {
     
@@ -19,23 +20,33 @@ class ExchangeRateViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel.originalCurrency.bind { value in
-            self.mainView.originalLabel.text = value
+        viewModel.originalNation.bind { value in
+            guard let value = value else { return }
+            self.mainView.originalLabel.text = "\(value.nation) \(value.currency)"
+            
+            let url = URL(string: "https://flagcdn.com/w80/\(value.code).jpg")
+            self.mainView.originalFlag.kf.setImage(with: url)
         }
-        viewModel.convertedCurrency.bind { value in
-            self.mainView.convertedLabel.text = value
+        viewModel.convertedNation.bind { value in
+            guard let value = value else { return }
+            self.mainView.convertedLabel.text = "\(value.nation) \(value.currency)"
+            
+            let url = URL(string: "https://flagcdn.com/w80/\(value.code).jpg")
+            self.mainView.convertedFlag.kf.setImage(with: url)
         }
         
         viewModel.originalMoney.bind { money in
             guard let num = money else {
                 return
             }
-            self.mainView.inputLabel.text = self.viewModel.format(for: Double(num))
+            guard let unit = self.viewModel.originalNation.value?.unit else { return }
+            self.mainView.inputLabel.text = "\(self.viewModel.format(for: Double(num))) \(unit)"
             self.viewModel.convertedMoney.value = self.viewModel.exchange(originalMoney: Double(num))
         }
         viewModel.convertedMoney.bind { money in
             if let num = money {
-                self.mainView.resultLabel.text = self.viewModel.format(for: num)
+                guard let unit = self.viewModel.convertedNation.value?.unit else { return }
+                self.mainView.resultLabel.text = "\(self.viewModel.format(for: num)) \(unit)"
             }
         }
         
@@ -50,10 +61,10 @@ class ExchangeRateViewController: BaseViewController {
     @objc func convertButtonClicked() {
         mainView.endEditing(true)
         
-        guard let original = viewModel.originalCurrency.value?.prefix(3) else {
+        guard let original = viewModel.originalNation.value?.currency else {
             return
         }
-        guard let convert = viewModel.convertedCurrency.value?.prefix(3) else {
+        guard let convert = viewModel.convertedNation.value?.nation else {
             return
         }
         
@@ -70,6 +81,11 @@ class ExchangeRateViewController: BaseViewController {
         self.mainView.resultLabel.text = ""
         mainView.resultView.isHidden = false
     }
+    
+    func uploadImage(countryCode: String) {
+        let url = URL(string: "")
+        mainView.originalFlag.kf.setImage(with: url)
+    }
 }
 
 extension ExchangeRateViewController: UIPickerViewDelegate, UIPickerViewDataSource {
@@ -81,20 +97,21 @@ extension ExchangeRateViewController: UIPickerViewDelegate, UIPickerViewDataSour
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
-        return viewModel.currencyList.count
+        return viewModel.nationList.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
-        return viewModel.currencyList[row]
+        return viewModel.nationList[row].nation
+        //return viewModel.currencyList[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         if component == 0 {
-            viewModel.originalCurrency.value = viewModel.currencyList[row]
+            viewModel.originalNation.value = viewModel.nationList[row]
         } else {
-            viewModel.convertedCurrency.value = viewModel.currencyList[row]
+            viewModel.convertedNation.value = viewModel.nationList[row]
         }
     }
 }
@@ -106,7 +123,6 @@ extension ExchangeRateViewController: UITextFieldDelegate {
             return
         }
         if text == "" {
-            print("오예")
             self.mainView.inputLabel.text = nil
             self.mainView.resultLabel.text = nil
         }
