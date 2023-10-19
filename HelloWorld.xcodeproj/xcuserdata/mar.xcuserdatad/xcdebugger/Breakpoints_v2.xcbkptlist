@@ -30,8 +30,8 @@
             filePath = "HelloWorld/AddNewAgenda/AddNewAgendaViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "267"
-            endingLineNumber = "267"
+            startingLineNumber = "266"
+            endingLineNumber = "266"
             landmarkName = "configureDataSource()"
             landmarkType = "7">
          </BreakpointContent>

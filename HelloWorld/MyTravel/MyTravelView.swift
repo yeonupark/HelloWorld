@@ -13,6 +13,7 @@ class MyTravelView: BaseView {
     let backgroundView = {
         let view = UIImageView()
         view.image = UIImage(named: "FishImage")
+        view.layer.opacity = 0.7
         view.contentMode = .scaleAspectFill
         
         return view

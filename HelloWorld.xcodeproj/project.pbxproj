@@ -37,6 +37,7 @@
 		488723CF2AE0493D00A3A02E /* NEXON Football Gothic B.otf in Resources */ = {isa = PBXBuildFile; fileRef = 488723CE2AE0493D00A3A02E /* NEXON Football Gothic B.otf */; };
 		488723D82AE04BF900A3A02E /* GimpoGothicBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 488723D62AE04BF900A3A02E /* GimpoGothicBold.otf */; };
 		488723D92AE04BF900A3A02E /* GimpoGothicRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 488723D72AE04BF900A3A02E /* GimpoGothicRegular.otf */; };
+		488723DE2AE103A600A3A02E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 488723DD2AE103A600A3A02E /* Kingfisher */; };
 		48CC05152ACAA7190070D337 /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CC05142ACAA7190070D337 /* AddPhotoViewController.swift */; };
 		48CC05172ACAA7600070D337 /* AddNewPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CC05162ACAA7600070D337 /* AddNewPhotoView.swift */; };
 		48CC05192ACAB99D0070D337 /* AddNewPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CC05182ACAB99D0070D337 /* AddNewPhotoViewModel.swift */; };
@@ -155,6 +156,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				488723DE2AE103A600A3A02E /* Kingfisher in Frameworks */,
 				48DB9EAC2AD7C7550038701C /* Alamofire in Frameworks */,
 				48DB9E2D2AD15C990038701C /* Toast in Frameworks */,
 				485990AC2ACBC163006C3D28 /* RealmSwift in Frameworks */,
@@ -388,6 +390,7 @@
 				485990AB2ACBC163006C3D28 /* RealmSwift */,
 				48DB9E2C2AD15C990038701C /* Toast */,
 				48DB9EAB2AD7C7550038701C /* Alamofire */,
+				488723DD2AE103A600A3A02E /* Kingfisher */,
 			);
 			productName = HelloWorld;
 			productReference = 4808A3F22AC40F84005E1190 /* HelloWorld.app */;
@@ -466,6 +469,7 @@
 				485990A82ACBC0BC006C3D28 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				48DB9E2B2AD15C990038701C /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				48DB9EAA2AD7C7550038701C /* XCRemoteSwiftPackageReference "Alamofire" */,
+				488723DC2AE103A600A3A02E /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 4808A3F32AC40F84005E1190 /* Products */;
 			projectDirPath = "";
@@ -932,6 +936,14 @@
 				kind = branch;
 			};
 		};
+		488723DC2AE103A600A3A02E /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.9.1;
+			};
+		};
 		48DB9E2B2AD15C990038701C /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
@@ -965,6 +977,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 485990A82ACBC0BC006C3D28 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		488723DD2AE103A600A3A02E /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 488723DC2AE103A600A3A02E /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 		48DB9E2C2AD15C990038701C /* Toast */ = {
 			isa = XCSwiftPackageProductDependency;

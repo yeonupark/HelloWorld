@@ -50,7 +50,6 @@ class WeatherTableViewCell: UITableViewCell {
         dateLabel.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
             make.leading.equalToSuperview().inset(8)
-            
         }
         symbolImage.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()

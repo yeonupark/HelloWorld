@@ -13,7 +13,7 @@ class ExchangeRateView: BaseView {
         let view = UITextField()
         view.text = "통화 선택하기"
         view.textColor = .systemBlue
-        view.font = .boldSystemFont(ofSize: 17)
+        view.font = UIFont(name: Constant.FontName.regular, size: 16)
         view.tintColor = .clear
         
         return view
@@ -41,21 +41,19 @@ class ExchangeRateView: BaseView {
     let originalLabel = {
         let view = UILabel()
         view.numberOfLines = 0
-        view.font = .boldSystemFont(ofSize: 15)
         return view
     }()
     
     let convertedLabel = {
         let view = UILabel()
         view.numberOfLines = 0
-        view.font = .boldSystemFont(ofSize: 15)
         return view
     }()
     
     let resultView = {
         let view = UIView()
         view.layer.cornerRadius = 10
-        view.backgroundColor = UIColor(named: "MainColor")
+        view.backgroundColor = UIColor(named: "SkyBlue")
         
         return view
     }()
@@ -71,7 +69,7 @@ class ExchangeRateView: BaseView {
         let view = UITextField()
         view.placeholder = "금액 입력"
         view.keyboardType = .numberPad
-        view.font = .boldSystemFont(ofSize: 17)
+        view.font = UIFont(name: Constant.FontName.regular, size: 15)
         view.tintColor = .clear
         view.textColor = .clear
         return view
@@ -79,15 +77,25 @@ class ExchangeRateView: BaseView {
     
     let inputLabel = {
         let view = UILabel()
-        view.font = .boldSystemFont(ofSize: 17)
         view.numberOfLines = 0
         return view
     }()
     
     let resultLabel = {
         let view = UILabel()
-        view.font = .boldSystemFont(ofSize: 17)
         view.numberOfLines = 0
+        return view
+    }()
+    
+    let originalFlag = {
+        let view = UIImageView()
+        
+        return view
+    }()
+    
+    let convertedFlag = {
+        let view = UIImageView()
+        
         return view
     }()
     
@@ -98,7 +106,7 @@ class ExchangeRateView: BaseView {
             addSubview(item)
         }
         
-        for item in [resultArrowImage, inputTextField, inputLabel, resultLabel] {
+        for item in [resultArrowImage, inputTextField, inputLabel, resultLabel, originalFlag, convertedFlag] {
             resultView.addSubview(item)
         }
     }
@@ -155,6 +163,19 @@ class ExchangeRateView: BaseView {
             make.centerY.equalToSuperview()
             make.leading.equalTo(resultArrowImage.snp.trailing).offset(20)
             make.trailing.equalToSuperview().inset(12)
+        }
+        
+        originalFlag.snp.makeConstraints { make in
+            make.top.equalTo(resultView.snp.top).inset(20)
+            make.leading.equalTo(inputLabel.snp.leading).inset(4)
+            make.width.equalTo(30)
+            make.height.equalTo(20)
+        }
+        convertedFlag.snp.makeConstraints { make in
+            make.top.equalTo(resultView.snp.top).inset(20)
+            make.leading.equalTo(resultLabel.snp.leading)
+            make.width.equalTo(30)
+            make.height.equalTo(20)
         }
     }
 }
