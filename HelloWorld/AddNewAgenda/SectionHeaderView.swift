@@ -12,7 +12,7 @@ class SectionHeaderView: UICollectionReusableView {
     
     let headerView = {
         let view = UICollectionReusableView()
-        view.backgroundColor = UIColor(named: "Orange")
+        view.backgroundColor = Constant.Color.tableColor
         
         return view
     }()

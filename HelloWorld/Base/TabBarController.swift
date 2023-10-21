@@ -15,10 +15,10 @@ class TabBarController: UITabBarController {
     }
     
     func setTabBar() {
-        tabBar.backgroundColor = .white
+        
         tabBar.tintColor = Constant.Color.subColor
-        tabBar.isTranslucent = false
-        //tabBar.backgroundColor = Constant.Color.mainColor
+        tabBar.isTranslucent = true
+        tabBar.backgroundColor = Constant.Color.backgroundColor
         
         let agendaTab = UINavigationController(rootViewController: MyTravelViewController())
         let agendaTabBarItem = UITabBarItem(title: "계획", image: UIImage(systemName: "note.text"), tag: 0)

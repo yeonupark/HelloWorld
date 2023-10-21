@@ -94,12 +94,22 @@ extension MyTravelViewController: UICollectionViewDelegate, UICollectionViewData
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return viewModel.myTravelAgendas.value.count
+        return viewModel.myTravelAgendas.value.isEmpty ? 1 : viewModel.myTravelAgendas.value.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = mainView.collectionView.dequeueReusableCell(withReuseIdentifier: "MyTravelCollectionViewCell", for: indexPath) as? MyTravelCollectionViewCell else { return UICollectionViewCell() }
+        
+        cell.deleteButton.isHidden = !(viewModel.isEditable.value)
+        
+        if viewModel.myTravelAgendas.value.isEmpty {
+            cell.deleteButton.isHidden = true
+            cell.dateLabel.text?.removeAll()
+            cell.titleLabel.text = "아직 여행 계획이 없습니다. \n계획을 추가해보세요! 🪂 "
+            cell.titleLabel.font = UIFont(name: Constant.FontName.regular, size: 18)
+            return cell
+        }
         
         let startDate = viewModel.dateFormat(date: viewModel.myTravelAgendas.value[indexPath.row].startDate)
         cell.dateLabel.text = startDate
@@ -110,8 +120,7 @@ extension MyTravelViewController: UICollectionViewDelegate, UICollectionViewData
         }
         
         cell.titleLabel.text = viewModel.myTravelAgendas.value[indexPath.row].title
-        
-        cell.deleteButton.isHidden = !(viewModel.isEditable.value)
+        cell.titleLabel.font = UIFont(name: Constant.FontName.bold, size: 34)
         
         if viewModel.isEditable.value {
             cell.deleteButton.tag = indexPath.row

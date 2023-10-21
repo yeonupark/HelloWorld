@@ -26,6 +26,10 @@ class ExchangeRateViewController: BaseViewController {
             
             let url = URL(string: "https://flagcdn.com/w80/\(value.code).jpg")
             self.mainView.originalFlag.kf.setImage(with: url)
+    
+            if self.viewModel.originalMoney.value != nil {
+                self.resetInput()
+            }
         }
         viewModel.convertedNation.bind { value in
             guard let value = value else { return }
@@ -33,6 +37,10 @@ class ExchangeRateViewController: BaseViewController {
             
             let url = URL(string: "https://flagcdn.com/w80/\(value.code).jpg")
             self.mainView.convertedFlag.kf.setImage(with: url)
+            
+            if self.viewModel.originalMoney.value != nil {
+                self.resetInput()
+            }
         }
         
         viewModel.originalMoney.bind { money in
@@ -56,6 +64,27 @@ class ExchangeRateViewController: BaseViewController {
         mainView.inputTextField.delegate = self
         mainView.resultView.isHidden = true
         
+        startSetting()
+    }
+    
+    func startSetting() {
+        viewModel.originalNation.value = viewModel.nationList[12]
+        viewModel.convertedNation.value = viewModel.nationList[0]
+        
+        guard let original = viewModel.originalNation.value else { return }
+        mainView.originalLabel.text = "\(original.nation) \(original.currency)"
+        guard let convert = viewModel.convertedNation.value else { return }
+        mainView.convertedLabel.text = "\(convert.nation) \(convert.currency)"
+    }
+    
+    func resetInput() {
+        
+        viewModel.originalMoney.value = nil
+        viewModel.convertedMoney.value = nil
+        
+        self.mainView.inputLabel.text?.removeAll()
+        self.mainView.resultLabel.text?.removeAll()
+        self.mainView.exchangeRateLabel.text?.removeAll()
     }
     
     @objc func convertButtonClicked() {
@@ -64,22 +93,22 @@ class ExchangeRateViewController: BaseViewController {
         guard let original = viewModel.originalNation.value?.currency else {
             return
         }
-        guard let convert = viewModel.convertedNation.value?.nation else {
+        guard let convert = viewModel.convertedNation.value?.currency else {
             return
         }
-        
-//        ExchangeRateAPIManager.shared.callRequest(from: String(original), to: String(convert)) { result in
-//            guard let result = result else {
-//                print("API 호출 결과 오류")
-//                return
-//            }
-//            self.viewModel.exchangeRate = result.exchange_rate
-//            print("환율: ", self.viewModel.exchangeRate)
-//        }
-        self.mainView.inputTextField.text = ""
-        self.mainView.inputLabel.text = ""
-        self.mainView.resultLabel.text = ""
+        ExchangeRateAPIManager.shared.callRequest(from: String(original), to: String(convert)) { result in
+            guard let result = result else {
+                print("API 호출 결과 오류")
+                return
+            }
+            self.viewModel.exchangeRate = result.exchange_rate
+            self.mainView.exchangeRateLabel.text = "환율: \(self.viewModel.exchangeRate)"
+        }
+        self.mainView.inputTextField.text?.removeAll()
+        self.mainView.inputLabel.text?.removeAll()
+        self.mainView.resultLabel.text?.removeAll()
         mainView.resultView.isHidden = false
+        
     }
     
     func uploadImage(countryCode: String) {
@@ -103,7 +132,6 @@ extension ExchangeRateViewController: UIPickerViewDelegate, UIPickerViewDataSour
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
         return viewModel.nationList[row].nation
-        //return viewModel.currencyList[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -114,6 +142,7 @@ extension ExchangeRateViewController: UIPickerViewDelegate, UIPickerViewDataSour
             viewModel.convertedNation.value = viewModel.nationList[row]
         }
     }
+    
 }
 
 extension ExchangeRateViewController: UITextFieldDelegate {

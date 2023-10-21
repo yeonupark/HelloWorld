@@ -53,7 +53,7 @@ class AddNewAgendaViewController: BaseViewController {
                 self.mainView.startDatetextField.text = result
                 self.mainView.endDateLabel.text?.removeAll()
             }
-            if dateList.count > 1 {
+            if dateList.count > 1 && dateList[0] != dateList[1] {
                 let result = self.viewModel.dateFormat(date: dateList[1])
                 self.mainView.endDateLabel.text = "-    \(result)"
             }
@@ -227,11 +227,6 @@ class AddNewAgendaViewController: BaseViewController {
     @objc func getDate(sender: UIDatePicker) {
         let date = sender.date
         
-        // 1. 아예 처음 선택한 경우
-        // 2. 두번째 잘 선택한 경우
-        // 3. 첫번째보다 먼저 날짜의 두번째를 선택한 경우 -> 리셋
-        // 4. 두개 이미 잘 들어가 있는데 다시 날짜 선택하는 경우
-        
         if viewModel.dateList.value.isEmpty {
             viewModel.dateList.value.append(date)
         } else if viewModel.dateList.value.count == 1 && viewModel.dateList.value[0] < date {
@@ -273,7 +268,7 @@ class AddNewAgendaViewController: BaseViewController {
             content.textProperties.font = UIFont(name: Constant.FontName.regular, size: 15)! 
             if indexPath.section == 1 {
                 content.image = UIImage(systemName: "checkmark.square")
-                content.imageProperties.tintColor = UIColor(named: "Orange")
+                content.imageProperties.tintColor = Constant.Color.tableColor
             }
             
             cell.contentConfiguration = content
@@ -282,7 +277,7 @@ class AddNewAgendaViewController: BaseViewController {
             backgroundConfig.backgroundColor = .white
             //backgroundConfig.cornerRadius = 10
             backgroundConfig.strokeWidth = 1
-            backgroundConfig.strokeColor = UIColor(named: "Orange")
+            backgroundConfig.strokeColor = Constant.Color.tableColor
             cell.backgroundConfiguration = backgroundConfig
             
             

@@ -40,7 +40,7 @@ class WeatherTableViewCell: UITableViewCell {
     }
     
     func configure() {
-        contentView.backgroundColor = UIColor(named: "MainColor")
+        contentView.backgroundColor = Constant.Color.backgroundColor
         for item in [dateLabel, symbolImage, tempLabel] {
             contentView.addSubview(item)
         }
@@ -52,13 +52,13 @@ class WeatherTableViewCell: UITableViewCell {
             make.leading.equalToSuperview().inset(8)
         }
         symbolImage.snp.makeConstraints { make in
-            make.top.bottom.equalToSuperview()
-            make.leading.equalToSuperview().inset(110)
-            make.size.equalTo(25)
+            make.top.bottom.equalToSuperview().inset(4)
+            make.leading.equalToSuperview().inset(95)
+            make.width.equalTo(30)
         }
         tempLabel.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
-            make.leading.equalTo(symbolImage.snp.trailing).offset(20)
+            make.leading.equalTo(symbolImage.snp.trailing).offset(30)
         }
     }
 }
