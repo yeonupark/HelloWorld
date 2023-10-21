@@ -13,7 +13,7 @@ class MyTravelCollectionViewCell: UICollectionViewCell {
         let view = UIView()
         view.layer.cornerRadius = 20
         view.clipsToBounds = true
-        view.backgroundColor = Constant.Color.mainColor
+        view.backgroundColor = Constant.Color.backgroundColor
         view.layer.opacity = 100
        
         return view
@@ -21,19 +21,13 @@ class MyTravelCollectionViewCell: UICollectionViewCell {
     
     let dateLabel = {
         let view = UILabel()
-//        view.layer.cornerRadius = 5
-//        view.clipsToBounds = true
-        //view.backgroundColor = UIColor(named: "Orange")
-        view.textColor = .black
         view.font = UIFont(name: Constant.FontName.bold, size: 15)
         return view
     }()
     
     let titleLabel = {
         let view = UILabel()
-        view.font = UIFont(name: Constant.FontName.bold, size: 34)
         view.textAlignment = .center
-        view.textColor = .black
         view.numberOfLines = 0
         return view
     }()

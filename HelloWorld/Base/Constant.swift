@@ -15,8 +15,10 @@ enum Constant {
     }
     
     enum Color {
-        static let mainColor = UIColor(named: "MainColor")
-        static let subColor = UIColor(named: "StarFishColor")
+        static let backgroundColor = UIColor(named: "ClearWhite")
+        static let subColor = UIColor(named: "Navy")
+        static let titleColor = UIColor(named: "Charcoal")
+        static let tableColor = UIColor(named: "Mandarin")
     }
     
     enum BarButtonAttribute {

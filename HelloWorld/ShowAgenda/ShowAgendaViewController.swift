@@ -100,6 +100,8 @@ class ShowAgendaViewController: BaseViewController {
         
         if endDate != startDate {
             mainView.endDateLabel.text = "-    \(viewModel.dateFormat(date: endDate))"
+        } else {
+            mainView.endDateLabel.text = ""
         }
     }
     
@@ -113,6 +115,7 @@ class ShowAgendaViewController: BaseViewController {
         viewModel.costList.value = fetchCostList(id: id)
         viewModel.linkList.value = fetchLinkList(id: id)
         
+        viewModel.dateList.value.removeAll()
         viewModel.dateList.value.append(viewModel.travelAgendaTable.startDate)
         viewModel.dateList.value.append(viewModel.travelAgendaTable.endDate)
     }
@@ -232,7 +235,7 @@ class ShowAgendaViewController: BaseViewController {
             content.textProperties.font = UIFont(name: Constant.FontName.regular, size: 15)!
             if indexPath.section == 1 {
                 content.image = UIImage(systemName: "checkmark.square")
-                content.imageProperties.tintColor = UIColor(named: "Orange")
+                content.imageProperties.tintColor = Constant.Color.tableColor
             }
             if indexPath.section == 3 {
                 content.textProperties.color = .clear
@@ -244,7 +247,7 @@ class ShowAgendaViewController: BaseViewController {
             backgroundConfig.backgroundColor = .white
             //backgroundConfig.cornerRadius = 10
             backgroundConfig.strokeWidth = 1
-            backgroundConfig.strokeColor = UIColor(named: "Orange")
+            backgroundConfig.strokeColor = Constant.Color.tableColor
             cell.backgroundConfiguration = backgroundConfig
             
             
@@ -271,7 +274,7 @@ class ShowAgendaViewController: BaseViewController {
             if indexPath.section == 3 {
                 let textField = UITextView()
                 textField.text = itemIdentifier
-                textField.font = .boldSystemFont(ofSize: 15)
+                textField.font = UIFont(name: Constant.FontName.regular, size: 15)
                 textField.isEditable = false
                 
                 cell.contentView.addSubview(textField)

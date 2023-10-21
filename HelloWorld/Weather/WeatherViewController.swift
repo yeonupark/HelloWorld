@@ -98,8 +98,7 @@ extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
         let data = viewModel.dailyWeatherList[indexPath.row]
         cell.dateLabel.text = data.date
         cell.symbolImage.image = UIImage(systemName: data.conditionSymbol)
-        cell.tempLabel.text = "\(data.lowerstTemp) - \(data.highestTemp)"
-        
+        cell.tempLabel.text = "\(data.lowerstTemp)  ~  \(data.highestTemp)"
         return cell
 
     }

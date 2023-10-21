@@ -57,8 +57,8 @@ class WorldMapViewController: BaseViewController {
             let lon = table.longitude
             
             let annotation = MKPointAnnotation()
-            annotation.title = name
             annotation.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+            annotation.title = name
             mainView.mapView.addAnnotation(annotation)
         }
     }
@@ -75,4 +75,22 @@ extension WorldMapViewController: MKMapViewDelegate {
         
         present(vc, animated: true)
     }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+           
+           let reuseIdentifier = "customAnnotationView"
+           var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier)
+           
+           if annotationView == nil {
+               annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
+               
+           } else {
+               annotationView?.annotation = annotation
+           }
+           
+           annotationView?.image = UIImage(named: "MandarinMarker")
+           annotationView?.frame.size = CGSize(width: 90, height: 90)
+           return annotationView
+       }
 }
+
