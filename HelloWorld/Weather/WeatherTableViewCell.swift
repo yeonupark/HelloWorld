@@ -18,7 +18,6 @@ class WeatherTableViewCell: UITableViewCell {
     
     let symbolImage = {
         let view = UIImageView()
-        view.tintColor = .black
         return view
     }()
     
@@ -52,9 +51,9 @@ class WeatherTableViewCell: UITableViewCell {
             make.leading.equalToSuperview().inset(8)
         }
         symbolImage.snp.makeConstraints { make in
-            make.top.bottom.equalToSuperview().inset(4)
-            make.leading.equalToSuperview().inset(95)
-            make.width.equalTo(30)
+            make.top.bottom.equalToSuperview()
+            make.leading.equalToSuperview().inset(90)
+            make.width.equalTo(40)
         }
         tempLabel.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()

@@ -14,14 +14,13 @@ class MyTravelCollectionViewCell: UICollectionViewCell {
         view.layer.cornerRadius = 20
         view.clipsToBounds = true
         view.backgroundColor = Constant.Color.backgroundColor
-        view.layer.opacity = 100
-       
+        
         return view
     }()
     
     let dateLabel = {
         let view = UILabel()
-        view.font = UIFont(name: Constant.FontName.bold, size: 15)
+        view.font = UIFont(name: Constant.FontName.regular, size: 15)
         return view
     }()
     

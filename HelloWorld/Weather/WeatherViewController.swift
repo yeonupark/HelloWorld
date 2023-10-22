@@ -65,8 +65,7 @@ class WeatherViewController: BaseViewController {
                 let currentWeather = weather.currentWeather
                 let temp = currentWeather.temperature.value
                 mainView.currentTempLabel.text = "\(Int(temp))°C"
-                mainView.currentConditionImage.image = UIImage(systemName: currentWeather.symbolName)
-                
+                mainView.currentConditionImage.image = UIImage(named: currentWeather.symbolName)
                 let dailyWeather = weather.dailyForecast
                 for day in dailyWeather {
                     let date = viewModel.dateFormat(date: day.date)
@@ -97,7 +96,7 @@ extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
         
         let data = viewModel.dailyWeatherList[indexPath.row]
         cell.dateLabel.text = data.date
-        cell.symbolImage.image = UIImage(systemName: data.conditionSymbol)
+        cell.symbolImage.image = UIImage(named: data.conditionSymbol)
         cell.tempLabel.text = "\(data.lowerstTemp)  ~  \(data.highestTemp)"
         return cell
 

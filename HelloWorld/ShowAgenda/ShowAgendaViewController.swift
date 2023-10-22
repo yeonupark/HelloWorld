@@ -165,7 +165,7 @@ class ShowAgendaViewController: BaseViewController {
     func setNavigationBar() {
         let archiveButton = UIBarButtonItem(image: UIImage(systemName: "archivebox"), style: .plain, target: self, action: #selector(archiveButtonClicked))
         
-        let editButton = UIBarButtonItem(title: "edit", style: .plain, target: self, action: #selector(editButtonClicked(sender: )))
+        let editButton = UIBarButtonItem(title: "수정", style: .plain, target: self, action: #selector(editButtonClicked(sender: )))
         editButton.setTitleTextAttributes(Constant.BarButtonAttribute.rightBarButton, for: .normal)
         
         navigationItem.setRightBarButtonItems([archiveButton, editButton], animated: true)

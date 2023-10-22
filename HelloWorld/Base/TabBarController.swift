@@ -20,16 +20,23 @@ class TabBarController: UITabBarController {
         tabBar.isTranslucent = true
         tabBar.backgroundColor = Constant.Color.backgroundColor
         
+        
+        let agendaTabBarItem = UITabBarItem(title: "계획", image: resizeImage(image: UIImage(named: "NoteImage")!, targetSize: CGSize(width: 30, height: 30)), tag: 0)
+        let worldMapTabBarItem = UITabBarItem(title: "날씨 및 시간", image: resizeImage(image: UIImage(named: "EarthImage")!, targetSize: CGSize(width: 30, height: 30)), tag: 1)
+        let exchangeRateTabBarItem = UITabBarItem(title: "환율 계산", image: resizeImage(image: UIImage(named: "DollarImage")!, targetSize: CGSize(width: 30, height: 30)), tag: 2)
+        
+        for item in [agendaTabBarItem, worldMapTabBarItem, exchangeRateTabBarItem] {
+            item.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: 15)
+            item.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: -20, right: 0)
+        }
+        
         let agendaTab = UINavigationController(rootViewController: MyTravelViewController())
-        let agendaTabBarItem = UITabBarItem(title: "계획", image: UIImage(systemName: "note.text"), tag: 0)
         agendaTab.tabBarItem = agendaTabBarItem
         
         let worldMapTab = UINavigationController(rootViewController: WorldMapViewController())
-        let worldMapTabBarItem = UITabBarItem(title: "날씨 및 시간", image: UIImage(systemName: "globe.asia.australia.fill"), tag: 1)
         worldMapTab.tabBarItem = worldMapTabBarItem
         
         let exchangeRateTab = UINavigationController(rootViewController: ExchangeRateViewController())
-        let exchangeRateTabBarItem = UITabBarItem(title: "환율 계산", image: UIImage(systemName: "dollarsign.arrow.circlepath"), tag: 2)
         exchangeRateTab.tabBarItem = exchangeRateTabBarItem
         
         viewControllers = [agendaTab, worldMapTab, exchangeRateTab]
@@ -43,4 +50,13 @@ class TabBarController: UITabBarController {
         let attributes = [NSAttributedString.Key.font: font]
         UITabBarItem.appearance().setTitleTextAttributes(attributes, for: .normal)
     }
+    
+    func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
+        let renderer = UIGraphicsImageRenderer(size: targetSize)
+        let resizedImage = renderer.image { (context) in
+            image.draw(in: CGRect(origin: .zero, size: targetSize))
+        }
+        return resizedImage.withRenderingMode(image.renderingMode)
+    }
+
 }

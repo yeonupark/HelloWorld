@@ -60,7 +60,8 @@ class WeatherView: BaseView {
     
     let currentConditionImage = {
         let view = UIImageView()
-        view.tintColor = .black
+        view.layer.cornerRadius = 25
+        view.clipsToBounds = true
         return view
     }()
     
