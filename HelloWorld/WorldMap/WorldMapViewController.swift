@@ -89,7 +89,7 @@ extension WorldMapViewController: MKMapViewDelegate {
            }
            
            annotationView?.image = UIImage(named: "MandarinMarker")
-           annotationView?.frame.size = CGSize(width: 90, height: 90)
+           annotationView?.frame.size = CGSize(width: 50, height: 50)
            return annotationView
        }
 }

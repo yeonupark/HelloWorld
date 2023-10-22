@@ -65,6 +65,14 @@ class ExchangeRateViewController: BaseViewController {
         mainView.resultView.isHidden = true
         
         startSetting()
+        
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        mainView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     func startSetting() {

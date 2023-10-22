@@ -71,6 +71,13 @@ class AddNewAgendaViewController: BaseViewController {
         mainView.mapClickButton.addTarget(self, action: #selector(mapButtonClicked), for: .touchUpInside)
         //agendaRepository.printRealmLocation()
         agendaRepository.checkSchemaVersion()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        mainView.mapView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     func setMap() {

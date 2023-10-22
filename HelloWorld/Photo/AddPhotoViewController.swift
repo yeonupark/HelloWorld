@@ -75,7 +75,7 @@ class AddPhotoViewController: BaseViewController {
     func setNavigationBar() {
         let addButton = UIBarButtonItem(image: UIImage(systemName: "camera"), style: .plain, target: self, action: #selector(addButtonClicked))
         addButton.isHidden = true
-        let editButton = UIBarButtonItem(title: "edit", style: .plain, target: self, action: #selector(editButtonClicked(sender: )))
+        let editButton = UIBarButtonItem(title: "수정", style: .plain, target: self, action: #selector(editButtonClicked(sender: )))
         editButton.setTitleTextAttributes(Constant.BarButtonAttribute.rightBarButton, for: .normal)
         navigationItem.setRightBarButtonItems([editButton, addButton], animated: true)
         
@@ -84,11 +84,11 @@ class AddPhotoViewController: BaseViewController {
     @objc func editButtonClicked(sender: UIBarButtonItem) {
         if viewModel.isEditable.value {
             saveImages()
-            sender.title = "edit"
+            sender.title = "수정"
             viewModel.isEditable.value = false
             navigationItem.rightBarButtonItems![1].isHidden = true
         } else {
-            sender.title = "done"
+            sender.title = "완료"
             viewModel.isEditable.value = true
             navigationItem.rightBarButtonItems![1].isHidden = false
         }
