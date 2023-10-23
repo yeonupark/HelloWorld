@@ -130,6 +130,11 @@ extension MyTravelViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if viewModel.myTravelAgendas.value.isEmpty {
+            return
+        }
+        
         let table = viewModel.myTravelAgendas.value[indexPath.item]
         let vc = ShowAgendaViewController()
         
