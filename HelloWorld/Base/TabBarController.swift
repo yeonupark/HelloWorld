@@ -15,19 +15,24 @@ class TabBarController: UITabBarController {
     }
     
     func setTabBar() {
+        let customTabBar = CustomTabBar()
         
-        tabBar.tintColor = Constant.Color.subColor
-        tabBar.isTranslucent = true
-        tabBar.backgroundColor = Constant.Color.backgroundColor
-        
+        customTabBar.tintColor = Constant.Color.subColor
+        customTabBar.isTranslucent = true
+        customTabBar.backgroundColor = Constant.Color.backgroundColor
         
         let agendaTabBarItem = UITabBarItem(title: "계획", image: resizeImage(image: UIImage(named: "NoteImage")!, targetSize: CGSize(width: 30, height: 30)), tag: 0)
         let worldMapTabBarItem = UITabBarItem(title: "날씨 및 시간", image: resizeImage(image: UIImage(named: "EarthImage")!, targetSize: CGSize(width: 30, height: 30)), tag: 1)
         let exchangeRateTabBarItem = UITabBarItem(title: "환율 계산", image: resizeImage(image: UIImage(named: "DollarImage")!, targetSize: CGSize(width: 30, height: 30)), tag: 2)
         
         for item in [agendaTabBarItem, worldMapTabBarItem, exchangeRateTabBarItem] {
-            item.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: 15)
-            item.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: -20, right: 0)
+            if UIScreen.main.bounds.height <= 667 {
+                item.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -10)
+                item.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            } else {
+                item.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: 20)
+                item.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: -25, right: 0)
+            }
         }
         
         let agendaTab = UINavigationController(rootViewController: MyTravelViewController())
@@ -41,6 +46,7 @@ class TabBarController: UITabBarController {
         
         viewControllers = [agendaTab, worldMapTab, exchangeRateTab]
         
+        self.setValue(customTabBar, forKey: "tabBar")
     }
     
     func setTapBarFont() {
@@ -59,4 +65,12 @@ class TabBarController: UITabBarController {
         return resizedImage.withRenderingMode(image.renderingMode)
     }
 
+}
+
+class CustomTabBar: UITabBar {
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        var sizeThatFits = super.sizeThatFits(size)
+        sizeThatFits.height = 75
+        return sizeThatFits
+    }
 }
