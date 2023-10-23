@@ -70,14 +70,14 @@ class WeatherViewController: BaseViewController {
                 for day in dailyWeather {
                     let date = viewModel.dateFormat(date: day.date)
                     
-                    let data = DailyWeather(date: String(date), conditionSymbol: day.symbolName, highestTemp: "\(day.highTemperature)", lowerstTemp: "\(day.lowTemperature)")
+                    let data = DailyWeather(date: String(date), conditionSymbol: day.symbolName, highestTemp: "\(Int(day.highTemperature.value))°C", lowerstTemp: "\(Int(day.lowTemperature.value))°C")
                     viewModel.dailyWeatherList.append(data)
                 }
                 
                 mainView.dailyTableView.reloadData()
                 
             } catch {
-                print(error)
+                print(error.localizedDescription)
             }
         }
         
