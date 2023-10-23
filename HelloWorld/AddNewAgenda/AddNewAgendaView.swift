@@ -37,7 +37,6 @@ class AddNewAgendaView: BaseView {
     
     let mapView = {
         let view = MKMapView()
-        //view.isZoomEnabled = true
         
         return view
     }()

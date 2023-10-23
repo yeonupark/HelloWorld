@@ -193,7 +193,6 @@ class ShowAgendaViewController: BaseViewController {
     @objc func archiveButtonClicked() {
         let vc = AddPhotoViewController()
         vc.title = "저장된 사진"
-        //navigationItem.backButtonTitle = "저장"
         vc.completionHandler = { images in
             self.viewModel.savedImages = images
             self.agendaRepository.updateNumberOfImages(id: self.viewModel.travelAgendaTable._id, numberOfImages: images.count)
@@ -245,7 +244,6 @@ class ShowAgendaViewController: BaseViewController {
             
             var backgroundConfig = UIBackgroundConfiguration.listPlainCell()
             backgroundConfig.backgroundColor = .white
-            //backgroundConfig.cornerRadius = 10
             backgroundConfig.strokeWidth = 1
             backgroundConfig.strokeColor = Constant.Color.tableColor
             cell.backgroundConfiguration = backgroundConfig
@@ -256,20 +254,6 @@ class ShowAgendaViewController: BaseViewController {
         dataSource = UICollectionViewDiffableDataSource<Section, String>(collectionView: mainView.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             
             let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
-            
-//            if indexPath.section == 1 {
-//                let checkButton = UIButton()
-//                checkButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
-//                checkButton.tintColor = UIColor(named: "Orange")
-//                checkButton.addTarget(self, action: #selector(self.checkButtonClicked(sender: )), for: .touchUpInside)
-//                
-//                cell.contentView.addSubview(checkButton)
-//                checkButton.snp.makeConstraints { make in
-//                    make.top.bottom.equalToSuperview()
-//                    make.leading.equalToSuperview().inset(10)
-//                    make.size.equalTo(30)
-//                }
-//            }
             
             if indexPath.section == 3 {
                 let textField = UITextView()
@@ -308,10 +292,6 @@ class ShowAgendaViewController: BaseViewController {
         }
         
     }
-    
-//    @objc func checkButtonClicked(sender: UIButton) {
-//        print("클릭")
-//    }
 }
 
 extension ShowAgendaViewController: UICollectionViewDelegate {

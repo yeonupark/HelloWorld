@@ -2,36 +2,23 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>GimpoGothicRegular.otf</string>
 		<string>GimpoGothicBold.otf</string>
 	</array>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>계획에 추가할 사진을 불러오기 위해서는 갤러리 접근을 허용해야 해요</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationPreferredDefaultSceneSessionRole</key>
 		<string>UIWindowSceneSessionRoleApplication</string>
-		<key>UIApplicationSupportsTabbedSceneCollection</key>
-		<false/>
 		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+		<key>UIApplicationSupportsTabbedSceneCollection</key>
 		<false/>
 		<key>UISceneConfigurations</key>
 		<dict>
-			<key>UIWindowSceneSessionRoleExternalDisplayNonInteractive</key>
-			<array>
-				<dict>
-					<key>UISceneClassName</key>
-					<string></string>
-					<key>UISceneDelegateClassName</key>
-					<string></string>
-					<key>UISceneConfigurationName</key>
-					<string></string>
-					<key>UISceneStoryboardFile</key>
-					<string></string>
-				</dict>
-			</array>
 			<key>UIWindowSceneSessionRoleApplication</key>
 			<array>
 				<dict>

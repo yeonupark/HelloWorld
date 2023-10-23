@@ -33,7 +33,6 @@ class AddMemoViewController: BaseViewController {
     let okButton = {
         let view = UIButton()
         view.setImage(UIImage(systemName: "checkmark"), for: .normal)
-        //view.setTitle("ok", for: .normal)
         view.addTarget(self, action: #selector(okButtonClicked), for: .touchUpInside)
         
         return view
