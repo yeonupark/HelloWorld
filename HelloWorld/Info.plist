@@ -9,6 +9,8 @@
 		<string>GimpoGothicRegular.otf</string>
 		<string>GimpoGothicBold.otf</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>여행 계획에 추가할 사진을 불러오기 위해서는 갤러리 접근을 허용해야 해요</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationPreferredDefaultSceneSessionRole</key>
