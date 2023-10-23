@@ -37,11 +37,6 @@ class WeatherViewController: BaseViewController {
     func getWorldTime() {
         
         if viewModel.longitude > 124 && viewModel.longitude < 132 && viewModel.latitude > 33 && viewModel.latitude < 43 {
-//            let date = DateFormatter()
-//            date.locale = Locale(identifier: "Asia/Seoul")
-//            date.timeZone = TimeZone(identifier: "Asia/Seoul")
-//            date.dateFormat = "HH : mm"
-//            self.mainView.timeLabel.text = "\(date)"
             mainView.timeView.isHidden = true
             return
         }

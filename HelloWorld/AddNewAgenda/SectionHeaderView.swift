@@ -28,7 +28,6 @@ class SectionHeaderView: UICollectionReusableView {
     
     let addSectionButton = {
         let view = UIButton()
-        //view.setImage(UIImage(systemName: "plus"), for: .normal)
         view.tintColor = .white
         
         return view

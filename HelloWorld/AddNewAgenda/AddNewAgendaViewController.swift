@@ -69,8 +69,6 @@ class AddNewAgendaViewController: BaseViewController {
         mainView.collectionView.delegate = self
         mainView.datePickerView.addTarget(self, action: #selector(getDate(sender: )), for: .valueChanged)
         mainView.mapClickButton.addTarget(self, action: #selector(mapButtonClicked), for: .touchUpInside)
-        //agendaRepository.printRealmLocation()
-        agendaRepository.checkSchemaVersion()
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         mainView.mapView.addGestureRecognizer(tapGesture)
@@ -282,7 +280,6 @@ class AddNewAgendaViewController: BaseViewController {
             
             var backgroundConfig = UIBackgroundConfiguration.listPlainCell()
             backgroundConfig.backgroundColor = .white
-            //backgroundConfig.cornerRadius = 10
             backgroundConfig.strokeWidth = 1
             backgroundConfig.strokeColor = Constant.Color.tableColor
             cell.backgroundConfiguration = backgroundConfig

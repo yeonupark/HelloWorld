@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4808A3F62AC40F84005E1190 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4808A3F52AC40F84005E1190 /* AppDelegate.swift */; };
 		4808A3F82AC40F84005E1190 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4808A3F72AC40F84005E1190 /* SceneDelegate.swift */; };
-		4808A3FD2AC40F84005E1190 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4808A3FB2AC40F84005E1190 /* Main.storyboard */; };
 		4808A3FF2AC40F85005E1190 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4808A3FE2AC40F85005E1190 /* Assets.xcassets */; };
 		4808A4022AC40F85005E1190 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4808A4002AC40F85005E1190 /* LaunchScreen.storyboard */; };
 		4808A40D2AC40F85005E1190 /* HelloWorldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4808A40C2AC40F85005E1190 /* HelloWorldTests.swift */; };
@@ -37,6 +36,9 @@
 		488723D82AE04BF900A3A02E /* GimpoGothicBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 488723D62AE04BF900A3A02E /* GimpoGothicBold.otf */; };
 		488723D92AE04BF900A3A02E /* GimpoGothicRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 488723D72AE04BF900A3A02E /* GimpoGothicRegular.otf */; };
 		488723DE2AE103A600A3A02E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 488723DD2AE103A600A3A02E /* Kingfisher */; };
+		48BB292A2AE6621700065691 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48BB29292AE6621700065691 /* GoogleService-Info.plist */; };
+		48BB292D2AE662AC00065691 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 48BB292C2AE662AC00065691 /* FirebaseAnalytics */; };
+		48BB292F2AE662AC00065691 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 48BB292E2AE662AC00065691 /* FirebaseCrashlytics */; };
 		48CC05152ACAA7190070D337 /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CC05142ACAA7190070D337 /* AddPhotoViewController.swift */; };
 		48CC05172ACAA7600070D337 /* AddNewPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CC05162ACAA7600070D337 /* AddNewPhotoView.swift */; };
 		48CC05192ACAB99D0070D337 /* AddNewPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CC05182ACAB99D0070D337 /* AddNewPhotoViewModel.swift */; };
@@ -91,7 +93,6 @@
 		4808A3F22AC40F84005E1190 /* HelloWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4808A3F52AC40F84005E1190 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4808A3F72AC40F84005E1190 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4808A3FC2AC40F84005E1190 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4808A3FE2AC40F85005E1190 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4808A4012AC40F85005E1190 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4808A4032AC40F85005E1190 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -118,6 +119,7 @@
 		488723C02AE042A800A3A02E /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		488723D62AE04BF900A3A02E /* GimpoGothicBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GimpoGothicBold.otf; sourceTree = "<group>"; };
 		488723D72AE04BF900A3A02E /* GimpoGothicRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GimpoGothicRegular.otf; sourceTree = "<group>"; };
+		48BB29292AE6621700065691 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		48CC05142ACAA7190070D337 /* AddPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
 		48CC05162ACAA7600070D337 /* AddNewPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewPhotoView.swift; sourceTree = "<group>"; };
 		48CC05182ACAB99D0070D337 /* AddNewPhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewPhotoViewModel.swift; sourceTree = "<group>"; };
@@ -154,10 +156,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48BB292D2AE662AC00065691 /* FirebaseAnalytics in Frameworks */,
 				488723DE2AE103A600A3A02E /* Kingfisher in Frameworks */,
 				48DB9EAC2AD7C7550038701C /* Alamofire in Frameworks */,
 				48DB9E2D2AD15C990038701C /* Toast in Frameworks */,
 				485990AC2ACBC163006C3D28 /* RealmSwift in Frameworks */,
+				48BB292F2AE662AC00065691 /* FirebaseCrashlytics in Frameworks */,
 				485990AA2ACBC163006C3D28 /* Realm in Frameworks */,
 				4808A4392AC43144005E1190 /* SnapKit in Frameworks */,
 			);
@@ -216,11 +220,11 @@
 				4808A4252AC41153005E1190 /* Base */,
 				4808A3F52AC40F84005E1190 /* AppDelegate.swift */,
 				4808A3F72AC40F84005E1190 /* SceneDelegate.swift */,
-				4808A3FB2AC40F84005E1190 /* Main.storyboard */,
 				4808A3FE2AC40F85005E1190 /* Assets.xcassets */,
 				488723D62AE04BF900A3A02E /* GimpoGothicBold.otf */,
 				488723D72AE04BF900A3A02E /* GimpoGothicRegular.otf */,
 				4808A4002AC40F85005E1190 /* LaunchScreen.storyboard */,
+				48BB29292AE6621700065691 /* GoogleService-Info.plist */,
 				4808A4032AC40F85005E1190 /* Info.plist */,
 				48DB9EA12AD7C01A0038701C /* .gitignore */,
 			);
@@ -375,6 +379,7 @@
 				4808A3EE2AC40F84005E1190 /* Sources */,
 				4808A3EF2AC40F84005E1190 /* Frameworks */,
 				4808A3F02AC40F84005E1190 /* Resources */,
+				48BB29302AE6656F00065691 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -388,6 +393,8 @@
 				48DB9E2C2AD15C990038701C /* Toast */,
 				48DB9EAB2AD7C7550038701C /* Alamofire */,
 				488723DD2AE103A600A3A02E /* Kingfisher */,
+				48BB292C2AE662AC00065691 /* FirebaseAnalytics */,
+				48BB292E2AE662AC00065691 /* FirebaseCrashlytics */,
 			);
 			productName = HelloWorld;
 			productReference = 4808A3F22AC40F84005E1190 /* HelloWorld.app */;
@@ -467,6 +474,7 @@
 				48DB9E2B2AD15C990038701C /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				48DB9EAA2AD7C7550038701C /* XCRemoteSwiftPackageReference "Alamofire" */,
 				488723DC2AE103A600A3A02E /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				48BB292B2AE662AC00065691 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 4808A3F32AC40F84005E1190 /* Products */;
 			projectDirPath = "";
@@ -485,11 +493,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				48DB9EA22AD7C01A0038701C /* .gitignore in Resources */,
+				48BB292A2AE6621700065691 /* GoogleService-Info.plist in Resources */,
 				4808A4022AC40F85005E1190 /* LaunchScreen.storyboard in Resources */,
 				4808A3FF2AC40F85005E1190 /* Assets.xcassets in Resources */,
 				488723D82AE04BF900A3A02E /* GimpoGothicBold.otf in Resources */,
 				488723D92AE04BF900A3A02E /* GimpoGothicRegular.otf in Resources */,
-				4808A3FD2AC40F84005E1190 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,6 +516,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		48BB29302AE6656F00065691 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
+				"$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4808A3EE2AC40F84005E1190 /* Sources */ = {
@@ -596,14 +629,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		4808A3FB2AC40F84005E1190 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4808A3FC2AC40F84005E1190 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		4808A4002AC40F85005E1190 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -742,15 +767,18 @@
 				CODE_SIGN_ENTITLEMENTS = HelloWorld/HelloWorld.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = A8NKCBCXX2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HelloWorld/Info.plist;
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진을 불러오기 위해서는 갤러리 접근을 허용해야 해요";
+				INFOPLIST_KEY_CFBundleDisplayName = Tripish;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "계획에 추가할 사진을 불러오기 위해서는 갤러리 접근을 허용해야 해요";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -763,7 +791,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -778,12 +806,14 @@
 				DEVELOPMENT_TEAM = A8NKCBCXX2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HelloWorld/Info.plist;
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진을 불러오기 위해서는 갤러리 접근을 허용해야 해요";
+				INFOPLIST_KEY_CFBundleDisplayName = Tripish;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "계획에 추가할 사진을 불러오기 위해서는 갤러리 접근을 허용해야 해요";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -796,7 +826,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -942,6 +972,14 @@
 				minimumVersion = 7.9.1;
 			};
 		};
+		48BB292B2AE662AC00065691 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.16.0;
+			};
+		};
 		48DB9E2B2AD15C990038701C /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
@@ -980,6 +1018,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 488723DC2AE103A600A3A02E /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		48BB292C2AE662AC00065691 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48BB292B2AE662AC00065691 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		48BB292E2AE662AC00065691 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48BB292B2AE662AC00065691 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
 		};
 		48DB9E2C2AD15C990038701C /* Toast */ = {
 			isa = XCSwiftPackageProductDependency;

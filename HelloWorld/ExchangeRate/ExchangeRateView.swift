@@ -11,7 +11,6 @@ class ExchangeRateView: BaseView {
     
     let backView = {
         let view = UIImageView()
-        //view.image = UIImage(named: "WaterImage")
         view.layer.opacity = 0.7
         
         return view
@@ -79,14 +78,7 @@ class ExchangeRateView: BaseView {
         
         return view
     }()
-    
-//    let resultArrowImage = {
-//        let view = UIImageView()
-//        view.image = UIImage(systemName: "arrow.forward.circle")
-//        view.tintColor = Constant.Color.subColor
-//        return view
-//    }()
-    
+
     let inputTextField = {
         let view = UITextField()
         view.placeholder = "금액 입력"
@@ -183,11 +175,6 @@ class ExchangeRateView: BaseView {
             make.horizontalEdges.equalToSuperview().inset(40)
             make.height.equalTo(150)
         }
-        
-//        resultArrowImage.snp.makeConstraints { make in
-//            make.center.equalToSuperview()
-//            make.size.equalTo(40)
-//        }
         inputTextField.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.leading.equalToSuperview().inset(12)
