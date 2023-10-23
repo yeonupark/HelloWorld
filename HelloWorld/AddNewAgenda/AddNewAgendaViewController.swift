@@ -130,7 +130,7 @@ class AddNewAgendaViewController: BaseViewController {
     @objc func saveButtonClicked() {
 
         guard let startDate = viewModel.dateList.value.first else {
-            let alert = UIAlertController(title: "여행 날짜를 설정해주세요", message: "", preferredStyle: .alert)
+            let alert = UIAlertController(title: "여행 날짜를 설정해주세요!", message: "", preferredStyle: .alert)
             let ok = UIAlertAction(title: "확인", style: .default)
             alert.addAction(ok)
             present(alert, animated: true)
