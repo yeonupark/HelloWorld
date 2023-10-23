@@ -81,7 +81,7 @@ class ExchangeRateView: BaseView {
 
     let inputTextField = {
         let view = UITextField()
-        view.placeholder = "금액 입력"
+        view.attributedPlaceholder = NSAttributedString(string: "금액 입력", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
         view.keyboardType = .numberPad
         view.font = UIFont(name: Constant.FontName.regular, size: 15)
         view.tintColor = .clear
