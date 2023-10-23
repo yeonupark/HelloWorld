@@ -48,16 +48,16 @@ class WeatherTableViewCell: UITableViewCell {
     func setConstraints() {
         dateLabel.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
-            make.leading.equalToSuperview().inset(8)
+            make.leading.equalToSuperview().inset(20)
         }
         symbolImage.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
-            make.leading.equalToSuperview().inset(90)
+            make.leading.equalToSuperview().inset(120)
             make.width.equalTo(40)
         }
         tempLabel.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
-            make.leading.equalTo(symbolImage.snp.trailing).offset(30)
+            make.leading.equalTo(symbolImage.snp.trailing).offset(45)
         }
     }
 }

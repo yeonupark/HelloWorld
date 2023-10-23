@@ -193,7 +193,7 @@ class ShowAgendaViewController: BaseViewController {
     @objc func archiveButtonClicked() {
         let vc = AddPhotoViewController()
         vc.title = "저장된 사진"
-        navigationItem.backButtonTitle = "저장"
+        //navigationItem.backButtonTitle = "저장"
         vc.completionHandler = { images in
             self.viewModel.savedImages = images
             self.agendaRepository.updateNumberOfImages(id: self.viewModel.travelAgendaTable._id, numberOfImages: images.count)
