@@ -28,6 +28,15 @@ class WeatherViewController: BaseViewController {
         mainView.dailyTableView.dataSource = self
         mainView.dailyTableView.rowHeight = 40
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openWebsite))
+        mainView.weatherSourceLabel.addGestureRecognizer(tapGesture)
+        mainView.weatherSourceLabel.isUserInteractionEnabled = true
+    }
+            
+    @objc func openWebsite() {
+        if let url = URL(string: "https://developer.apple.com/weatherkit/data-source-attribution/") {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
     
     func setLabel() {
