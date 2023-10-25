@@ -85,12 +85,29 @@ class WeatherView: BaseView {
         return view
     }()
     
+    let weatherSourceLabel = {
+        let view = UILabel()
+        view.text = "WeatherKit Data Sources"
+        view.font = UIFont(name: Constant.FontName.regular, size: 13)
+        view.textColor = Constant.Color.subColor
+        
+        return view
+    }()
+    
+    let weatherSourceIcon = {
+        let view = UILabel()
+        view.text = " "
+        view.font = .boldSystemFont(ofSize: 24)
+        
+        return view
+    }()
+    
     override func configure() {
         backgroundColor = .white
         
         addSubview(backView)
         
-        for item in [timeView, placeLabel, currentTempLabel, currentConditionImage, highestTempLabel, lowestTempLabel, dailyTableView] {
+        for item in [timeView, placeLabel, currentTempLabel, currentConditionImage, highestTempLabel, lowestTempLabel, dailyTableView, weatherSourceIcon, weatherSourceLabel] {
             addSubview(item)
         }
         
@@ -141,7 +158,17 @@ class WeatherView: BaseView {
         dailyTableView.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview().inset(30)
             make.top.equalTo(currentTempLabel.snp.bottom).offset(30)
-            make.height.equalTo(400)
+            make.height.equalTo(430)
+        }
+        weatherSourceIcon.snp.makeConstraints { make in
+            make.bottom.equalTo(dailyTableView.snp.bottom)
+            make.size.equalTo(30)
+            make.trailing.equalTo(dailyTableView).inset(8)
+        }
+        weatherSourceLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(dailyTableView.snp.bottom)
+            make.height.equalTo(30)
+            make.trailing.equalTo(weatherSourceIcon.snp.leading)
         }
     }
 }
