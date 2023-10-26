@@ -40,6 +40,8 @@ class WeatherTableViewCell: UITableViewCell {
     
     func configure() {
         contentView.backgroundColor = Constant.Color.backgroundColor
+        selectionStyle = .none
+        
         for item in [dateLabel, symbolImage, tempLabel] {
             contentView.addSubview(item)
         }

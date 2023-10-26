@@ -19,34 +19,48 @@ class MyTravelView: BaseView {
         return view
     }()
     
-    lazy var collectionView = {
-        let view = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
-        view.register(MyTravelCollectionViewCell.self, forCellWithReuseIdentifier: "MyTravelCollectionViewCell")
+    let tableView = {
+        let view = UITableView()
+        view.register(MyTravelTableViewCell.self, forCellReuseIdentifier: "MyTravelTableViewCell")
         
         view.backgroundColor = .clear
         return view
     }()
     
-    private func collectionViewLayout() -> UICollectionViewFlowLayout {
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 8
-        layout.minimumInteritemSpacing = 8
-        let size = UIScreen.main.bounds.width - 16
-        layout.itemSize = CGSize(width: size, height: size/1.5)
-        return layout
-    }
+    let addButton = {
+        let view = UIButton()
+        view.setTitle("+", for: .normal)
+        view.titleLabel?.font = UIFont(name: Constant.FontName.regular, size: 25)
+        view.titleLabel?.textColor = .white
+        view.backgroundColor = Constant.Color.subColor
+        view.layer.cornerRadius = 25
+        
+        view.clipsToBounds = true
+        view.layer.shadowColor = Constant.Color.titleColor?.cgColor
+        view.layer.shadowOpacity = 1.0
+        view.layer.shadowRadius = 25
+        view.layer.shadowOffset = CGSize.zero
+        
+        return view
+    }()
     
     override func configure() {
         addSubview(backgroundView)
-        addSubview(collectionView)
+        addSubview(tableView)        
+        addSubview(addButton)
     }
     
     override func setConstraints() {
         backgroundView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        collectionView.snp.makeConstraints { make in
+        tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+        }
+        addButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(25)
+            make.bottom.equalToSuperview().inset(100)
+            make.size.equalTo(50)
         }
     }
 }

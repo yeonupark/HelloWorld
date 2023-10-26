@@ -84,7 +84,7 @@ extension MapViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = viewModel.searchedResults.value[indexPath.row]
-        
+        cell.backgroundColor = .white
         return cell
     }
     

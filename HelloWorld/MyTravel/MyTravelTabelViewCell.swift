@@ -1,13 +1,13 @@
 //
-//  MyTravelCollectionViewCell.swift
+//  MyTravelTabelViewCell.swift
 //  HelloWorld
 //
-//  Created by Yeonu Park on 2023/10/06.
+//  Created by Yeonu Park on 2023/10/26.
 //
 
 import UIKit
 
-class MyTravelCollectionViewCell: UICollectionViewCell {
+class MyTravelTableViewCell: UITableViewCell {
     
     let backView = {
         let view = UIView()
@@ -31,15 +31,8 @@ class MyTravelCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
-    let deleteButton = {
-        let view = UIButton()
-        view.setImage(UIImage(systemName: "minus.circle.fill"), for: .normal)
-        view.tintColor = .red
-        return view
-    }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         configure()
         setConstraints()
@@ -49,11 +42,13 @@ class MyTravelCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     func configure() {
         contentView.addSubview(backView)
+        selectionStyle = .none
+        
         backView.addSubview(dateLabel)
         backView.addSubview(titleLabel)
-        backView.addSubview(deleteButton)
     }
     
     func setConstraints() {
@@ -67,10 +62,6 @@ class MyTravelCollectionViewCell: UICollectionViewCell {
         dateLabel.snp.makeConstraints { make in
             make.top.leading.equalToSuperview().inset(16)
             make.height.equalTo(30)
-        }
-        deleteButton.snp.makeConstraints { make in
-            make.top.trailing.equalToSuperview().inset(16)
-            make.size.equalTo(30)
         }
     }
 
