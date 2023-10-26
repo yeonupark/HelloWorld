@@ -27,9 +27,7 @@ class ExchangeRateViewController: BaseViewController {
             let url = URL(string: "https://flagcdn.com/w80/\(value.code).jpg")
             self.mainView.originalFlag.kf.setImage(with: url)
     
-            if self.viewModel.originalMoney.value != nil {
-                self.resetInput()
-            }
+            self.resetInput()
         }
         viewModel.convertedNation.bind { value in
             guard let value = value else { return }
@@ -38,9 +36,7 @@ class ExchangeRateViewController: BaseViewController {
             let url = URL(string: "https://flagcdn.com/w80/\(value.code).jpg")
             self.mainView.convertedFlag.kf.setImage(with: url)
             
-            if self.viewModel.originalMoney.value != nil {
-                self.resetInput()
-            }
+            self.resetInput()
         }
         
         viewModel.originalMoney.bind { money in

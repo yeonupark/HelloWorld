@@ -34,6 +34,7 @@ class AddMemoViewController: BaseViewController {
         let view = UIButton()
         view.setImage(UIImage(systemName: "checkmark"), for: .normal)
         view.addTarget(self, action: #selector(okButtonClicked), for: .touchUpInside)
+        view.tintColor = Constant.Color.subColor
         
         return view
     }()
@@ -47,6 +48,8 @@ class AddMemoViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        textView.becomeFirstResponder()
     }
     
     override func configure() {
@@ -61,8 +64,8 @@ class AddMemoViewController: BaseViewController {
             make.verticalEdges.equalToSuperview().inset(200)
         }
         okButton.snp.makeConstraints { make in
-            make.top.trailing.equalToSuperview().inset(8)
-            make.size.equalTo(20)
+            make.top.trailing.equalToSuperview().inset(10)
+            make.size.equalTo(25)
         }
         textView.snp.makeConstraints { make in
             make.top.equalTo(okButton.snp.bottom)

@@ -26,15 +26,17 @@ class MyTravelViewController: BaseViewController {
         super.viewDidLoad()
         
         setNavigationItem()
-        mainView.collectionView.delegate = self
-        mainView.collectionView.dataSource = self
+        
+        mainView.tableView.delegate = self
+        mainView.tableView.dataSource = self
+        mainView.tableView.rowHeight = (UIScreen.main.bounds.width - 16) / 1.5
+        mainView.tableView.separatorColor = .clear
         
         viewModel.myTravelAgendas.bind { _ in
-            self.mainView.collectionView.reloadData()
+            self.mainView.tableView.reloadData()
         }
-        viewModel.isEditable.bind { _ in
-            self.mainView.collectionView.reloadData()
-        }
+        
+        mainView.addButton.addTarget(self, action: #selector(addButtonClicked), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,25 +45,7 @@ class MyTravelViewController: BaseViewController {
     }
     
     func setNavigationItem() {
-        view.backgroundColor = .white
-        
         navigationItem.title = "나의 여행 계획"
-        
-        let editButton = UIBarButtonItem(image: .remove, style: .plain, target: self, action: #selector(editButtonClicked(sender: )))
-        let addButton = UIBarButtonItem(image: .add, style: .plain, target: self, action: #selector(addButtonClicked))
-        
-        navigationItem.setLeftBarButton(editButton, animated: true)
-        navigationItem.setRightBarButton(addButton, animated: true)
-    }
-    
-    @objc func editButtonClicked(sender: UIBarButtonItem) {
-        if viewModel.isEditable.value {
-            sender.image = .remove
-            viewModel.isEditable.value = false
-        } else {
-            sender.image = UIImage(systemName: "checkmark.circle.fill")
-            viewModel.isEditable.value = true
-        }
     }
     
     @objc func addButtonClicked() {
@@ -90,21 +74,18 @@ class MyTravelViewController: BaseViewController {
     }
 }
 
-extension MyTravelViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+extension MyTravelViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return viewModel.myTravelAgendas.value.isEmpty ? 1 : viewModel.myTravelAgendas.value.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = mainView.collectionView.dequeueReusableCell(withReuseIdentifier: "MyTravelCollectionViewCell", for: indexPath) as? MyTravelCollectionViewCell else { return UICollectionViewCell() }
-        
-        cell.deleteButton.isHidden = !(viewModel.isEditable.value)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MyTravelTableViewCell", for: indexPath) as? MyTravelTableViewCell else { return UITableViewCell() }
         
         if viewModel.myTravelAgendas.value.isEmpty {
-            cell.deleteButton.isHidden = true
             cell.dateLabel.text?.removeAll()
             cell.titleLabel.text = "아직 여행 계획이 없습니다. \n계획을 추가해보세요! 🪂 "
             cell.titleLabel.font = UIFont(name: Constant.FontName.regular, size: 18)
@@ -122,16 +103,13 @@ extension MyTravelViewController: UICollectionViewDelegate, UICollectionViewData
         cell.titleLabel.text = viewModel.myTravelAgendas.value[indexPath.row].title
         cell.titleLabel.font = UIFont(name: Constant.FontName.bold, size: 34)
         
-        if viewModel.isEditable.value {
-            cell.deleteButton.tag = indexPath.row
-            cell.deleteButton.addTarget(self, action: #selector(deleteButtonClicked(sender: )), for: .touchUpInside)
-        }
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if viewModel.myTravelAgendas.value.isEmpty {
+            addButtonClicked()
             return
         }
         
@@ -145,11 +123,22 @@ extension MyTravelViewController: UICollectionViewDelegate, UICollectionViewData
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    @objc func deleteButtonClicked(sender: UIButton) {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return viewModel.myTravelAgendas.value.isEmpty ? false : true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
-        let id = viewModel.myTravelAgendas.value[sender.tag]._id.stringValue
-        let numberOfImages = viewModel.myTravelAgendas.value[sender.tag].numberOfImages
-        let agendaTable = self.viewModel.myTravelAgendas.value[sender.tag]
+        if (editingStyle == .delete) {
+            deleteButtonClicked(indexPath: indexPath)
+        }
+    }
+    
+    func deleteButtonClicked(indexPath: IndexPath) {
+        
+        let id = viewModel.myTravelAgendas.value[indexPath.row]._id.stringValue
+        let numberOfImages = viewModel.myTravelAgendas.value[indexPath.row].numberOfImages
+        let agendaTable = self.viewModel.myTravelAgendas.value[indexPath.row]
         
         let alert = UIAlertController(title: "여행 계획 삭제", message: "선택하신 여행 계획을 삭제하시겠습니까?", preferredStyle: .alert)
         let cancel = UIAlertAction(title: "취소", style: .cancel)

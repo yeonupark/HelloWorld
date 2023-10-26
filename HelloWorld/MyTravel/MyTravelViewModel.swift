@@ -12,8 +12,6 @@ class MyTravelViewModel {
     
     var myTravelAgendas: Observable<Results<TravelAgendaTable>> = Observable(TravelAgendaTableRepository().fetch())
     
-    var isEditable: Observable<Bool> = Observable(false)
-    
     func dateFormat(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy.MM.dd"
