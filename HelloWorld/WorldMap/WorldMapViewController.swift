@@ -25,7 +25,9 @@ class WorldMapViewController: BaseViewController {
             self.setAnnotations()
         }
         
+        setAnnotations()
         setMap()
+        
         mainView.mapView.delegate = self
     }
     
@@ -33,11 +35,10 @@ class WorldMapViewController: BaseViewController {
         super.viewDidAppear(animated)
         
         viewModel.myLocations.value = locationRepository.fetch()
+        setMap()
     }
     
     func setMap() {
-        
-        setAnnotations()
         
         guard let place = viewModel.myLocations.value.first else { return }
         let center = CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude)
