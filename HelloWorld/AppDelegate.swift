@@ -19,6 +19,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UILabel.appearance().textColor = Constant.Color.titleColor
         
         UITableViewCell.appearance().backgroundColor = .clear
+        
+        UNUserNotificationCenter.current().delegate = self
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(
+            options: authOptions, completionHandler: { _, _ in }
+        )
+        
+        application.registerForRemoteNotifications()
+        
         let config = Realm.Configuration(schemaVersion: 10) { migration, oldSchemaVersion in
             
             if oldSchemaVersion < 1 { }
@@ -65,3 +74,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
+        print(token)
+    }
+}
