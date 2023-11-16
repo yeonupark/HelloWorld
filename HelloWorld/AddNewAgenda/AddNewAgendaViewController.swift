@@ -115,6 +115,9 @@ class AddNewAgendaViewController: BaseViewController {
     }
     
     func setNavigationBar() {
+        
+        navigationItem.backButtonTitle = "저장"
+        
         let archiveButton = UIBarButtonItem(image: UIImage(systemName: "archivebox"), style: .plain, target: self, action: #selector(archiveButtonClicked))
         
         let saveButton = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(saveButtonClicked))

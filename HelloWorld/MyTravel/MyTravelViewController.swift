@@ -70,6 +70,8 @@ class MyTravelViewController: BaseViewController {
         let vc = AddNewAgendaViewController()
         vc.title = agendaTitle
         vc.viewModel.isUpdatingView = false
+        
+        navigationItem.backButtonTitle = "취소"
         navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -120,6 +122,7 @@ extension MyTravelViewController: UITableViewDelegate, UITableViewDataSource {
         vc.viewModel.travelAgendaTable = table
         vc.viewModel.savedImages = loadImageFromDocument(folderName: table._id.stringValue, numberOfImages: table.numberOfImages)
         
+        navigationItem.backButtonTitle = "나의 여행 계획"
         navigationController?.pushViewController(vc, animated: true)
     }
     
