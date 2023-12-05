@@ -25,11 +25,22 @@ class AddPhotoViewController: BaseViewController {
         
         setNavigationBar()
         
-        viewModel.photoList.bind { _ in
+        viewModel.isPhotoListEmpty.bind { empty in
+            DispatchQueue.main.async {
+                self.mainView.collectionView.isHidden = empty
+                self.mainView.notiLabel.isHidden = !empty
+            }
+        }
+        
+        viewModel.photoList.bind { photos in
+            
+            self.viewModel.isPhotoListEmpty.value = photos.isEmpty
+            
             DispatchQueue.main.async {
                 self.mainView.collectionView.reloadData()
             }
         }
+        
         viewModel.isEditable.bind { _ in
             self.mainView.collectionView.reloadData()
         }
