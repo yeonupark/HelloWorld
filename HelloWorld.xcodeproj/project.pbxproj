@@ -221,6 +221,8 @@
 				4808A3F52AC40F84005E1190 /* AppDelegate.swift */,
 				4808A3F72AC40F84005E1190 /* SceneDelegate.swift */,
 				4808A3FE2AC40F85005E1190 /* Assets.xcassets */,
+				48F8B2BE2B1F6A0F0096A108 /* Colors */,
+				48F8B2BD2B1F69CF0096A108 /* Weather Icons */,
 				488723D62AE04BF900A3A02E /* GimpoGothicBold.otf */,
 				488723D72AE04BF900A3A02E /* GimpoGothicRegular.otf */,
 				4808A4002AC40F85005E1190 /* LaunchScreen.storyboard */,
@@ -367,6 +369,20 @@
 				480C825C2ADBB71200613CDB /* ExchangeRateAPIManager.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		48F8B2BD2B1F69CF0096A108 /* Weather Icons */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Weather Icons";
+			sourceTree = "<group>";
+		};
+		48F8B2BE2B1F6A0F0096A108 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Colors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -783,7 +799,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.marpark.Tripish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -818,7 +834,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.marpark.Tripish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

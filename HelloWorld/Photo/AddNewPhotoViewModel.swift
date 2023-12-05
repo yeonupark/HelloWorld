@@ -10,6 +10,8 @@ import UIKit
 
 class AddNewPhotoViewModel {
     
+    var isPhotoListEmpty: Observable<Bool> = Observable(true)
+    
     var isFromAddNewAgendaVC = false
     var tableID : String?
     var originalNumberOfPhotos : Int = 0
