@@ -330,7 +330,7 @@ class AddNewAgendaViewController: BaseViewController {
                 }
                 
                 let section = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
-                headerView.headerLabel.text = "\(section.rawValue)"
+                headerView.headerLabel.text = "\(section.localizedString)"
                 
                 headerView.addSectionButton.tag = indexPath.section
                 headerView.addSectionButton.addTarget(self, action: #selector(self.addButtonClicked(sender:)), for: .touchUpInside)

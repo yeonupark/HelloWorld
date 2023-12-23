@@ -9,11 +9,24 @@ import Foundation
 import UIKit
 import RealmSwift
 
-enum Section: String, CaseIterable {
-    case MemoText = "메모"
-    case ToDoList = "체크리스트"
-    case CostList = "예상 비용"
-    case LinkList = "링크"
+enum Section: CaseIterable {
+    case MemoText
+    case ToDoList
+    case CostList
+    case LinkList
+
+    var localizedString: String {
+        switch self {
+        case .MemoText:
+            return NSLocalizedString("agendaSection_memo", comment: "")
+        case .ToDoList:
+            return NSLocalizedString("agendaSection_checklist", comment: "")
+        case .CostList:
+            return NSLocalizedString("agendaSection_cost", comment: "")
+        case .LinkList:
+            return NSLocalizedString("agendaSection_link", comment: "")
+        }
+    }
 }
 
 class AddNewAgendaViewModel {

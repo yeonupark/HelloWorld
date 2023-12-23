@@ -53,3 +53,33 @@
 "exchangeRate" = "환율 ";
 "exchangeRate_selectCurrencyButtonTitle" = " 통화 선택하기 ";
 "exchangeRate_inputTextFieldPlaceholder" = "금액 입력";
+
+"kr" = "대한민국";
+"nz" = "뉴질랜드";
+"dk" = "덴마크";
+"us" = "미국";
+"ch" = "스위스";
+"gb" = "영국";
+"eu" = "유럽 연합";
+"jp" = "일본";
+"cn" = "중국";
+"ca" = "캐나다";
+"tr" = "튀르키예";
+"pl" = "폴란드";
+"au" = "호주";
+"hk" = "홍콩";
+
+"kr_cur" = "원";
+"nz_cur" = "달러";
+"dk_cur" = "크로네";
+"us_cur" = "달러";
+"ch_cur" = "프랑";
+"gb_cur" = "파운드";
+"eu_cur" = "유로";
+"jp_cur" = "엔";
+"cn_cur" = "위안";
+"ca_cur" = "달러";
+"tr_cur" = "리라";
+"pl_cur" = "즈워티";
+"au_cur" = "달러";
+"hk_cur" = "달러";

@@ -278,7 +278,7 @@ class ShowAgendaViewController: BaseViewController {
                 }
                 
                 let section = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
-                headerView.headerLabel.text = "\(section.rawValue)"
+                headerView.headerLabel.text = "\(section.localizedString)"
                 
                 headerView.addSectionButton.isHidden = true
                 
