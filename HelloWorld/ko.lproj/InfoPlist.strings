@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  HelloWorld
+
+  Created by Yeonu Park on 2023/12/23.
+  
+*/
+
+NSPhotoLibararyUsageDescription = "여행 계획에 추가할 사진을 불러오기 위해서는 갤러리 접근을 허용해야 해요";

@@ -45,17 +45,17 @@ class MyTravelViewController: BaseViewController {
     }
     
     func setNavigationItem() {
-        navigationItem.title = "나의 여행 계획"
+        navigationItem.title = NSLocalizedString("myTravel_title", comment: "")
     }
     
     @objc func addButtonClicked() {
         
-        let alert = UIAlertController(title: "새로운 여행 계획을 추가해보세요", message: "다음 목적지는 어디인가요?", preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString("myTravel_alertTitle", comment: ""), message: NSLocalizedString("myTravel_alertMessage", comment: ""), preferredStyle: .alert)
         alert.addTextField { textField in
-            textField.placeholder = "계획 제목 입력"
+            textField.placeholder = NSLocalizedString("myTravel_alertPlaceholder", comment: "")
         }
-        let cancel = UIAlertAction(title: "취소", style: .cancel)
-        let ok = UIAlertAction(title: "확인", style: .default) { _ in
+        let cancel = UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel)
+        let ok = UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .default) { _ in
             if let text = alert.textFields?.first?.text {
                 if text.isEmpty { return }
                 self.addNewAgenda(agendaTitle: text)
@@ -71,7 +71,7 @@ class MyTravelViewController: BaseViewController {
         vc.title = agendaTitle
         vc.viewModel.isUpdatingView = false
         
-        navigationItem.backButtonTitle = "취소"
+        navigationItem.backButtonTitle = NSLocalizedString("cancel", comment: "")
         navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -89,7 +89,7 @@ extension MyTravelViewController: UITableViewDelegate, UITableViewDataSource {
         
         if viewModel.myTravelAgendas.value.isEmpty {
             cell.dateLabel.text?.removeAll()
-            cell.titleLabel.text = "아직 여행 계획이 없습니다. \n계획을 추가해보세요! 🪂 "
+            cell.titleLabel.text = NSLocalizedString("myTravel_emptyMessage", comment: "")
             cell.titleLabel.font = UIFont(name: Constant.FontName.regular, size: 18)
             return cell
         }
@@ -122,7 +122,7 @@ extension MyTravelViewController: UITableViewDelegate, UITableViewDataSource {
         vc.viewModel.travelAgendaTable = table
         vc.viewModel.savedImages = loadImageFromDocument(folderName: table._id.stringValue, numberOfImages: table.numberOfImages)
         
-        navigationItem.backButtonTitle = "나의 여행 계획"
+        navigationItem.backButtonTitle = NSLocalizedString("myTravel_title", comment: "")
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -143,9 +143,9 @@ extension MyTravelViewController: UITableViewDelegate, UITableViewDataSource {
         let numberOfImages = viewModel.myTravelAgendas.value[indexPath.row].numberOfImages
         let agendaTable = self.viewModel.myTravelAgendas.value[indexPath.row]
         
-        let alert = UIAlertController(title: "여행 계획 삭제", message: "선택하신 여행 계획을 삭제하시겠습니까?", preferredStyle: .alert)
-        let cancel = UIAlertAction(title: "취소", style: .cancel)
-        let ok = UIAlertAction(title: "확인", style: .default) { _ in
+        let alert = UIAlertController(title: NSLocalizedString("myTravel_deleteTitle", comment: ""), message: NSLocalizedString("myTravel_deleteMessage", comment: ""), preferredStyle: .alert)
+        let cancel = UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel)
+        let ok = UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .default) { _ in
             
             self.removeImagesFromDocument(folderName: id, numberOfImages: numberOfImages)
             self.removeFolder(folderName: id)

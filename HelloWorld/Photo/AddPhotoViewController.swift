@@ -86,7 +86,7 @@ class AddPhotoViewController: BaseViewController {
     func setNavigationBar() {
         let addButton = UIBarButtonItem(image: UIImage(systemName: "camera"), style: .plain, target: self, action: #selector(addButtonClicked))
         addButton.isHidden = true
-        let editButton = UIBarButtonItem(title: "수정", style: .plain, target: self, action: #selector(editButtonClicked(sender: )))
+        let editButton = UIBarButtonItem(title: NSLocalizedString("edit", comment: ""), style: .plain, target: self, action: #selector(editButtonClicked(sender: )))
         editButton.setTitleTextAttributes(Constant.BarButtonAttribute.rightBarButton, for: .normal)
         navigationItem.setRightBarButtonItems([editButton, addButton], animated: true)
         
@@ -95,11 +95,11 @@ class AddPhotoViewController: BaseViewController {
     @objc func editButtonClicked(sender: UIBarButtonItem) {
         if viewModel.isEditable.value {
             saveImages()
-            sender.title = "수정"
+            sender.title = NSLocalizedString("edit", comment: "")
             viewModel.isEditable.value = false
             navigationItem.rightBarButtonItems![1].isHidden = true
         } else {
-            sender.title = "완료"
+            sender.title = NSLocalizedString("done", comment: "")
             viewModel.isEditable.value = true
             navigationItem.rightBarButtonItems![1].isHidden = false
         }
@@ -138,9 +138,9 @@ class AddPhotoViewController: BaseViewController {
     }
     
     func showDeniedAlert() {
-        let alert = UIAlertController(title: "갤러리에 접근할 수 없습니다.", message: "기기의 '설정>개인정보 보호'에서 갤러리 접근 권한을 허용해주세요.", preferredStyle: .alert)
-        let cancel = UIAlertAction(title: "취소", style: .cancel)
-        let goToSetting = UIAlertAction(title: "설정으로 이동", style: .destructive) { _ in
+        let alert = UIAlertController(title: NSLocalizedString("addPhotoAuthorization_deniedAlertTitle", comment: ""), message: NSLocalizedString("addPhotoAuthorization_deniedAlertMessage", comment: ""), preferredStyle: .alert)
+        let cancel = UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel)
+        let goToSetting = UIAlertAction(title: NSLocalizedString("addPhotoAuthorization_goToSettingAlertTitle", comment: ""), style: .destructive) { _ in
             if let appSetting = URL(string: UIApplication.openSettingsURLString){
                 UIApplication.shared.open(appSetting)
             }

@@ -116,11 +116,11 @@ class AddNewAgendaViewController: BaseViewController {
     
     func setNavigationBar() {
         
-        navigationItem.backButtonTitle = "저장"
+        navigationItem.backButtonTitle = NSLocalizedString("save", comment: "")
         
         let archiveButton = UIBarButtonItem(image: UIImage(systemName: "archivebox"), style: .plain, target: self, action: #selector(archiveButtonClicked))
         
-        let saveButton = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(saveButtonClicked))
+        let saveButton = UIBarButtonItem(title: NSLocalizedString("done", comment: ""), style: .plain, target: self, action: #selector(saveButtonClicked))
         saveButton.setTitleTextAttributes(Constant.BarButtonAttribute.rightBarButton, for: .normal)
         
         if viewModel.isUpdatingView {
@@ -133,8 +133,8 @@ class AddNewAgendaViewController: BaseViewController {
     @objc func saveButtonClicked() {
 
         guard let startDate = viewModel.dateList.value.first else {
-            let alert = UIAlertController(title: "여행 날짜를 설정해주세요!", message: "", preferredStyle: .alert)
-            let ok = UIAlertAction(title: "확인", style: .default)
+            let alert = UIAlertController(title: NSLocalizedString("date_alertTitle", comment: ""), message: "", preferredStyle: .alert)
+            let ok = UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .default)
             alert.addAction(ok)
             present(alert, animated: true)
             return
@@ -173,7 +173,7 @@ class AddNewAgendaViewController: BaseViewController {
     }
     
     func addNewTable(startDate: Date, endDate: Date, memo: String) {
-        viewModel.newTravelAgendaTable = TravelAgendaTable(title: navigationItem.title ?? "새 여행", startDate: startDate, endDate: endDate, memo: memo, numberOfImages: viewModel.savedImages.count, placeName: viewModel.placeName, latitude: viewModel.latitude, longitude: viewModel.longitude)
+        viewModel.newTravelAgendaTable = TravelAgendaTable(title: navigationItem.title ?? NSLocalizedString("newTravel_title", comment: ""), startDate: startDate, endDate: endDate, memo: memo, numberOfImages: viewModel.savedImages.count, placeName: viewModel.placeName, latitude: viewModel.latitude, longitude: viewModel.longitude)
         
         agendaRepository.addItem(viewModel.newTravelAgendaTable)
         
@@ -226,7 +226,7 @@ class AddNewAgendaViewController: BaseViewController {
         vc.completionHandler = { images in
             self.viewModel.savedImages = images
         }
-        vc.title = "사진 불러오기"
+        vc.title = NSLocalizedString("uploadPhoto_title", comment: "")
         vc.viewModel.isFromAddNewAgendaVC = true
         vc.viewModel.photoList.value = viewModel.savedImages
         navigationController?.pushViewController(vc, animated: true)
@@ -361,17 +361,17 @@ class AddNewAgendaViewController: BaseViewController {
             return
         }
         
-        let alert = UIAlertController(title: "새로운 항목을 추가하세요", message: nil, preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString("addToList_title", comment: ""), message: nil, preferredStyle: .alert)
         alert.addTextField { textField in
-            textField.placeholder = "새로운 항목 입력"
+            textField.placeholder = NSLocalizedString("addToList_placeholder", comment: "")
         }
-        let cancel = UIAlertAction(title: "취소", style: .cancel)
-        let ok = UIAlertAction(title: "확인", style: .default) { _ in
+        let cancel = UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel)
+        let ok = UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .default) { _ in
             if let text = alert.textFields?.first?.text {
                 if text.isEmpty { return }
                 
                 if self.viewModel.toDoList.value.contains(text) || self.viewModel.costList.value.contains(text) || self.viewModel.linkList.value.contains(text) {
-                    self.mainView.makeToast("이미 추가된 항목입니다.")
+                    self.mainView.makeToast(NSLocalizedString("addToList_existToast", comment: ""))
                     return
                 }
                 

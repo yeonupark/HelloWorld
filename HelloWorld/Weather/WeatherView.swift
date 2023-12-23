@@ -35,7 +35,7 @@ class WeatherView: BaseView {
     let infoLabel = {
         let view = UILabel()
         view.textColor = Constant.Color.subColor
-        view.text = "현재 시간"
+        view.text = NSLocalizedString("weather_currentTimeTitle", comment: "")
         
         return view
     }()

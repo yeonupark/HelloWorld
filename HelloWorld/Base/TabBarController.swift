@@ -23,9 +23,9 @@ class TabBarController: UITabBarController {
         customTabBar.isTranslucent = true
         customTabBar.backgroundColor = Constant.Color.backgroundColor
         
-        let agendaTabBarItem = UITabBarItem(title: "계획", image: resizeImage(image: UIImage(named: "NoteImage")!, targetSize: CGSize(width: 30, height: 30)), tag: 0)
-        let worldMapTabBarItem = UITabBarItem(title: "날씨 및 시간", image: resizeImage(image: UIImage(named: "EarthImage")!, targetSize: CGSize(width: 30, height: 30)), tag: 1)
-        let exchangeRateTabBarItem = UITabBarItem(title: "환율 계산", image: resizeImage(image: UIImage(named: "DollarImage")!, targetSize: CGSize(width: 30, height: 30)), tag: 2)
+        let agendaTabBarItem = UITabBarItem(title: NSLocalizedString("agenda_tapBarTitle", comment: ""), image: resizeImage(image: UIImage(named: "NoteImage")!, targetSize: CGSize(width: 30, height: 30)), tag: 0)
+        let worldMapTabBarItem = UITabBarItem(title: NSLocalizedString("weather_tapBarTitle", comment: ""), image: resizeImage(image: UIImage(named: "EarthImage")!, targetSize: CGSize(width: 30, height: 30)), tag: 1)
+        let exchangeRateTabBarItem = UITabBarItem(title: NSLocalizedString("exchangeRate_tapBarTitle", comment: ""), image: resizeImage(image: UIImage(named: "DollarImage")!, targetSize: CGSize(width: 30, height: 30)), tag: 2)
         
         for item in [agendaTabBarItem, worldMapTabBarItem, exchangeRateTabBarItem] {
             if UIScreen.main.bounds.height <= 667 {
