@@ -18,7 +18,7 @@ class ExchangeRateView: BaseView {
     
     let chooseCurrencyField = {
         let view = UITextField()
-        view.text = " 통화 선택하기 "
+        view.text = NSLocalizedString("exchangeRate_selectCurrencyButtonTitle", comment: "")
         view.textColor = .white
         view.backgroundColor = Constant.Color.subColor
         view.font = UIFont(name: Constant.FontName.bold, size: 15)
@@ -81,7 +81,7 @@ class ExchangeRateView: BaseView {
 
     let inputTextField = {
         let view = UITextField()
-        view.attributedPlaceholder = NSAttributedString(string: "금액 입력", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
+        view.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("exchangeRate_inputTextFieldPlaceholder", comment: ""), attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
         view.keyboardType = .numberPad
         view.font = UIFont(name: Constant.FontName.regular, size: 15)
         view.tintColor = .clear

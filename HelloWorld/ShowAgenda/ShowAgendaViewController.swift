@@ -30,7 +30,6 @@ class ShowAgendaViewController: BaseViewController {
         
         configureDataSource()
         
-        mainView.collectionView.delegate = self
         mainView.startDatetextField.isEnabled = false
         mainView.mapClickButton.setImage(UIImage(systemName: "eyes"), for: .normal)
         mainView.mapClickButton.addTarget(self, action: #selector(mapButtonClicked), for: .touchUpInside)
@@ -165,7 +164,7 @@ class ShowAgendaViewController: BaseViewController {
     func setNavigationBar() {
         let archiveButton = UIBarButtonItem(image: UIImage(systemName: "archivebox"), style: .plain, target: self, action: #selector(archiveButtonClicked))
         
-        let editButton = UIBarButtonItem(title: "수정", style: .plain, target: self, action: #selector(editButtonClicked(sender: )))
+        let editButton = UIBarButtonItem(title: NSLocalizedString("edit", comment: ""), style: .plain, target: self, action: #selector(editButtonClicked(sender: )))
         editButton.setTitleTextAttributes(Constant.BarButtonAttribute.rightBarButton, for: .normal)
         
         navigationItem.setRightBarButtonItems([archiveButton, editButton], animated: true)
@@ -173,10 +172,10 @@ class ShowAgendaViewController: BaseViewController {
     
     @objc func editButtonClicked(sender: UIBarButtonItem) {
 
-        navigationItem.backButtonTitle = "취소"
+        navigationItem.backButtonTitle = NSLocalizedString("cancel", comment: "")
         
         let vc = AddNewAgendaViewController()
-        vc.title = "수정하기"
+        vc.title = NSLocalizedString("edit_title", comment: "")
         vc.viewModel.isUpdatingView = true
         
         vc.viewModel.dateList = viewModel.dateList
@@ -192,7 +191,7 @@ class ShowAgendaViewController: BaseViewController {
     
     @objc func archiveButtonClicked() {
         let vc = AddPhotoViewController()
-        vc.title = "저장된 사진"
+        vc.title = NSLocalizedString("savedPhoto_title", comment: "")
         vc.completionHandler = { images in
             self.viewModel.savedImages = images
             self.agendaRepository.updateNumberOfImages(id: self.viewModel.travelAgendaTable._id, numberOfImages: images.count)
@@ -292,8 +291,4 @@ class ShowAgendaViewController: BaseViewController {
         }
         
     }
-}
-
-extension ShowAgendaViewController: UICollectionViewDelegate {
-    
 }

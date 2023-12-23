@@ -26,6 +26,8 @@
 		480C82602ADBBDE000613CDB /* ExchangeRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480C825F2ADBBDE000613CDB /* ExchangeRateViewController.swift */; };
 		480C82622ADBC07B00613CDB /* ExchangeRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480C82612ADBC07B00613CDB /* ExchangeRateView.swift */; };
 		480C82642ADBC74600613CDB /* ExchangeRateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480C82632ADBC74600613CDB /* ExchangeRateViewModel.swift */; };
+		4858D41F2B36E4CD00801343 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4858D4212B36E4CD00801343 /* Localizable.strings */; };
+		4858D4252B370E3600801343 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4858D4272B370E3600801343 /* InfoPlist.strings */; };
 		485990A72ACBBFE9006C3D28 /* TravelAgendaTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485990A62ACBBFE9006C3D28 /* TravelAgendaTable.swift */; };
 		485990AA2ACBC163006C3D28 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 485990A92ACBC163006C3D28 /* Realm */; };
 		485990AC2ACBC163006C3D28 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 485990AB2ACBC163006C3D28 /* RealmSwift */; };
@@ -112,6 +114,10 @@
 		480C825F2ADBBDE000613CDB /* ExchangeRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateViewController.swift; sourceTree = "<group>"; };
 		480C82612ADBC07B00613CDB /* ExchangeRateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateView.swift; sourceTree = "<group>"; };
 		480C82632ADBC74600613CDB /* ExchangeRateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateViewModel.swift; sourceTree = "<group>"; };
+		4858D4202B36E4CD00801343 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4858D4222B36E4FE00801343 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4858D4262B370E3600801343 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4858D4282B370E3800801343 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		485990A62ACBBFE9006C3D28 /* TravelAgendaTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelAgendaTable.swift; sourceTree = "<group>"; };
 		485990F12ACDBC52006C3D28 /* TravelAgendaTableRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelAgendaTableRepository.swift; sourceTree = "<group>"; };
 		48799A5F2AEA31A900FDF3B6 /* MyTravelTabelViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTravelTabelViewCell.swift; sourceTree = "<group>"; };
@@ -229,6 +235,8 @@
 				48BB29292AE6621700065691 /* GoogleService-Info.plist */,
 				4808A4032AC40F85005E1190 /* Info.plist */,
 				48DB9EA12AD7C01A0038701C /* .gitignore */,
+				4858D4212B36E4CD00801343 /* Localizable.strings */,
+				4858D4272B370E3600801343 /* InfoPlist.strings */,
 			);
 			path = HelloWorld;
 			sourceTree = "<group>";
@@ -482,6 +490,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = 4808A3E92AC40F84005E1190;
 			packageReferences = (
@@ -509,8 +518,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				48DB9EA22AD7C01A0038701C /* .gitignore in Resources */,
+				4858D4252B370E3600801343 /* InfoPlist.strings in Resources */,
 				48BB292A2AE6621700065691 /* GoogleService-Info.plist in Resources */,
 				4808A4022AC40F85005E1190 /* LaunchScreen.storyboard in Resources */,
+				4858D41F2B36E4CD00801343 /* Localizable.strings in Resources */,
 				4808A3FF2AC40F85005E1190 /* Assets.xcassets in Resources */,
 				488723D82AE04BF900A3A02E /* GimpoGothicBold.otf in Resources */,
 				488723D92AE04BF900A3A02E /* GimpoGothicRegular.otf in Resources */,
@@ -653,6 +664,24 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		4858D4212B36E4CD00801343 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4858D4202B36E4CD00801343 /* en */,
+				4858D4222B36E4FE00801343 /* ko */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		4858D4272B370E3600801343 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4858D4262B370E3600801343 /* en */,
+				4858D4282B370E3800801343 /* ko */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -661,6 +690,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -724,6 +754,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -789,7 +820,7 @@
 				INFOPLIST_FILE = HelloWorld/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Tripish;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "여행 계획에 추가할 사진을 불러오기 위해서는 갤러리 접근을 허용해야 해요";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = NSPhotoLibararyUsageDescription;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -824,7 +855,7 @@
 				INFOPLIST_FILE = HelloWorld/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Tripish;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "여행 계획에 추가할 사진을 불러오기 위해서는 갤러리 접근을 허용해야 해요";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = NSPhotoLibararyUsageDescription;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

@@ -17,11 +17,7 @@ class TravelAgendaTable: Object {
     @Persisted var endDate: Date
     @Persisted var memo: String?
     @Persisted var numberOfImages: Int
-    
-//    @Persisted var toDoList : List<TodoTable> = List<TodoTable>()
-//    @Persisted var costList : List<CostTable> = List<CostTable>()
-//    @Persisted var linkList : List<LinkTable> = List<LinkTable>()
-    
+
     @Persisted var placeName: String?
     @Persisted var latitude: CLLocationDegrees?
     @Persisted var longitude: CLLocationDegrees?
@@ -35,10 +31,6 @@ class TravelAgendaTable: Object {
         self.endDate = endDate
         self.memo = memo
         self.numberOfImages = numberOfImages
-        
-//        self.toDoList = toDoList
-//        self.costList = costList
-//        self.linkList = linkList
         
         self.placeName = placeName
         self.latitude = latitude

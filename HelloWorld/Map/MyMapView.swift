@@ -19,7 +19,7 @@ class MyMapView: BaseView {
     
     let searchBar = {
         let view = UISearchBar()
-        view.placeholder = "위치를 검색하세요"
+        view.placeholder = NSLocalizedString("myMap_searchBarTitle", comment: "")
         
         return view
     }()

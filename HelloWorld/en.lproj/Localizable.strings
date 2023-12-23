@@ -1,0 +1,55 @@
+/* 
+  Localizable.strings
+  HelloWorld
+
+  Created by Yeonu Park on 2023/12/23.
+  
+*/
+
+"cancel" = "cancel";
+"ok" = "ok";
+"edit" = "edit";
+"save" = "save";
+"done" = "done";
+
+"agenda_tapBarTitle" = "plan";
+"weather_tapBarTitle" = "weather and time";
+"exchangeRate_tapBarTitle" = "exchange rate";
+
+"myTravel_title" = "My Travels";
+"myTravel_alertTitle" = "Make a plan for your trip";
+"myTravel_alertMessage" = "What is your next destination?";
+"myTravel_alertPlaceholder" = "enter title of the journey";
+"myTravel_emptyMessage" = "You have no travel plans yet. \nWhy don't you make one? 🪂 ";
+"myTravel_deleteTitle" = "Delete Plan";
+"myTravel_deleteMessage" = "Are you sure you want to delete your plan?";
+
+"edit_title" = "Edit Your Plan";
+"savedPhoto_title" = "Saved Photos";
+
+"date_alertTitle" = "Please select a date!";
+"date_placeholder" = "select date";
+"newTravel_title" = "New Travel";
+"uploadPhoto_title" = "Upload Photos";
+
+"addToList_title" = "Add a new item";
+"addToList_placeholder" = "enter item";
+"addToList_existToast" = "This item has already been added.";
+
+"agendaSection_memo" = "memo";
+"agendaSection_checkList" = "check list";
+"agendaSection_cost" = "cost";
+"agendaSection_link" = "link";
+
+"addPhotoAuthorization_deniedAlertTitle" = "Cannot access to photos.";
+"addPhotoAuthorization_deniedAlertMessage" = "Please allow photo access in ‘Settings > Privacy’ on your device.";
+"addPhotoAuthorization_goToSettingAlertTitle" = "Go to settings";
+"addPhoto_emptyMessage" = "Save images you need for your trip, \nsuch as tickets, reservation confirmations, screenshots, etc. 🐠";
+
+"myMap_searchBarTitle" = "Search locations";
+
+"weather_currentTimeTitle" = "local time";
+
+"exchangeRate" = "exchange rate ";
+"exchangeRate_selectCurrencyButtonTitle" = " Select Currency ";
+"exchangeRate_inputTextFieldPlaceholder" = "enter amount";

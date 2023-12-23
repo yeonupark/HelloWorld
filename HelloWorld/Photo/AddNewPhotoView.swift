@@ -13,7 +13,7 @@ class AddNewPhotoView: BaseView {
     let notiLabel = {
         let view = UILabel()
         view.font = UIFont(name: Constant.FontName.regular, size: 16)
-        view.text = "각종 티켓, 예약 확인증, 캡쳐본, 사본 등 \n여행에 필요한 이미지를 저장해보세요 🐠"
+        view.text = NSLocalizedString("addPhoto_emptyMessage", comment: "")
         view.numberOfLines = 0
         view.textAlignment = .center
         

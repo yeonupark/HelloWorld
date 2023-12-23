@@ -1,0 +1,55 @@
+/* 
+  Localizable.strings
+  HelloWorld
+
+  Created by Yeonu Park on 2023/12/23.
+  
+*/
+
+"cancel" = "취소";
+"ok" = "확인";
+"edit" = "수정";
+"save" = "저장";
+"done" = "완료";
+
+"agenda_tapBarTitle" = "계획";
+"weather_tapBarTitle" = "날씨 및 시간";
+"exchangeRate_tapBarTitle" = "환율";
+
+"myTravel_title" = "나의 여행 계획";
+"myTravel_alertTitle" = "새로운 여행 계획을 추가해보세요";
+"myTravel_alertMessage" = "다음 목적지는 어디인가요?";
+"myTravel_alertPlaceholder" = "계획 제목 입력";
+"myTravel_emptyMessage" = "아직 여행 계획이 없습니다. \n계획을 추가해보세요! 🪂 ";
+"myTravel_deleteTitle" = "여행 계획 삭제";
+"myTravel_deleteMessage" = "선택하신 여행 계획을 삭제하시겠습니까?";
+
+"edit_title" = "수정하기";
+"savedPhoto_title" = "저장된 사진";
+
+"date_alertTitle" = "여행 날짜를 설정해주세요!";
+"date_placeholder" = "여행 날짜 선택";
+"newTravel_title" = "새 여행";
+"uploadPhoto_title" = "사진 불러오기";
+
+"addToList_title" = "새로운 항목을 추가하세요";
+"addToList_placeholder" = "새로운 항목 입력";
+"addToList_existToast" = "이미 추가된 항목입니다.";
+
+"agendaSection_memo" = "메모";
+"agendaSection_checkList" = "체크리스트";
+"agendaSection_cost" = "예상 비용";
+"agendaSection_link" = "링크";
+
+"addPhotoAuthorization_deniedAlertTitle" = "갤러리에 접근할 수 없습니다.";
+"addPhotoAuthorization_deniedAlertMessage" = "기기의 '설정>개인정보 보호'에서 갤러리 접근 권한을 허용해주세요.";
+"addPhotoAuthorization_goToSettingAlertTitle" = "설정으로 이동";
+"addPhoto_emptyMessage" = "각종 티켓, 예약 확인증, 스크린샷 등 \n여행에 필요한 이미지를 저장해보세요 🐠";
+
+"myMap_searchBarTitle" = "위치를 검색하세요";
+
+"weather_currentTimeTitle" = "현지 시각";
+
+"exchangeRate" = "환율 ";
+"exchangeRate_selectCurrencyButtonTitle" = " 통화 선택하기 ";
+"exchangeRate_inputTextFieldPlaceholder" = "금액 입력";

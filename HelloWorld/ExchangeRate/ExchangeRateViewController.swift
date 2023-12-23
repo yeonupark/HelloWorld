@@ -106,7 +106,7 @@ class ExchangeRateViewController: BaseViewController {
                 return
             }
             self.viewModel.exchangeRate = result.exchange_rate
-            self.mainView.exchangeRateLabel.text = "환율: \(self.viewModel.exchangeRate)"
+            self.mainView.exchangeRateLabel.text = "\(NSLocalizedString("exchangeRate", comment: "")): \(self.viewModel.exchangeRate)"
         }
         self.mainView.inputTextField.text?.removeAll()
         self.mainView.inputLabel.text?.removeAll()
