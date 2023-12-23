@@ -6,4 +6,4 @@
   
 */
 
-NSPhotoLibararyUsageDescription = "We need to access to your photos to load photos and add to your travel plans.";
+NSPhotoLibraryUsageDescription = "We need to access to your photos to load photos and add to your travel plans.";

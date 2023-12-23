@@ -72,7 +72,7 @@ class ExchangeRateViewController: BaseViewController {
     }
     
     func startSetting() {
-        viewModel.originalNation.value = viewModel.nationList[12]
+        viewModel.originalNation.value = viewModel.nationList[3]
         viewModel.convertedNation.value = viewModel.nationList[0]
         
         guard let original = viewModel.originalNation.value else { return }

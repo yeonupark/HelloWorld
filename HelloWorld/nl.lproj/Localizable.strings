@@ -37,7 +37,7 @@
 "addToList_existToast" = "This item has already been added.";
 
 "agendaSection_memo" = "memo";
-"agendaSection_checklist" = "check list";
+"agendaSection_checkList" = "check list";
 "agendaSection_cost" = "cost";
 "agendaSection_link" = "link";
 
@@ -53,33 +53,3 @@
 "exchangeRate" = "exchange rate ";
 "exchangeRate_selectCurrencyButtonTitle" = " Select Currency ";
 "exchangeRate_inputTextFieldPlaceholder" = "enter amount";
-
-"kr" = "South Korea";
-"nz" = "New Zealand";
-"dk" = "Denmark";
-"us" = "USA";
-"ch" = "Switzerland";
-"gb" = "UK";
-"eu" = "EU";
-"jp" = "Japan";
-"cn" = "China";
-"ca" = "Canada";
-"tr" = "Türkiye";
-"pl" = "Poland";
-"au" = "Austrailia";
-"hk" = "Hongkong";
-
-"kr_cur" = "won";
-"nz_cur" = "dollar";
-"dk_cur" = "krone";
-"us_cur" = "dollar";
-"ch_cur" = "franc";
-"gb_cur" = "pound";
-"eu_cur" = "euro";
-"jp_cur" = "yen";
-"cn_cur" = "yuan";
-"ca_cur" = "dollar";
-"tr_cur" = "lira";
-"pl_cur" = "zloty";
-"au_cur" = "dollar";
-"hk_cur" = "dollar";

@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  HelloWorld
+
+  Created by Yeonu Park on 2023/12/23.
+  
+*/
+
+NSPhotoLibararyUsageDescription = "We need to access to your photos to load photos and add to your travel plans.";
