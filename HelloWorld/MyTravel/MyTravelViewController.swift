@@ -103,7 +103,7 @@ extension MyTravelViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         cell.titleLabel.text = viewModel.myTravelAgendas.value[indexPath.row].title
-        cell.titleLabel.font = UIFont(name: Constant.FontName.bold, size: 34)
+        cell.titleLabel.font = UIFont(name: Constant.FontName.bold, size: 25)
         
         return cell
     }
