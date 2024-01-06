@@ -19,7 +19,6 @@ class WeatherView: BaseView {
     
     let placeLabel = {
         let view = UILabel()
-        view.textColor = .black
         view.font = UIFont(name: Constant.FontName.bold, size: 20)
         view.textAlignment = .center
         
