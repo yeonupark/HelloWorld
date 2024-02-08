@@ -138,6 +138,6 @@ extension MapViewController: MKLocalSearchCompleterDelegate {
     }
     
     func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
-        print(error.localizedDescription)
+        //print(error.localizedDescription)
     }
 }
