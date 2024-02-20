@@ -18,8 +18,8 @@
 
 "myTravel_title" = "나의 여행 계획";
 "myTravel_alertTitle" = "새로운 여행 계획을 추가해보세요";
-"myTravel_alertMessage" = "다음 목적지는 어디인가요?";
-"myTravel_alertPlaceholder" = "계획 제목 입력";
+"myTravel_alertMessage" = "여행의 제목을 지어주세요 !";
+"myTravel_alertPlaceholder" = "여행 제목 입력";
 "myTravel_emptyMessage" = "아직 여행 계획이 없습니다. \n계획을 추가해보세요! 🪂 ";
 "myTravel_deleteTitle" = "여행 계획 삭제";
 "myTravel_deleteMessage" = "선택하신 여행 계획을 삭제하시겠습니까?";

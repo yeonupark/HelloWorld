@@ -18,9 +18,9 @@
 
 "myTravel_title" = "My Travels";
 "myTravel_alertTitle" = "Make a plan for your trip";
-"myTravel_alertMessage" = "What is your next destination?";
+"myTravel_alertMessage" = "Name your next journey!";
 "myTravel_alertPlaceholder" = "enter title of the journey";
-"myTravel_emptyMessage" = "You have no travel plans yet. \nWhy don't you make one? 🪂 ";
+"myTravel_emptyMessage" = "You have no travel plans. \nWhy don't you make one? 🪂 ";
 "myTravel_deleteTitle" = "Delete Plan";
 "myTravel_deleteMessage" = "Are you sure you want to delete your plan?";
 
