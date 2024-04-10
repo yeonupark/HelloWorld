@@ -1,26 +1,25 @@
 # TRIPISH
 
-<img src = "https://github.com/yeonupark/MessengerProject/assets/130972950/1a559549-5162-4b8f-8bd3-71eec9419701" width="15%" height="17%">
- <img src = "https://github.com/yeonupark/MessengerProject/assets/130972950/0bb0b35f-e022-48c7-8355-6872d9a5d7dc" width="15%" height="17%">
- <img src = "https://github.com/yeonupark/MessengerProject/assets/130972950/ccb4c033-6748-4b84-ac1c-e9361af7c469" width="15%" height="17%">
- <img src = "https://github.com/yeonupark/MessengerProject/assets/130972950/ba5d0c94-5e21-4cf7-b6a8-a31b6ed689d7" width="15%" height=17%">
- <img src = "https://github.com/yeonupark/MessengerProject/assets/130972950/3e012d5a-5238-45f7-8af6-b6976816fbd3" width="15%" height="17%">
-  <img src = "https://github.com/yeonupark/MessengerProject/assets/130972950/0eeff9af-639d-44c0-b748-0c51decf6d94" width="15%" height="17%">
+<img src = "https://github.com/yeonupark/HelloWorld/assets/130972950/0b202e44-4ebf-4ac6-8fda-72e2a2f73c99" width="26.5%" height="23%">
+<img src = "https://github.com/yeonupark/HelloWorld/assets/130972950/f198cfed-90e6-44a1-b4c6-4da2f57279a6" width="23%" height="23%">
+<img src = "https://github.com/yeonupark/HelloWorld/assets/130972950/57e3e4d8-c109-4147-9b85-79550832b90a" width="23%" height="23%">
+<img src = "https://github.com/yeonupark/HelloWorld/assets/130972950/183a7d0b-f207-4274-af31-46260c679c42" width="23%" height="23%">
 
+앱스토어 바로가기 :
 https://apps.apple.com/kr/app/tripish-travel-planner/id6470174798?l=en-GB
-
+<br/><br>
 ## 한 줄 소개
 Tripish는 여행에 필요한 요소들을 한 곳에 모아 여행 계획을 간편하고 쉽게 만들어주는 애플리케이션으로, Tripish를 통해 여행 계획을 저장할 수 있으며 현지 날씨 및 실시간 환율을 확인할 수 있습니다.
-
-## 핵심 기능
-- Realm DB를 사용하여 메모, 체크리스트, 예상 비용, 웹사이트 링크, 위치 등을 한 곳에서 효율적으로 관리 (저장, 수정, 삭제 기능)
-- PhotosUI를 통해 불러온 이미지를 Realm을 통해 저장할 수 있으며, MapKit을 활용하여 지도에서 여행지 확인 가능
-- WeatherKit을 활용해 여행지의 날씨와 현지 시간 정보 제공
-- Alamofire + Router 패턴을 통해 실시간 환율 정보를 불러오고, 환율을 기반으로 계산된 금액을 제공
-- Localization을 통해 사용자 맞춤 언어 제공 (영어, 한국어)
   
 ## 개발 기간
 2024.09.27 ~ 2024.10.25 (4주)
+
+## 기능 소개
+- 여행 계획을 위한 날짜, 메모, 체크리스트, 비용, 웹 링크 기록
+- 티켓, 스크린샷, 사본 등 이미지 저장
+- 지도에서 여행지 위치 확인
+- 현지 날씨 및 시간 정보 제공
+- 실시간 환율 정보 제공 및 환율 계산기 기능
 
 ## 기술 스택 및 라이브러리
 - UIKit
@@ -34,6 +33,15 @@ Tripish는 여행에 필요한 요소들을 한 곳에 모아 여행 계획을 �
 - Alamofire
 - Firebase Analytics/ Crashtics
 
+## 핵심 기술
+- Realm DB CRUD 작업을 프로토콜과 Repository Pattern을 통해 구조화
+- MapKit의 MKMapView를 사용하여 지도를 표시하고, MKLocalSearchComplete를 통해 장소를 검색하며, CLGeocoder를 활용해 선택한 장소의 위도와 경도 조회
+- Compositional Layout과 Diffable Datasource를 사용한 데이터셋 처리와 UI 업데이트
+- WeatherKit를 통해 비동기적으로 위치에 대한 날씨 정보를 요청하고 반환된 데이터를 화면에 표시
+- Firebase Analytics, Crashlytics를 통해 앱의 사용량과 오류를 모니터링 및 분석
+- Localization을 통해 사용자 맞춤 언어 제공 (영어, 한국어)
+
+  
 ## 트러블 슈팅
 diffable datasource를 통해 구성된 컬렉션뷰에 저장된 체크리스트, 비용, 링크를 삭제했을 때 index out of range 오류나, 해당 셀이 아닌 다른 셀이 삭제되는 등의 오류에 부딪혔다. 
 처음에는 버튼의 태그를 사용하여 셀을 식별하고 삭제했으나, 이 방식은 셀이 삭제된 후에 다시 새로운 셀이 추가되면 index가 변경되어 오류가 발생하는 문제가 있었다. 
