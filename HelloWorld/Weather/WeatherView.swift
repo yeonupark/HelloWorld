@@ -31,25 +31,25 @@ class WeatherView: BaseView {
         return view
     }()
     
-    let infoLabel = {
-        let view = UILabel()
-        view.textColor = Constant.Color.subColor
-        view.text = NSLocalizedString("weather_currentTimeTitle", comment: "")
-        
-        return view
-    }()
-    
-    let dateLabel = {
-        let view = UILabel()
-        view.textColor = Constant.Color.subColor
-        return view
-    }()
-    
-    let timeLabel = {
-        let view = UILabel()
-        view.textColor = Constant.Color.subColor
-        return view
-    }()
+//    let infoLabel = {
+//        let view = UILabel()
+//        view.textColor = Constant.Color.subColor
+//        view.text = NSLocalizedString("weather_currentTimeTitle", comment: "")
+//        
+//        return view
+//    }()
+//    
+//    let dateLabel = {
+//        let view = UILabel()
+//        view.textColor = Constant.Color.subColor
+//        return view
+//    }()
+//    
+//    let timeLabel = {
+//        let view = UILabel()
+//        view.textColor = Constant.Color.subColor
+//        return view
+//    }()
     
     let currentTempLabel = {
         let view = UILabel()
@@ -110,9 +110,9 @@ class WeatherView: BaseView {
             addSubview(item)
         }
         
-        for item in [infoLabel, dateLabel, timeLabel] {
-            timeView.addSubview(item)
-        }
+//        for item in [infoLabel, dateLabel, timeLabel] {
+//            timeView.addSubview(item)
+//        }
     }
     
     override func setConstraints() {
@@ -129,21 +129,21 @@ class WeatherView: BaseView {
             make.trailing.equalToSuperview().inset(30)
             make.size.equalTo(180)
         }
-        infoLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.trailing.equalToSuperview().inset(10)
-            make.height.equalTo(20)
-        }
-        dateLabel.snp.makeConstraints { make in
-            make.top.equalTo(infoLabel.snp.bottom)
-            make.trailing.equalToSuperview().inset(10)
-            make.height.equalTo(20)
-        }
-        timeLabel.snp.makeConstraints { make in
-            make.top.equalTo(dateLabel.snp.bottom)
-            make.trailing.equalToSuperview().inset(10)
-            make.height.equalTo(20)
-        }
+//        infoLabel.snp.makeConstraints { make in
+//            make.top.equalToSuperview()
+//            make.trailing.equalToSuperview().inset(10)
+//            make.height.equalTo(20)
+//        }
+//        dateLabel.snp.makeConstraints { make in
+//            make.top.equalTo(infoLabel.snp.bottom)
+//            make.trailing.equalToSuperview().inset(10)
+//            make.height.equalTo(20)
+//        }
+//        timeLabel.snp.makeConstraints { make in
+//            make.top.equalTo(dateLabel.snp.bottom)
+//            make.trailing.equalToSuperview().inset(10)
+//            make.height.equalTo(20)
+//        }
         currentConditionImage.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(90)
             make.centerX.equalToSuperview()
