@@ -37,6 +37,7 @@ git clone https://github.com/yeonupark/helloworld
 ```
 2️⃣ **Open the project**
 ```
+cd helloworld
 xed .
 ``` 
 
