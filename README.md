@@ -7,6 +7,12 @@
 
 https://apps.apple.com/kr/app/tripish-travel-planner/id6470174798?l=en-GB  
 
+--- 
+### 🌍 Background
+Planning a trip often requires gathering information from multiple sources—notes, images, web links, maps, and more—scattered across different apps and platforms.
+
+Tripish was created to solve this problem by providing a **centralized travel planning solution**, where users can store all necessary information in one place. Whether it's itinerary notes, location details, important web links, or photos of certificates, Tripish ensures that everything is easily accessible throughout the journey.
+
 ---
 ### 📝 Description
 - Tripish is an application that makes travel planning simple and easy by gathering all the necessary travel elements in one place. 
