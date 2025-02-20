@@ -21,7 +21,7 @@ class WeatherViewController: BaseViewController {
     override func viewDidLoad() {
         
         setLabel()
-        getWorldTime()
+//        getWorldTime()
         getWeather()
         
         mainView.dailyTableView.delegate = self
@@ -43,20 +43,20 @@ class WeatherViewController: BaseViewController {
         mainView.placeLabel.text = "[ \(viewModel.placeName) ]"
     }
     
-    func getWorldTime() {
-        
-        if viewModel.longitude > 124 && viewModel.longitude < 132 && viewModel.latitude > 33 && viewModel.latitude < 43 {
-            mainView.timeView.isHidden = true
-            return
-        }
-        
-        WorldTimeAPIManager.shared.callRequest(lat: viewModel.latitude, lon: viewModel.longitude) { data in
-            self.mainView.dateLabel.text =  data?.date
-            guard let hour = data?.hour else { return }
-            guard let minute = data?.minute else { return }
-            self.mainView.timeLabel.text = "\(hour) : \(minute)"
-        }
-    }
+//    func getWorldTime() {
+//        
+//        if viewModel.longitude > 124 && viewModel.longitude < 132 && viewModel.latitude > 33 && viewModel.latitude < 43 {
+//            mainView.timeView.isHidden = true
+//            return
+//        }
+//        
+//        WorldTimeAPIManager.shared.callRequest(lat: viewModel.latitude, lon: viewModel.longitude) { data in
+//            self.mainView.dateLabel.text =  data?.date
+//            guard let hour = data?.hour else { return }
+//            guard let minute = data?.minute else { return }
+//            self.mainView.timeLabel.text = "\(hour) : \(minute)"
+//        }
+//    }
     
     func getWeather() {
         

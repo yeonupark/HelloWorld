@@ -13,7 +13,7 @@
 "done" = "done";
 
 "agenda_tapBarTitle" = "plan";
-"weather_tapBarTitle" = "weather and time";
+"weather_tapBarTitle" = "weather";
 "exchangeRate_tapBarTitle" = "exchange rate";
 
 "myTravel_title" = "My Travels";
@@ -47,8 +47,6 @@
 "addPhoto_emptyMessage" = "Save images you need for your trip, \nsuch as tickets, reservation confirmations, screenshots, etc. 🐠";
 
 "myMap_searchBarTitle" = "Search locations";
-
-"weather_currentTimeTitle" = "local time";
 
 "exchangeRate" = "exchange rate ";
 "exchangeRate_selectCurrencyButtonTitle" = " Select Currency ";

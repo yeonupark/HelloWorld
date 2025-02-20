@@ -65,7 +65,6 @@
 		48DB9E9E2AD7A8890038701C /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E9D2AD7A8890038701C /* WeatherView.swift */; };
 		48DB9EA02AD7B6CB0038701C /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9E9F2AD7B6CB0038701C /* WeatherViewModel.swift */; };
 		48DB9EA22AD7C01A0038701C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 48DB9EA12AD7C01A0038701C /* .gitignore */; };
-		48DB9EA72AD7C1D90038701C /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9EA62AD7C1D90038701C /* APIKeys.swift */; };
 		48DB9EA92AD7C6E80038701C /* WorldTimeAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9EA82AD7C6E80038701C /* WorldTimeAPIManager.swift */; };
 		48DB9EAC2AD7C7550038701C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 48DB9EAB2AD7C7550038701C /* Alamofire */; };
 		48DB9EAF2AD83E490038701C /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9EAE2AD83E490038701C /* WeatherTableViewCell.swift */; };
@@ -149,7 +148,6 @@
 		48DB9E9D2AD7A8890038701C /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		48DB9E9F2AD7B6CB0038701C /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		48DB9EA12AD7C01A0038701C /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		48DB9EA62AD7C1D90038701C /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		48DB9EA82AD7C6E80038701C /* WorldTimeAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldTimeAPIManager.swift; sourceTree = "<group>"; };
 		48DB9EAE2AD83E490038701C /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
 		48DB9EB02ADA712F0038701C /* ToDoTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTable.swift; sourceTree = "<group>"; };
@@ -226,13 +224,11 @@
 				4808A4252AC41153005E1190 /* Base */,
 				4808A3F52AC40F84005E1190 /* AppDelegate.swift */,
 				4808A3F72AC40F84005E1190 /* SceneDelegate.swift */,
-				4808A3FE2AC40F85005E1190 /* Assets.xcassets */,
-				48F8B2BE2B1F6A0F0096A108 /* Colors */,
-				48F8B2BD2B1F69CF0096A108 /* Weather Icons */,
 				488723D62AE04BF900A3A02E /* GimpoGothicBold.otf */,
 				488723D72AE04BF900A3A02E /* GimpoGothicRegular.otf */,
 				4808A4002AC40F85005E1190 /* LaunchScreen.storyboard */,
 				48BB29292AE6621700065691 /* GoogleService-Info.plist */,
+				4808A3FE2AC40F85005E1190 /* Assets.xcassets */,
 				4808A4032AC40F85005E1190 /* Info.plist */,
 				48DB9EA12AD7C01A0038701C /* .gitignore */,
 				4858D4212B36E4CD00801343 /* Localizable.strings */,
@@ -372,25 +368,10 @@
 		48DB9EA52AD7C06A0038701C /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				48DB9EA62AD7C1D90038701C /* APIKeys.swift */,
 				48DB9EA82AD7C6E80038701C /* WorldTimeAPIManager.swift */,
 				480C825C2ADBB71200613CDB /* ExchangeRateAPIManager.swift */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		48F8B2BD2B1F69CF0096A108 /* Weather Icons */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Weather Icons";
-			sourceTree = "<group>";
-		};
-		48F8B2BE2B1F6A0F0096A108 /* Colors */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Colors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -610,7 +591,6 @@
 				488723C12AE042A800A3A02E /* Constant.swift in Sources */,
 				488723B52ADEE17C00A3A02E /* DetailPhotoViewController.swift in Sources */,
 				48CC051B2ACABD780070D337 /* PhotoCollectionViewCell.swift in Sources */,
-				48DB9EA72AD7C1D90038701C /* APIKeys.swift in Sources */,
 				480C82602ADBBDE000613CDB /* ExchangeRateViewController.swift in Sources */,
 				48DB9E392AD4DAB90038701C /* MapViewController.swift in Sources */,
 				4808A42E2AC41522005E1190 /* BaseViewController.swift in Sources */,

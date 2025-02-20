@@ -105,7 +105,7 @@ class ExchangeRateViewController: BaseViewController {
                 print("API 호출 결과 오류")
                 return
             }
-            self.viewModel.exchangeRate = result.exchange_rate
+            self.viewModel.exchangeRate = result.rates[convert] ?? 1
             self.mainView.exchangeRateLabel.text = "\(NSLocalizedString("exchangeRate", comment: "")): \(self.viewModel.exchangeRate)"
         }
         self.mainView.inputTextField.text?.removeAll()

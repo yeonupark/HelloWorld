@@ -28,20 +28,20 @@ class WorldTimeAPIManager {
     
     private init() { }
     
-    func callRequest(lat: Double, lon: Double, completionHandler: @escaping (WorldTime?) -> Void) {
-        
-        let url = "https://api.api-ninjas.com/v1/worldtime"
-        let header : HTTPHeaders = [
-            "X-Api-Key": APIKeys.ningaID
-        ]
-        let parameter : Parameters = ["lat" : lat, "lon" : lon]
-        
-        AF.request(url, method: .get, parameters: parameter, headers: header).validate().responseDecodable(of: WorldTime.self) { response in
-            guard let value = response.value else {
-                completionHandler(nil)
-                return
-            }
-            completionHandler(value)
-        }
-    }
+//    func callRequest(lat: Double, lon: Double, completionHandler: @escaping (WorldTime?) -> Void) {
+//        
+//        let url = "https://api.api-ninjas.com/v1/worldtime"
+//        let header : HTTPHeaders = [
+//            "X-Api-Key": APIKeys.ningaID
+//        ]
+//        let parameter : Parameters = ["lat" : lat, "lon" : lon]
+//        
+//        AF.request(url, method: .get, parameters: parameter, headers: header).validate().responseDecodable(of: WorldTime.self) { response in
+//            guard let value = response.value else {
+//                completionHandler(nil)
+//                return
+//            }
+//            completionHandler(value)
+//        }
+//    }
 }
