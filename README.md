@@ -33,7 +33,7 @@ https://apps.apple.com/kr/app/tripish-travel-planner/id6470174798?l=en-GB
 
 1️⃣ **Clone the repository**
 ```
-git clone https://github.com/yeonupark/helloworld
+git clone https://github.com/yeonupark/tripish
 ```
 2️⃣ **Open the project**
 ```
@@ -75,18 +75,30 @@ xed .
 
 ---
 
+### 🔗 Dependencies  
+Swift Package Manager (SPM) will automatically resolve dependencies when opening the project in Xcode. List of dependencies:
 
-### 🔗 Dependencies
+- **[Firebase](https://github.com/firebase/firebase-ios-sdk)**  
+  → Provides powerful backend services including **Authentication, Firestore, Realtime Database, Cloud Messaging**, and **Crashlytics** for analytics, push notifications, and error tracking.  
 
-Swift Package Manager (SPM) will automatically resolve dependencies when opening the project in Xcode.     
-List of dependencies:  
+- **[Alamofire](https://github.com/Alamofire/Alamofire)**  
+  → A robust **HTTP networking** library for handling API requests, response serialization, and network error management efficiently.  
 
-- **[RxSwift](https://github.com/ReactiveX/RxSwift)** → Used for reactive programming, handling UI events and network responses asynchronously with `Relay`, `Driver`, `Subject`.  
-- **[Socket.IO-Client-Swift](https://github.com/socketio/socket.io-client-swift)** → Enables real-time data communication using WebSocket-based Socket.IO for message exchange with the server.
-- **[Starscream](https://github.com/daltoniam/Starscream)** → Manages WebSocket connections, facilitating real-time communication with the server.    
-- **[SnapKit](https://github.com/SnapKit/SnapKit)** → Simplifies Auto Layout implementation, allowing for intuitive and concise UI layout management in code.  
-- **[Toast-Swift](https://github.com/scalessec/Toast-Swift.git)** → Displays brief notifications or error messages in a toast-style popup.  
+- **[Realm](https://github.com/realm/realm-swift)**  
+  → A lightweight, high-performance **local database** solution that enables fast data storage and retrieval with minimal boilerplate.  
+
+- **[SnapKit](https://github.com/SnapKit/SnapKit)**  
+  → Simplifies **Auto Layout** implementation, allowing for intuitive and concise UI layout management in code.  
+
+- **[Kingfisher](https://github.com/onevcat/Kingfisher)**  
+  → A powerful library for **downloading, caching, and displaying images** from the web efficiently. Supports smooth image loading with built-in caching mechanisms.  
+
+- **[Toast-Swift](https://github.com/scalessec/Toast-Swift.git)**  
+  → Displays **brief notifications or error messages** in a toast-style popup, enhancing user feedback and experience.  
+
+
 ---
+
 ### 📬 Contact
 
 If you have any questions, feel free to reach out at [idepix5@gmail.com](mailto:idepix5@gmail.com).
