@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4808A3F12AC40F84005E1190"
-               BuildableName = "HelloWorld.app"
-               BlueprintName = "HelloWorld"
-               ReferencedContainer = "container:HelloWorld.xcodeproj">
+               BuildableName = "Tripish.app"
+               BlueprintName = "Tripish"
+               ReferencedContainer = "container:Tripish.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,9 +35,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4808A4072AC40F85005E1190"
-               BuildableName = "HelloWorldTests.xctest"
-               BlueprintName = "HelloWorldTests"
-               ReferencedContainer = "container:HelloWorld.xcodeproj">
+               BuildableName = "TripishTests.xctest"
+               BlueprintName = "TripishTests"
+               ReferencedContainer = "container:Tripish.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -46,9 +46,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4808A4112AC40F85005E1190"
-               BuildableName = "HelloWorldUITests.xctest"
-               BlueprintName = "HelloWorldUITests"
-               ReferencedContainer = "container:HelloWorld.xcodeproj">
+               BuildableName = "TripishUITests.xctest"
+               BlueprintName = "TripishUITests"
+               ReferencedContainer = "container:Tripish.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -68,9 +68,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4808A3F12AC40F84005E1190"
-            BuildableName = "HelloWorld.app"
-            BlueprintName = "HelloWorld"
-            ReferencedContainer = "container:HelloWorld.xcodeproj">
+            BuildableName = "Tripish.app"
+            BlueprintName = "Tripish"
+            ReferencedContainer = "container:Tripish.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -85,9 +85,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4808A3F12AC40F84005E1190"
-            BuildableName = "HelloWorld.app"
-            BlueprintName = "HelloWorld"
-            ReferencedContainer = "container:HelloWorld.xcodeproj">
+            BuildableName = "Tripish.app"
+            BlueprintName = "Tripish"
+            ReferencedContainer = "container:Tripish.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
