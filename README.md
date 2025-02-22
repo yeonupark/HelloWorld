@@ -43,7 +43,7 @@ git clone https://github.com/yeonupark/tripish
 ```
 2️⃣ **Open the project**
 ```
-cd helloworld
+cd tripish
 xed .
 ``` 
 
