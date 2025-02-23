@@ -37,7 +37,7 @@
 "addToList_existToast" = "이미 추가된 항목입니다.";
 
 "agendaSection_memo" = "메모";
-"agendaSection_checkList" = "체크리스트";
+"agendaSection_checklist" = "체크리스트";
 "agendaSection_cost" = "예상 비용";
 "agendaSection_link" = "링크";
 
